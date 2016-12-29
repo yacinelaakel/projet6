@@ -1,5 +1,0 @@
-[2016-12-29 11:28:03] request.INFO: Matched route "homepage". {"route":"homepage","route_parameters":{"_controller":"AppBundle\\Controller\\DefaultController::indexAction","_route":"homepage"},"request_uri":"http://localhost:8888/Projet6/web/app_dev.php/","method":"GET"} []
-[2016-12-29 11:28:03] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
-[2016-12-29 11:28:03] request.INFO: Matched route "_wdt". {"route":"_wdt","route_parameters":{"_controller":"web_profiler.controller.profiler:toolbarAction","token":"c9bd11","_route":"_wdt"},"request_uri":"http://localhost:8888/Projet6/web/app_dev.php/_wdt/c9bd11","method":"GET"} []
-[2016-12-29 11:38:32] request.INFO: Matched route "portail_web_homepage". {"route":"portail_web_homepage","route_parameters":{"_controller":"Portail\\WebBundle\\Controller\\DefaultController::indexAction","_route":"portail_web_homepage"},"request_uri":"http://localhost:8888/Projet6/web/app_dev.php/","method":"GET"} []
-[2016-12-29 11:38:32] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
