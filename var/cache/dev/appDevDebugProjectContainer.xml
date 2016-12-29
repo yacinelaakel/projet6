@@ -15,7 +15,7 @@
       <parameter key="SwiftmailerBundle">Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle</parameter>
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
-      <parameter key="AppBundle">AppBundle\AppBundle</parameter>
+      <parameter key="PortailWebBundle">Portail\WebBundle\PortailWebBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -433,7 +433,7 @@
                 <tag name="cache.pool" clearer="cache.default_clearer"/>
                 <argument>U3HZZnnzoU</argument>
                 <argument>0</argument>
-                <argument>XwEsAWtma5r7ur9qGheyt7</argument>
+                <argument>EIhSMyE6SCwXINk-RvFUtG</argument>
                 <argument>/Applications/MAMP/htdocs/Projet6/var/cache/dev/pools</argument>
                 <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                 <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -561,7 +561,7 @@
           <tag name="monolog.logger" channel="cache"/>
           <argument>NVh42uROTk</argument>
           <argument>null</argument>
-          <argument>XwEsAWtma5r7ur9qGheyt7</argument>
+          <argument>EIhSMyE6SCwXINk-RvFUtG</argument>
           <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
           <factory class="Symfony\Component\PropertyAccess\PropertyAccessor" method="createCache"/>
         </service>
@@ -582,7 +582,7 @@
       <tag name="cache.pool" clearer="cache.default_clearer"/>
       <argument>pzf9YkdgT2</argument>
       <argument>0</argument>
-      <argument>XwEsAWtma5r7ur9qGheyt7</argument>
+      <argument>EIhSMyE6SCwXINk-RvFUtG</argument>
       <argument>/Applications/MAMP/htdocs/Projet6/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -592,7 +592,7 @@
       <tag name="cache.pool" clearer="cache.default_clearer"/>
       <argument>8V3abclRFE</argument>
       <argument>0</argument>
-      <argument>XwEsAWtma5r7ur9qGheyt7</argument>
+      <argument>EIhSMyE6SCwXINk-RvFUtG</argument>
       <argument>/Applications/MAMP/htdocs/Projet6/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1585,7 +1585,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5864e5327b0028.10792922</argument>
+            <argument>5864e7a7c98119.58855270</argument>
           </service>
         </argument>
       </argument>
@@ -1733,7 +1733,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5864e5327b0028.10792922</argument>
+            <argument>5864e7a7c98119.58855270</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2628,15 +2628,16 @@
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
+        <argument>/Applications/MAMP/htdocs/Projet6/src/Portail/WebBundle/Resources/views</argument>
+        <argument>PortailWeb</argument>
+      </call>
+      <call method="addPath">
         <argument>/Applications/MAMP/htdocs/Projet6/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
       <call method="addPath">
         <argument>/Applications/MAMP/htdocs/Projet6/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views</argument>
         <argument>WebProfiler</argument>
-      </call>
-      <call method="addPath">
-        <argument>/Applications/MAMP/htdocs/Projet6/app/Resources/views</argument>
       </call>
       <call method="addPath">
         <argument>/Applications/MAMP/htdocs/Projet6/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form</argument>
