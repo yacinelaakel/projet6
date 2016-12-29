@@ -1,0 +1,16 @@
+#header {
+    background-color: #000000;
+    /* Remove the jumbotron's default bottom margin */
+    margin-bottom: 0;
+
+}
+
+#footer {
+    background-color: #4a4a4a;
+    padding: 25px;
+}
+
+.navbar {
+    margin-bottom: 50px;
+    border-radius: 0;
+}
