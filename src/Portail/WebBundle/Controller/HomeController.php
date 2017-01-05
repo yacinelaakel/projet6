@@ -4,10 +4,10 @@ namespace Portail\WebBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class HomeController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('PortailWebBundle:Default:index.html.twig');
+        return $this->render('PortailWebBundle:Home:index.html.twig');
     }
 }
