@@ -1,1 +1,7 @@
-Hello World!
+{# Hérite de la vue parente situé app/Resources/views/base.html.twig #}
+{% extends "::base.html.twig" %}
+
+{# Vue accueil (sans header ni footer) #}
+{% block body %}
+	<h1>Bienvenue sur ce site d'ornithologie</h1>
+{% endblock %}
