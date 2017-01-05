@@ -5,7 +5,8 @@
 ### - Se placer sur la branche **dev**, créer une nouvelle branche depuis cette dernière (ex : une branche user), faire ses commit ###
 ### - Une fois le travail terminé sur une branche, la merge dans la branche **dev** (ex : git merge user) ###
 ### - Push sur le bitbucket la branche **dev** ###
-### - Eventuellement créer une pull request pour que les autres valident le travail qui a été fait ###
+### - Créer une pull request pour que les autres valident le travail qui a été fait et qu'il soit fusionné dans la branche master###
+### - Vous pouvez récupérer le travail qui a été fait en faisant git pull origin ###
 
 #TEAM PROJET 6 
 
