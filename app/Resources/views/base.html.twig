@@ -1,0 +1,19 @@
+<!-- Vue principale qui sera réutilisée dans toutes les vues (ici se trouve header et footer) -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!-- Titre du site -->
+        <title>{% block title %}Ornithologie{% endblock %}</title>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <!-- Fichier css utilisant Assetic -->
+        {% stylesheets 'bundles/portailweb/css/styles.css' filter='cssrewrite, scssphp' %}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+    </head>
+    <body>
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>
