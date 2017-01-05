@@ -1,11 +1,11 @@
 # README  PROJET 6 #
 
 Bonnes pratique à avoir avec git :
-* Ne jamais travailler sur la branche **master**.
-* Se placer sur la branche **dev**, créer une nouvelle branche depuis cette dernière (ex : une branche user), faire ses commit
-* Une fois le travail terminé sur une branche, la merge dans la branche **dev** (ex : git merge user)
-* Push sur le bitbucket la branche **dev**
-* Eventuellement créer une pull request pour que les autres valident le travail qui a été fait
+### * Ne jamais travailler sur la branche **master**. ###
+### * Se placer sur la branche **dev**, créer une nouvelle branche depuis cette dernière (ex : une branche user), faire ses commit ###
+### * Une fois le travail terminé sur une branche, la merge dans la branche **dev** (ex : git merge user) ###
+### * Push sur le bitbucket la branche **dev** ###
+### * Eventuellement créer une pull request pour que les autres valident le travail qui a été fait ###
 
 #TEAM PROJET 6 
 
