@@ -15,26 +15,67 @@ a:hover {
 .navbar {
 	background-color: white;
 	border-bottom: none;
-	padding-top: 30px;
-	padding-bottom: 20px;
+	padding-top: 30px; /*Permet d'augmenter la hauteur du header*/
+	padding-bottom: 20px;/*Permet d'augmenter la hauteur du header*/
 }
 
 li+li { 
-	border-left: 1px solid grey;
+	border-left: 1px solid grey; /*Affiche une barre verticale à gauche de chaque élément du menu*/
 }
 
-.logo {
-	height: auto; 
-    width: auto; 
-    max-width: 300px; 
+.logo { 
+    max-width: 300px; /*le logo fera 300px*/
     max-height: 300px;
 	margin-top: -17px;
+}
+
+@media all and (max-width: 465px) { /*sur smartphone le logo fera 200px*/
+	.logo {
+		max-width: 200px;
+	}
 }
 
 /*Footer*/
 footer {
 	color: white;
     background: #4A4A4A; /*dark grey*/
-    line-height: 24px;
     padding: 25px;
 }
+
+/*Page d'accueil*/
+
+.backgroundImage {
+	background-size: 100% 796px; /*100% pour que la largeur s'adapte à l'écran, 796px car c'est la hauteur de l'image actuelle*/
+	background-repeat: no-repeat; /*on affiche qu'une fois l'image*/
+	padding-top: 200px; /*permet de placer l'encart noir de connexion*/
+	padding-bottom: 246px; /*permet de placer l'encart noir de connexion*/
+	padding-left: 40%; /*permet de placer l'encart noir de connexion*/
+	padding-right: 10%; /*permet de placer l'encart noir de connexion*/
+}
+
+@media all and (max-width: 768px) {
+	.backgroundImage {
+		padding-left: 0; 
+		padding-right: 0;
+	}
+}
+
+/*Encart noir dégradé*/
+#boiteConnexion {
+	width: 60%;
+	min-width: 430px; /*L'encart ne fera pas en dessous de 430px pour que les éléments ne débordent pas du cadre*/
+	height: 330px;
+    background-color: rgba(72,81,86, 0.5); /*dark grey + transparence à 50%*/
+	border-radius: 7px;
+	padding: 25px;
+	color: white;
+}
+
+@media all and (max-width: 768px) { /*L'encart prendra 100% de la largeur de l'écran si c'est un smartphone*/
+	#boiteConnexion {
+		width: 100%; 
+		min-width: 0;
+	}
+}
+
+
