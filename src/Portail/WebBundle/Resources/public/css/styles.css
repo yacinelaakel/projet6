@@ -64,7 +64,7 @@ footer {
 #boiteConnexion {
 	width: 60%;
 	min-width: 430px; /*L'encart ne fera pas en dessous de 430px pour que les éléments ne débordent pas du cadre*/
-	height: 330px;
+	height: 100%;
     background-color: rgba(72,81,86, 0.5); /*dark grey + transparence à 50%*/
 	border-radius: 7px;
 	padding: 25px;
