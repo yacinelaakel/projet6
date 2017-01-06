@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <!-- Titre du site -->
-        <title>{% block title %}Ornithologie{% endblock %}</title>
+        <title>{% block title %}Nos amis les oiseaux{% endblock %}</title>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- Fichier css utilisant Assetic -->
@@ -32,7 +32,7 @@
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">ACCUEIL</a></li>
+                            <li><a href="{{ path('portail_web_homepage') }}">ACCUEIL</a></li>
                             <li><a href="#">OBSERVATIONS</a></li>
                             <li><a href="#">RECHERCHE</a></li>
                             <li><a href="#">MON COMPTE</a></li>
@@ -42,9 +42,15 @@
                 </div>
             </nav>
         </header>
-
+        
+        {# Contenu #}
         {% block body %}
         {% endblock %}
+
+        {# Footer #}
+        <footer class="container-fluid text-center">
+            <p>Copyright</p>
+        </footer>
 
     </body>
 </html>
