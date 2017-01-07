@@ -7,15 +7,61 @@
 	<div style="background-image: url({{ asset('images/background.jpg') }});" class="backgroundImage">
 		{# Encart connexion/créer un compte #}
 		<div class="text-center" id="boiteConnexion">
-			<h1 style="text-shadow: 1px 1px black; padding: 0; margin: 0">Bienvenue sur notre Application</h1> <br>
+			<h1 style="text-shadow: 1px 1px black; padding: 0; margin: 0">
+				Bienvenue sur notre Application
+			</h1> <br>
 
-			<p style="font-weight: lighter; margin-bottom: 50px;">Avant de saisir vos observations d'oiseaux vous devez vous identifier. Si vous n'avez pas de compte, cliquez sur créer un compte.</p>
+			<p class="paragraphes" style="margin-bottom: 50px;">
+				Avant de saisir vos observations d'oiseaux vous devez vous identifier. Si vous n'avez pas de compte, cliquez sur créer un compte.
+			</p>
 
 			<div class="row">
 				<button class="col-sm-offset-1 col-sm-4 btn btn-secondary btn-lg" style="color: #485156; margin-right: 15px">CONNEXION</button>
 				<button class="col-sm-6 btn btn-success btn-lg">CRÉER UN COMPTE</button>				
 			</div>
 		</div>
+	</div>
 
+	{# Comment fonctionne l'application #}
+	<div class="container" style="margin-top: 25px">
+		<h1 class="text-center" style="color: #81BD5B;">COMMENT FONCTIONNE L'APPLICATION</h1>
+		<p class="text-center">Étape de saisie d'observation d'oiseau</p>
+		<hr>
+
+		<div class="row">
+			<div class="col-sm-3 col-xs-6 text-center boiteFonctionnement">
+				<img src="#" alt=""> <br>
+				<h4>OBSERVATION</h4>
+				{# hr vert et petit #}
+				<hr class="hrFonctionnement">
+				<p class="paragraphes">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsum ducimus itaque optio recusandae sit excepturi quae voluptatem a consequuntur delectus asperiores, dignissimos. Sapiente sed quae, explicabo laboriosam vel qui!
+				</p>
+			</div>
+			<div class="col-sm-3 col-xs-6 text-center boiteFonctionnement">
+				<img src="#" alt=""> <br> 
+				<h4>SAISIE</h4>
+				<hr class="hrFonctionnement">
+				<p class="paragraphes">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsum ducimus itaque optio recusandae sit excepturi quae voluptatem a consequuntur delectus asperiores, dignissimos. Sapiente sed quae, explicabo laboriosam vel qui!
+				</p>				
+			</div>
+			<div class="col-sm-3 col-xs-6 text-center boiteFonctionnement">
+				<img src="#" alt=""> <br> 
+				<h4>VALIDATION</h4>
+				<hr class="hrFonctionnement">
+				<p class="paragraphes">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsum ducimus itaque optio recusandae sit excepturi quae voluptatem a consequuntur delectus asperiores, dignissimos. Sapiente sed quae, explicabo laboriosam vel qui!
+				</p>				
+			</div>
+			<div class="col-sm-3 col-xs-6 text-center boiteFonctionnement">
+				<img src="#" alt=""> <br>
+				<h4>SUIVI</h4>
+				<hr class="hrFonctionnement">
+				<p class="paragraphes">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsum ducimus itaque optio recusandae sit excepturi quae voluptatem a consequuntur delectus asperiores, dignissimos. Sapiente sed quae, explicabo laboriosam vel qui!
+				</p>				
+			</div>
+		</div>
 	</div>
 {% endblock %}

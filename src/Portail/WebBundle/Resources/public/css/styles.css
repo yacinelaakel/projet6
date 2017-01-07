@@ -8,7 +8,11 @@ a {
 }
 
 a:hover {
-	color :#81BD5B !important; /*vert*/
+	color: #81BD5B !important; /*vert*/
+}
+
+.paragraphes {
+	font-weight: lighter;
 }
 
 /*Barre de navigation du header*/
@@ -79,3 +83,27 @@ footer {
 }
 
 
+/*Encarts fonctionnement de l'application*/
+.boiteFonctionnement {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+/*Au survol d'un encart*/
+.boiteFonctionnement:hover {
+	background-color: rgba(72,81,86, 0.1);
+	cursor: pointer;
+
+}
+/*Change la couleur du titre en vert lors du survol d'un encart*/
+.boiteFonctionnement:hover h4 {
+	color: #81BD5B;
+}
+
+.hrFonctionnement {
+    display: block;
+   	width: 20%;
+    height: 2px;
+    border: 0;
+    border-top: 2px solid #81BD5B;
+}
