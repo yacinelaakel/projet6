@@ -79,10 +79,10 @@ a.btn-social,
     ms-transform: scale(1);
     o-transform: scale(1);
     transform: scale(1);
-    transition: all .25s;
+    transition: all .30s;
     webkit-backface-visibility: hidden;
     webkit-transform: scale(1);
-    webkit-transition: all .25s;
+    webkit-transition: all .30s;
 }
 .btn-social:hover,.btn-social:focus
 {
@@ -182,6 +182,11 @@ a.btn-social,
 		width: 100%; 
 		min-width: 0;
 	}
+}
+
+/*Ce bouton bootstrap ne marchait pas bien étrangement j'ai donc changé sa couleur manuellement*/
+.btn-secondary:hover {
+	filter: brightness(65%) !important;
 }
 
 
