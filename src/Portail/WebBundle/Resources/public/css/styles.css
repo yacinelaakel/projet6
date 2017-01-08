@@ -79,10 +79,10 @@ a.btn-social,
     ms-transform: scale(1);
     o-transform: scale(1);
     transform: scale(1);
-    transition: all .25s;
+    transition: all .50s;
     webkit-backface-visibility: hidden;
     webkit-transform: scale(1);
-    webkit-transition: all .25s;
+    webkit-transition: all .50s;
 }
 .btn-social:hover,.btn-social:focus
 {
