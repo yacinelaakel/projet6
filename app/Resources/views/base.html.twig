@@ -47,8 +47,17 @@
 
         {# Footer #}
         <footer class="text-center" style="padding-top: 60px">
-            <img src="{{ asset('images/logo-dark.jpg') }}" alt="Logo NAO dark" class="logo">
-            <p>Copyright</p>
+            <img src="{{ asset('images/logo-dark.jpg') }}" alt="Logo NAO dark" class="logo" style="padding-bottom: 40px">
+            <div class="container">
+                <ul class="list-inline" id="listFooter">
+                    <li><a href="{{ path('portail_web_homepage') }}">ACCUEIL</a></li>
+                    <li><a href="#">OBSERVATIONS</a></li>
+                    <li><a href="#">RECHERCHE</a></li>
+                    <li><a href="#">MON COMPTE</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+                <hr>
+            </div>
         </footer>
 
     </body>

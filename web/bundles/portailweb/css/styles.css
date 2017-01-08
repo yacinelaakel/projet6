@@ -46,6 +46,15 @@ footer {
     padding: 25px;
 }
 
+#listFooter {
+	padding-bottom: 20px;
+}
+
+#listFooter a {
+	color: white !important;
+	text-decoration: none !important;
+}
+
 /*Page d'accueil*/
 
 .backgroundImage {
