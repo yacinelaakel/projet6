@@ -7,6 +7,7 @@
         <title>{% block title %}Nos amis les oiseaux{% endblock %}</title>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Fichier css utilisant Assetic -->
         {% stylesheets 'bundles/portailweb/css/styles.css' filter='cssrewrite, scssphp' %}
             <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
@@ -15,7 +16,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-
         {# Header #}
         <nav class="navbar navbar-default">
             <div class="container">
@@ -57,6 +57,18 @@
                     <li><a href="#">CONTACT</a></li>
                 </ul>
                 <hr>
+            </div>
+            {# Boutons réseaux sociaux #}
+            <div class="text-center">
+                <a href="https://www.facebook.com/" class="btn-social btn-facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a href="https://plus.google.com/?hl=fr" class="btn-social btn-google-plus">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+                <a href="https://twitter.com/?lang=fr" class="btn-social btn-twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
             </div>
         </footer>
 
