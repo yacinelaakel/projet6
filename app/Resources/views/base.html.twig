@@ -7,6 +7,7 @@
         <title>{% block title %}Nos amis les oiseaux{% endblock %}</title>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Fichier css utilisant Assetic -->
         {% stylesheets 'bundles/portailweb/css/styles.css' filter='cssrewrite, scssphp' %}
             <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
@@ -15,7 +16,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-
         {# Header #}
         <nav class="navbar navbar-default">
             <div class="container">
@@ -47,8 +47,29 @@
 
         {# Footer #}
         <footer class="text-center" style="padding-top: 60px">
-            <img src="{{ asset('images/logo-dark.jpg') }}" alt="Logo NAO dark" class="logo">
-            <p>Copyright</p>
+            <img src="{{ asset('images/logo-dark.jpg') }}" alt="Logo NAO dark" class="logo" style="padding-bottom: 40px">
+            <div class="container">
+                <ul class="list-inline" id="listFooter">
+                    <li><a href="{{ path('portail_web_homepage') }}">ACCUEIL</a></li>
+                    <li><a href="#">OBSERVATIONS</a></li>
+                    <li><a href="#">RECHERCHE</a></li>
+                    <li><a href="#">MON COMPTE</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+                <hr>
+            </div>
+            {# Boutons réseaux sociaux #}
+            <div class="text-center">
+                <a href="https://www.facebook.com/" target="_blank" class="btn-social btn-facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a href="https://plus.google.com/?hl=fr" target="_blank" class="btn-social btn-google-plus">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+                <a href="https://twitter.com/?lang=fr" target="_blank" class="btn-social btn-twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </div>
         </footer>
 
     </body>
