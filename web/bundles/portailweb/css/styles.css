@@ -214,3 +214,31 @@ a.btn-social,
     border: 0;
     border-top: 2px solid #81BD5B;
 }
+
+.cercleVert {
+    display: inline-block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 50%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border: 3px solid #81BD5B;
+    border-radius: 100%;
+}
+
+.iconFonctionnement {
+    color: #81BD5B;
+}
+
+/*boutons recherche et saisie*/
+.rechercheEtSaisie {
+    color: #81BD5B;
+    background-color: rgba(72,81,86, 0.1);
+}
+
+#rechercheButton:hover, #saisieButton:hover {
+    background-color: #81BD5B;
+    color: white;
+    cursor: pointer;
+}
