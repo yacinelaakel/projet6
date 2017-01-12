@@ -230,3 +230,15 @@ a.btn-social,
 .iconFonctionnement {
     color: #81BD5B;
 }
+
+/*boutons recherche et saisie*/
+.rechercheEtSaisie {
+    color: #81BD5B;
+    background-color: rgba(72,81,86, 0.1);
+}
+
+#rechercheButton:hover, #saisieButton:hover {
+    background-color: #81BD5B;
+    color: white;
+    cursor: pointer;
+}

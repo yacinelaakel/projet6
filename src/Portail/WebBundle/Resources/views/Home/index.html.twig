@@ -22,34 +22,57 @@
 		</div>
 	</div>
 
-	{# Partie Contact #}
-	<div style="background-color: rgba(72,81,86, 0.1); padding-bottom: 15px">
+	{# Boutons recherche et saisie #}
+	<div class="rechercheEtSaisie">
+		<div class="container-fluid">
+			<div class="row">
+				<div id="rechercheButton" class="col-md-6" style="border: 1px solid #81BD5B; padding: 30px">
+					<h2 class="text-center" style="margin: 0">
+						<i class="glyphicon glyphicon-search" style="margin-right: 15px"></i>
+						RECHERCHER UNE ESPÈCE D'OISEAU
+					</h2>
+				</div>
+				<div id="saisieButton" class="col-md-6" style="border: 1px solid #81BD5B; padding: 30px">
+					<h2 class="text-center" style="margin: 0">
+						<i class="glyphicon glyphicon-list" style="margin-right: 15px"></i>
+						SAISIR UNE OBSERVATION D'OISEAU
+					</h2>
+				</div>
+			</div>			
+		</div>
+	</div>
+
+	{# Partie Recherche Oiseau #}
+	<div id="rechercheOiseau" style="background-color: rgba(72,81,86, 0.1); padding-bottom: 15px">
 		<div class="container">
-			<h1 class="text-center" style="color: #81BD5B; margin-top: 35px">CONTACT</h1>
-			<p class="text-center">Pour toute question ou interrogation, n'hésitez pas à nous écrire</p>
+			<h2 class="text-center" style="margin-top: 35px">RECHERCHER UNE ESPÈCE D'OISEAU</h2>
 			<hr>	
 
-			{# Formulaire de contact à mettre ici #}
-			<div class="col-md-7">
-				
+			{# Formulaire de recherche #}
+			<div class="col-xs-12">
+				Ici sera le formulaire de recherche
 			</div>
-			
-			{# A votre écoute #}
-			<div class="col-md-offset-1 col-md-4">
-				<h4 style="padding-top: 0; margin-top: 0; margin-bottom: 15px"><strong>À VOTRE ÉCOUTE</strong></h4>
-				<p class="paragraphes">
-					Nous prenons en compte toute vos remarques et suggestions pour améliorer notre application
-					et ce afin de vous offrir le meilleur. N'hésitez pas à nous signaler tout dysfonctionnement ou
-					proposer une fonctionnalité. <br><br>
-					ORNITHO <br>
-					55 Bd Saint Michel <br>
-					75005 Paris
-				</p>
+			{# Bouton #}
+			<div class="text-center">
+				<button class="btn btn-success btn-lg">Lancer la recherche</button>
 			</div>
 		</div>
 	</div>
 
-	{# Comment fonctionne l'application #}
+	{# Partie Saisie Oiseau #}
+	<div id="saisieOiseau" style="background-color: rgba(72,81,86, 0.1); padding-bottom: 15px">
+		<div class="container">
+			<h2 class="text-center" style="margin-top: 35px">SAISIR UNE OBSERVATION D'OISEAU</h2>
+			<hr>	
+
+			{# Formulaire de saisie #}
+			<div class="col-xs-12">
+				Ici sera la saisie
+			</div>
+		</div>
+	</div>
+
+	{# Partie Comment fonctionne l'application #}
 	<div id="partFonctionnement" class="container" style="margin-top: 25px">
 		<h1 class="text-center" style="color: #81BD5B;">COMMENT FONCTIONNE L'APPLICATION</h1>
 		<p class="text-center">Étape de saisie d'observation d'oiseau</p>
@@ -92,9 +115,34 @@
 			</div>
 		</div>
 	</div>
+
+	{# Partie A propos #}
+	<div id="partPropos" style="background-color: rgba(72,81,86, 0.1); padding-bottom: 25px">
+		<div class="container">
+			<h1 class="text-center" style="color: #81BD5B; margin-top: 35px">À PROPOS</h1>
+			<p class="text-center">Présentation de l'association NAO</p>
+			<hr>	
+
+			{# Image à propos #}
+			<div class="col-md-7">
+				
+			</div>
+			
+			{# A votre écoute #}
+			<div class="col-md-offset-1 col-md-4">
+				<h4 style="padding-top: 0; margin-top: 0; margin-bottom: 15px"><strong>L'ASSOCIATION NAO</strong></h4>
+				<p class="paragraphes">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sapiente dolore enim ipsa, tempora dolor quis quasi dolorum! Quisquam aperiam sint nihil cum eligendi fuga consectetur dolorum, architecto, vel quidem!
+				</p>
+				<p class="paragraphes">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sapiente dolore enim ipsa, tempora dolor quis quasi dolorum! Quisquam aperiam sint nihil cum eligendi fuga consectetur dolorum, architecto, vel quidem!
+				</p>				
+			</div>
+		</div>
+	</div>
 	
 	{# Partie Contact #}
-	<div id="partContact" style="background-color: rgba(72,81,86, 0.1); padding-bottom: 25px">
+	<div id="partContact" style="padding-bottom: 25px">
 		<div class="container">
 			<h1 class="text-center" style="color: #81BD5B; margin-top: 35px">CONTACT</h1>
 			<p class="text-center">Pour toute question ou interrogation, n'hésitez pas à nous écrire</p>
@@ -111,7 +159,9 @@
 				<p class="paragraphes">
 					Nous prenons en compte toute vos remarques et suggestions pour améliorer notre application
 					et ce afin de vous offrir le meilleur. N'hésitez pas à nous signaler tout dysfonctionnement ou
-					proposer une fonctionnalité. <br><br>
+					proposer une fonctionnalité.
+				</p>
+				<p class="paragraphes">
 					ORNITHO <br>
 					55 Bd Saint Michel <br>
 					75005 Paris
@@ -119,4 +169,23 @@
 			</div>
 		</div>
 	</div>
+
+	<script>
+		$(function() { 
+			//Masque la partie saisie d'oiseau par défaut
+			$("#saisieOiseau").css("display", "none");
+
+			//Au clic sur le bouton recherche oiseau ou sur le lien RECHERCHE la partie recherche s'affiche et masque la partie saisie
+			$("#rechercheButton, #linkRechercheOiseau").on("click", function() {
+				$("#saisieOiseau").css("display", "none");
+				$("#rechercheOiseau").css("display", "");
+			});
+
+			//Au clic sur le bouton saisie oiseau ou sur le lien OBSERVATION la partie saisie s'affiche et masque la partie recherche
+			$("#saisieButton, #linkSaisieOiseau").on("click", function() {
+				$("#saisieOiseau").css("display", "");
+				$("#rechercheOiseau").css("display", "none");
+			});
+		});
+	</script>
 {% endblock %}
