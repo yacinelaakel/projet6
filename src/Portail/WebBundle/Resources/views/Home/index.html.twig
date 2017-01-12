@@ -4,7 +4,7 @@
 {# Vue accueil (sans header ni footer) #}
 {% block body %}
 	{# Image background perroquet #}
-	<div style="background-image: url({{ asset('images/background.jpg') }});" class="backgroundImage">
+	<div id="partPerroquet" style="background-image: url({{ asset('images/background.jpg') }});" class="backgroundImage">
 		{# Encart connexion/créer un compte #}
 		<div class="text-center" id="boiteConnexion">
 			<h1 style="text-shadow: 1px 1px black; padding: 0; margin: 0">
@@ -22,15 +22,43 @@
 		</div>
 	</div>
 
+	{# Partie Contact #}
+	<div style="background-color: rgba(72,81,86, 0.1); padding-bottom: 15px">
+		<div class="container">
+			<h1 class="text-center" style="color: #81BD5B; margin-top: 35px">CONTACT</h1>
+			<p class="text-center">Pour toute question ou interrogation, n'hésitez pas à nous écrire</p>
+			<hr>	
+
+			{# Formulaire de contact à mettre ici #}
+			<div class="col-md-7">
+				
+			</div>
+			
+			{# A votre écoute #}
+			<div class="col-md-offset-1 col-md-4">
+				<h4 style="padding-top: 0; margin-top: 0; margin-bottom: 15px"><strong>À VOTRE ÉCOUTE</strong></h4>
+				<p class="paragraphes">
+					Nous prenons en compte toute vos remarques et suggestions pour améliorer notre application
+					et ce afin de vous offrir le meilleur. N'hésitez pas à nous signaler tout dysfonctionnement ou
+					proposer une fonctionnalité. <br><br>
+					ORNITHO <br>
+					55 Bd Saint Michel <br>
+					75005 Paris
+				</p>
+			</div>
+		</div>
+	</div>
+
 	{# Comment fonctionne l'application #}
-	<div class="container" style="margin-top: 25px">
+	<div id="partFonctionnement" class="container" style="margin-top: 25px">
 		<h1 class="text-center" style="color: #81BD5B;">COMMENT FONCTIONNE L'APPLICATION</h1>
 		<p class="text-center">Étape de saisie d'observation d'oiseau</p>
 		<hr>
 
 		<div class="row">
 			<div class="col-sm-3 col-xs-6 text-center boiteFonctionnement">
-				<img src="#" alt=""> <br>
+				{# icone #}
+				<div class="cercleVert"><i class="glyphicon glyphicon-eye-open fa-4x iconFonctionnement"></i></div> <br>
 				<h4>OBSERVATION</h4>
 				{# hr vert et petit #}
 				<hr class="hrFonctionnement">
@@ -39,7 +67,7 @@
 				</p>
 			</div>
 			<div class="col-sm-3 col-xs-6 text-center boiteFonctionnement">
-				<img src="#" alt=""> <br> 
+				<div class="cercleVert"><i class="glyphicon glyphicon-list-alt fa-4x iconFonctionnement"></i></div> <br> 
 				<h4>SAISIE</h4>
 				<hr class="hrFonctionnement">
 				<p class="paragraphes">
@@ -47,16 +75,16 @@
 				</p>				
 			</div>
 			<div class="col-sm-3 col-xs-6 text-center boiteFonctionnement">
-				<img src="#" alt=""> <br> 
-				<h4>VALIDATION</h4>
+				<div class="cercleVert"><i class="glyphicon glyphicon-random fa-4x iconFonctionnement"></i></div> <br> 
+				<h4>SUIVI</h4>
 				<hr class="hrFonctionnement">
 				<p class="paragraphes">
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsum ducimus itaque optio recusandae sit excepturi quae voluptatem a consequuntur delectus asperiores, dignissimos. Sapiente sed quae, explicabo laboriosam vel qui!
 				</p>				
 			</div>
 			<div class="col-sm-3 col-xs-6 text-center boiteFonctionnement">
-				<img src="#" alt=""> <br>
-				<h4>SUIVI</h4>
+				<div class="cercleVert"><i class="glyphicon glyphicon-ok fa-4x iconFonctionnement"></i></div> <br>
+				<h4>VALIDATION</h4>
 				<hr class="hrFonctionnement">
 				<p class="paragraphes">
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsum ducimus itaque optio recusandae sit excepturi quae voluptatem a consequuntur delectus asperiores, dignissimos. Sapiente sed quae, explicabo laboriosam vel qui!
@@ -66,7 +94,7 @@
 	</div>
 	
 	{# Partie Contact #}
-	<div style="background-color: rgba(72,81,86, 0.1); padding-bottom: 25px">
+	<div id="partContact" style="background-color: rgba(72,81,86, 0.1); padding-bottom: 25px">
 		<div class="container">
 			<h1 class="text-center" style="color: #81BD5B; margin-top: 35px">CONTACT</h1>
 			<p class="text-center">Pour toute question ou interrogation, n'hésitez pas à nous écrire</p>
