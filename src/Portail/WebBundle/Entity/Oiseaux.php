@@ -17,7 +17,7 @@ class Oiseaux
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="CD_NOM", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -26,7 +26,7 @@ class Oiseaux
     /**
      * @var string
      *
-     * @ORM\Column(name="nom_fr", type="string", length=255, unique=true)
+     * @ORM\Column(name="LB_NOM", type="string", length=255)
      * @Assert\Type("string")
      */
     private $nomFr;
@@ -34,7 +34,7 @@ class Oiseaux
     /**
      * @var string
      *
-     * @ORM\Column(name="nom_la", type="string", length=255, unique=true)
+     * @ORM\Column(name="NOM_VERN", type="string", length=255)
      * @Assert\Type("string")
      */
     private $nomLa;
