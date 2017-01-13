@@ -1,0 +1,68 @@
+{# Partie Contact #}
+<div id="partContact" style="padding-bottom: 25px">
+	<div class="container">
+		<h1 class="text-center" style="color: #81BD5B; margin-top: 35px">CONTACT</h1>
+		<p class="text-center">Pour toute question ou interrogation, n'hésitez pas à nous écrire</p>
+		<hr>	
+		
+		{# Formulaire de contact à mettre ici #}
+		<div class="col-md-7">
+			<form method="post">
+		    	{{ form_errors(form) }}
+
+				<div class="row">
+					<div class="col-sm-12 col-md-6" style="margin-bottom: 30px">
+				        {{ form_widget(form.nom) }}
+				        {{ form_errors(form.nom) }}
+					</div>
+					<div class="col-sm-12 col-md-6" style="margin-bottom: 30px">
+				        {{ form_widget(form.prenom) }}
+				        {{ form_errors(form.prenom) }}
+			    	</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12 col-md-6" style="margin-bottom: 30px">
+				        {{ form_widget(form.email) }}
+				        {{ form_errors(form.email) }}
+					</div>
+					<div class="col-sm-12 col-md-6" style="margin-bottom: 30px">
+				        {{ form_widget(form.objet) }}
+				        {{ form_errors(form.objet) }}
+		    	</div>
+
+				</div>
+				<div class="row">
+					<div class="col-xs-12" style="margin-bottom: 30px">
+						<div>
+				        {{ form_widget(form.message) }}
+				        {{ form_errors(form.message) }}
+				    	</div>
+			    	</div>
+				</div>
+
+		        {{ form_rest(form) }}
+				<div class="row">
+					<div class="col-xs-12">
+		        		<input type="submit" value="Envoyer le message" id="customSubmit" class="btn pull-right btn-success btn-lg" />
+			    	</div>
+				</div>
+	    	</form>
+		</div>
+		
+		{# A votre écoute #}
+		<div class="col-md-5">
+			<h4 style="padding-top: 0; margin-top: 0; margin-bottom: 15px"><strong>À VOTRE ÉCOUTE</strong></h4>
+			<p class="paragraphes">
+				Nous prenons en compte toute vos remarques et suggestions pour améliorer notre application
+				et ce afin de vous offrir le meilleur. N'hésitez pas à nous signaler tout dysfonctionnement ou
+				proposer une fonctionnalité.
+			</p>
+			<p class="paragraphes">
+				ORNITHO <br>
+				55 Bd Saint Michel <br>
+				75005 Paris
+			</p>
+		</div>
+	</div>
+</div>

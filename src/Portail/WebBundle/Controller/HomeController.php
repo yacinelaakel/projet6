@@ -3,6 +3,7 @@
 namespace Portail\WebBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class HomeController extends Controller
 {
@@ -10,4 +11,5 @@ class HomeController extends Controller
     {
         return $this->render('PortailWebBundle:Home:index.html.twig');
     }
+
 }
