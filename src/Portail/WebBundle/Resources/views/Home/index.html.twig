@@ -3,24 +3,9 @@
 
 {# Vue accueil (sans header ni footer) #}
 {% block body %}
-	{# Image background perroquet #}
-	<div id="partPerroquet" style="background-image: url({{ asset('images/background.jpg') }});" class="backgroundImage">
-		{# Encart connexion/créer un compte #}
-		<div class="text-center" id="boiteConnexion">
-			<h1 style="text-shadow: 1px 1px black; padding: 0; margin: 0">
-				Bienvenue sur notre Application
-			</h1> <br>
-
-			<p class="paragraphes" style="margin-bottom: 50px;">
-				Avant de saisir vos observations d'oiseaux vous devez vous identifier. Si vous n'avez pas de compte, cliquez sur créer un compte.
-			</p>
-
-			<div class="row">
-				<button class="col-sm-offset-1 col-sm-4 btn btn-secondary btn-lg" style="color: #485156; margin-right: 15px; background-color: white">CONNEXION</button>
-				<button class="col-sm-6 btn btn-success btn-lg">CRÉER UN COMPTE</button>				
-			</div>
-		</div>
-	</div>
+	
+	{# inclus la partie encart connexion #}
+    {% include 'PortailWebBundle:Home:partieEncartConnexion.html.twig' %}
 
 	{# Boutons recherche et saisie #}
 	<div class="rechercheEtSaisie">
@@ -41,140 +26,21 @@
 			</div>			
 		</div>
 	</div>
+	
+	{# Partie recherche d'oiseau #}
+	{{ render(controller('PortailWebBundle:rechercheSaisie:recherche')) }}
 
-	{# Partie Recherche Oiseau #}
-	<div id="rechercheOiseau" style="background-color: rgba(72,81,86, 0.1); padding-bottom: 15px">
-		<div class="container">
-			<h2 class="text-center" style="margin-top: 35px">RECHERCHER UNE ESPÈCE D'OISEAU</h2>
-			<hr>	
-
-			{# Formulaire de recherche #}
-			<div class="col-xs-12">
-				Ici sera le formulaire de recherche
-			</div>
-			{# Bouton #}
-			<div class="text-center">
-				<button class="btn btn-success btn-lg">Lancer la recherche</button>
-			</div>
-		</div>
-	</div>
-
-	{# Partie Saisie Oiseau #}
-	<div id="saisieOiseau" style="background-color: rgba(72,81,86, 0.1); padding-bottom: 15px">
-		<div class="container">
-			<h2 class="text-center" style="margin-top: 35px">SAISIR UNE OBSERVATION D'OISEAU</h2>
-			<hr>	
-
-			{# Formulaire de saisie #}
-			<div class="col-xs-12">
-				Ici sera la saisie
-			</div>
-			{# Bouton #}
-			<div class="text-center">
-				<button class="btn btn-success btn-lg">Envoyer la saisie</button>
-			</div>
-		</div>
-	</div>
+	{# Partie saisie d'oiseau #}
+	{{ render(controller('PortailWebBundle:rechercheSaisie:saisie')) }}
 
 	{# Partie Comment fonctionne l'application #}
-	<div id="partFonctionnement" class="container" style="margin-top: 25px">
-		<h1 class="text-center" style="color: #81BD5B;">COMMENT FONCTIONNE L'APPLICATION</h1>
-		<p class="text-center">Étape de saisie d'observation d'oiseau</p>
-		<hr style="margin-bottom: 0">
-
-		<div class="row">
-			<div class="col-sm-3 col-xs-6 text-center boiteFonctionnement">
-				{# icone #}
-				<div class="cercleVert"><i class="glyphicon glyphicon-eye-open iconFonctionnement"></i></div> <br>
-				<h4>OBSERVATION</h4>
-				{# hr vert et petit #}
-				<hr class="hrFonctionnement">
-				<p class="paragraphes">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsum ducimus itaque optio recusandae sit excepturi quae voluptatem a consequuntur delectus asperiores, dignissimos. Sapiente sed quae, explicabo laboriosam vel qui!
-				</p>
-			</div>
-			<div class="col-sm-3 col-xs-6 text-center boiteFonctionnement">
-				<div class="cercleVert"><i class="glyphicon glyphicon-list-alt iconFonctionnement"></i></div> <br> 
-				<h4>SAISIE</h4>
-				<hr class="hrFonctionnement">
-				<p class="paragraphes">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsum ducimus itaque optio recusandae sit excepturi quae voluptatem a consequuntur delectus asperiores, dignissimos. Sapiente sed quae, explicabo laboriosam vel qui!
-				</p>				
-			</div>
-			<div class="col-sm-3 col-xs-6 text-center boiteFonctionnement">
-				<div class="cercleVert"><i class="glyphicon glyphicon-random iconFonctionnement"></i></div> <br> 
-				<h4>SUIVI</h4>
-				<hr class="hrFonctionnement">
-				<p class="paragraphes">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsum ducimus itaque optio recusandae sit excepturi quae voluptatem a consequuntur delectus asperiores, dignissimos. Sapiente sed quae, explicabo laboriosam vel qui!
-				</p>				
-			</div>
-			<div class="col-sm-3 col-xs-6 text-center boiteFonctionnement">
-				<div class="cercleVert"><i class="glyphicon glyphicon-ok iconFonctionnement"></i></div> <br>
-				<h4>VALIDATION</h4>
-				<hr class="hrFonctionnement">
-				<p class="paragraphes">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsum ducimus itaque optio recusandae sit excepturi quae voluptatem a consequuntur delectus asperiores, dignissimos. Sapiente sed quae, explicabo laboriosam vel qui!
-				</p>				
-			</div>
-		</div>
-	</div>
+	{% include 'PortailWebBundle:Home:partieFonctionnementApp.html.twig' %}
 
 	{# Partie A propos #}
-	<div id="partPropos" style="background-color: rgba(72,81,86, 0.1); padding-bottom: 25px">
-		<div class="container">
-			<h1 class="text-center" style="color: #81BD5B; margin-top: 35px">À PROPOS</h1>
-			<p class="text-center">Présentation de l'association NAO</p>
-			<hr>
-
-			<div class="row">
-				{# Image à propos #}
-				<div class="col-sm-6">
-					<img src="{{ asset('images/a-propos.png') }}" alt="A propos" class="imgPropos">
-				</div>
-				
-				{# A votre écoute #}
-				<div class="col-offset-sm-1 col-sm-5">
-					<h4 style="padding-top: 0; margin-top: 0; margin-bottom: 15px"><strong>L'ASSOCIATION NAO</strong></h4>
-					<p class="paragraphes">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sapiente dolore enim ipsa, tempora dolor quis quasi dolorum! Quisquam aperiam sint nihil cum eligendi fuga consectetur dolorum, architecto, vel quidem!
-					</p>
-					<p class="paragraphes">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sapiente dolore enim ipsa, tempora dolor quis quasi dolorum! Quisquam aperiam sint nihil cum eligendi fuga consectetur dolorum, architecto, vel quidem!
-					</p>				
-				</div>				
-			</div>
-		</div>
-	</div>
+	{% include 'PortailWebBundle:Home:partieApropos.html.twig' %}
 	
 	{# Partie Contact #}
-	<div id="partContact" style="padding-bottom: 25px">
-		<div class="container">
-			<h1 class="text-center" style="color: #81BD5B; margin-top: 35px">CONTACT</h1>
-			<p class="text-center">Pour toute question ou interrogation, n'hésitez pas à nous écrire</p>
-			<hr>	
-
-			{# Formulaire de contact à mettre ici #}
-			<div class="col-md-7">
-				
-			</div>
-			
-			{# A votre écoute #}
-			<div class="col-md-offset-1 col-md-4">
-				<h4 style="padding-top: 0; margin-top: 0; margin-bottom: 15px"><strong>À VOTRE ÉCOUTE</strong></h4>
-				<p class="paragraphes">
-					Nous prenons en compte toute vos remarques et suggestions pour améliorer notre application
-					et ce afin de vous offrir le meilleur. N'hésitez pas à nous signaler tout dysfonctionnement ou
-					proposer une fonctionnalité.
-				</p>
-				<p class="paragraphes">
-					ORNITHO <br>
-					55 Bd Saint Michel <br>
-					75005 Paris
-				</p>
-			</div>
-		</div>
-	</div>
+	{{ render(controller('PortailWebBundle:Contact:Contact')) }}
 
 	<script>
 		$(function() { 

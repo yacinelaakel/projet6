@@ -254,3 +254,16 @@ a.btn-social,
     width: 100%;
     height: auto;
 }
+
+/*Partie contact*/ 
+input:not([type="submit"]) {
+    padding: 20px !important;
+}
+
+textarea {
+    height: 150px !important;
+}
+
+input:focus, textarea:focus {
+  border-color: #81BD5B !important;
+}
