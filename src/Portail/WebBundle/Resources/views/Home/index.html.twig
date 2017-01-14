@@ -7,32 +7,6 @@
 	{# inclus la partie encart connexion #}
     {% include 'PortailWebBundle:Home:partieEncartConnexion.html.twig' %}
 
-	{# Boutons recherche et saisie #}
-	<div class="rechercheEtSaisie">
-		<div class="container-fluid">
-			<div class="row">
-				<div id="rechercheButton" class="col-md-6" style="border: 1px solid #81BD5B; padding: 30px">
-					<h2 class="text-center" style="margin: 0">
-						<i class="glyphicon glyphicon-search" style="margin-right: 15px"></i>
-						RECHERCHER UNE ESPÈCE D'OISEAU
-					</h2>
-				</div>
-				<div id="saisieButton" class="col-md-6" style="border: 1px solid #81BD5B; padding: 30px">
-					<h2 class="text-center" style="margin: 0">
-						<i class="glyphicon glyphicon-list" style="margin-right: 15px"></i>
-						SAISIR UNE OBSERVATION D'OISEAU
-					</h2>
-				</div>
-			</div>			
-		</div>
-	</div>
-	
-	{# Partie recherche d'oiseau #}
-	{{ render(controller('PortailWebBundle:rechercheSaisie:recherche')) }}
-
-	{# Partie saisie d'oiseau #}
-	{{ render(controller('PortailWebBundle:rechercheSaisie:saisie')) }}
-
 	{# Partie Comment fonctionne l'application #}
 	{% include 'PortailWebBundle:Home:partieFonctionnementApp.html.twig' %}
 
@@ -40,24 +14,15 @@
 	{% include 'PortailWebBundle:Home:partieApropos.html.twig' %}
 	
 	{# Partie Contact #}
-	{{ render(controller('PortailWebBundle:Contact:Contact')) }}
+	{% include 'PortailWebBundle:Home:partieContact.html.twig' %}
 
 	<script>
 		$(function() { 
-			//Masque la partie saisie d'oiseau par défaut
-			$("#saisieOiseau").css("display", "none");
+			//Permet de déplacer l'écran sur la partie contact
+			if($("#partContactExist").length) {
+				location.hash = "#" + "partContact";
+			}	
 
-			//Au clic sur le bouton recherche oiseau ou sur le lien RECHERCHE la partie recherche s'affiche et masque la partie saisie
-			$("#rechercheButton, #linkRechercheOiseau").on("click", function() {
-				$("#saisieOiseau").css("display", "none");
-				$("#rechercheOiseau").css("display", "");
-			});
-
-			//Au clic sur le bouton saisie oiseau ou sur le lien OBSERVATION la partie saisie s'affiche et masque la partie recherche
-			$("#saisieButton, #linkSaisieOiseau").on("click", function() {
-				$("#saisieOiseau").css("display", "");
-				$("#rechercheOiseau").css("display", "none");
-			});
 		});
 	</script>
 {% endblock %}

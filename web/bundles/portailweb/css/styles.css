@@ -15,6 +15,10 @@ a:hover {
 	font-weight: lighter;
 }
 
+.help-block {
+    color: #d9534f !important;
+}
+
 /*Barre de navigation du header*/
 .navbar {
 	background-color: white;

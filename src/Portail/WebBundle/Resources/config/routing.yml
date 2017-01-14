@@ -1,3 +1,11 @@
 portail_web_homepage:
     path:     /
     defaults: { _controller: PortailWebBundle:Home:index }
+
+portail_web_recherche:
+    path:     /recherche
+    defaults: { _controller: PortailWebBundle:Recherche:recherche }
+
+portail_web_observation:
+    path:     /observation
+    defaults: { _controller: PortailWebBundle:Observation:observation }

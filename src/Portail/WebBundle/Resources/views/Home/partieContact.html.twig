@@ -3,10 +3,22 @@
 	<div class="container">
 		<h1 class="text-center" style="color: #81BD5B; margin-top: 35px">CONTACT</h1>
 		<p class="text-center">Pour toute question ou interrogation, n'hésitez pas à nous écrire</p>
-		<hr>	
-		
-		{# Formulaire de contact à mettre ici #}
+		<hr>
+	
+		{# Affiche "Votre message a bien été envoyé" #}
+		{% for message in app.session.flashbag.get('good') %}
+			<div class="alert alert-success">
+		    	<p>{{ message }}</p>
+		    </div>
+		{% endfor %}
+
+		{% if partContact is defined %}
+			<span id="partContactExist"></span>
+		{% endif %}
+
+		{# Formulaire de contact ici #}
 		<div class="col-md-7">
+			{# Le formulaire sera soumis au contrôleur ContactController #}
 			<form method="post">
 		    	{{ form_errors(form) }}
 
@@ -44,7 +56,7 @@
 		        {{ form_rest(form) }}
 				<div class="row">
 					<div class="col-xs-12">
-		        		<input type="submit" value="Envoyer le message" id="customSubmit" class="btn pull-right btn-success btn-lg" />
+		        		<input type="submit" value="Envoyer le message" class="btn pull-right btn-success btn-lg" />
 			    	</div>
 				</div>
 	    	</form>
