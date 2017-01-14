@@ -1,3 +1,7 @@
+portail_user:
+    resource: "@PortailUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 portail_web:
     resource: "@PortailWebBundle/Resources/config/routing.yml"
     prefix:   /

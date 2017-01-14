@@ -1,0 +1,3 @@
+portail_user_homepage:
+    path:     /
+    defaults: { _controller: PortailUserBundle:Default:index }
