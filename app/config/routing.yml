@@ -1,8 +1,10 @@
 portail_user:
     resource: "@PortailUserBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /user
 
 portail_web:
     resource: "@PortailWebBundle/Resources/config/routing.yml"
     prefix:   /
 
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
