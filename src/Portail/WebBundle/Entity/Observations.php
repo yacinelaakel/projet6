@@ -40,18 +40,24 @@ class Observations
     private $heureObservation;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="longitude", type="string", length=255)
-     * @Assert\Type("string")
+     * @ORM\Column(name="longitude", type="float")
+     * @Assert\Type(
+     *     type="float",
+     *     message="La valeur n'est pas de type {{ type }}."
+     * )
      */
     private $longitude;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="latitude", type="string", length=255)
-     * @Assert\Type("string")
+     * @ORM\Column(name="latitude", type="float")
+     * @Assert\Type(
+     *     type="float",
+     *     message="La valeur n'est pas de type {{ type }}."
+     * )
      */
     private $latitude;
 

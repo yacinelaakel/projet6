@@ -8,14 +8,85 @@
 		<h2 class="text-center" style="margin-top: 35px">SAISIR UNE OBSERVATION D'OISEAU</h2>
 		<hr>	
 
-		{# Formulaire de saisie #}
-		<div class="col-xs-12">
-			Ici sera la saisie
-		</div>
-		{# Bouton #}
-		<div class="text-center">
-			<button class="btn btn-success btn-lg">Envoyer la saisie</button>
-		</div>
+		{# Formulaire de saisie d'observation #}
+			{# Le formulaire sera soumis au contrôleur SaisieController #}
+			<form method="post">
+		    	{{ form_errors(form) }}
+
+				<div class="row">
+					<div class="col-sm-12 col-md-2" style="margin-bottom: 30px">
+						{{ form_row(form.dateObservation) }}
+					</div>
+
+					<div class="col-sm-12 col-md-2" style="margin-bottom: 30px">
+						{{ form_label(form.heureObservation, 'Heure') }}
+				        {{ form_widget(form.heureObservation) }}
+				        {{ form_errors(form.heureObservation) }}
+			    	</div>
+
+					<div class="col-sm-12 col-md-2" style="margin-bottom: 30px">
+						{{ form_label(form.longitude, 'Longitude') }}
+				        {{ form_widget(form.longitude) }}
+				        {{ form_errors(form.longitude) }}
+					</div>
+
+					<div class="col-sm-12 col-md-2" style="margin-bottom: 30px">
+						{{ form_label(form.latitude, 'Latitude') }}
+				        {{ form_widget(form.latitude) }}
+				        {{ form_errors(form.latitude) }}
+		    		</div>
+
+					<div class="col-sm-12 col-md-2" style="margin-bottom: 30px">
+						{{ form_label(form.nbIndividus, "Nombre d'individus") }}
+				        {{ form_widget(form.nbIndividus) }}
+				        {{ form_errors(form.nbIndividus) }}
+		    		</div>
+
+					<div class="col-sm-12 col-md-2" style="margin-bottom: 30px">
+						{{ form_label(form.photo, "Photo (facultatif)") }}
+				        {{ form_widget(form.photo) }}
+				        {{ form_errors(form.photo) }}
+		    		</div>	
+				</div>
+				
+				<div class="row">
+					<div class="col-xs-12" style="margin-bottom: 30px">
+						{{ form_label(form.commentaire, "Commentaire") }}
+				        {{ form_widget(form.commentaire) }}
+				        {{ form_errors(form.commentaire) }}
+			    	</div>		
+				</div>
+
+		        {{ form_rest(form) }}
+				<div class="row text-center">
+					<div class="col-xs-12">
+		        		<input type="submit" value="Envoyer la saisie" class="btn btn-success btn-lg" />
+			    	</div>
+				</div>
+	    	</form>
 	</div>
 </div>
+
+<script>
+
+	$(function() {
+		$('#portail_webbundle_observations_dateObservation').datepicker({
+			//format de la date
+			dateFormat: 'dd-mm-yy',
+			//pour changer le mois et l'année plus facilement
+			changeMonth: true,
+  			changeYear: true,
+  			//interdiction de sélectionner une date future
+  			maxDate: '0',
+		});
+
+		//Utilise l'heure actuelle comme heure par défaut
+		var dt = new Date();
+		var hour = dt.getHours();
+		var minute = dt.getMinutes();
+		$('#portail_webbundle_observations_heureObservation_hour').val(hour);
+		$('#portail_webbundle_observations_heureObservation_minute').val(minute);
+	});
+
+</script>
 {% endblock %}
