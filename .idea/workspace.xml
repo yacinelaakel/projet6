@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a12812f-9fc4-4426-a822-32775d42c8bc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Portail/WebBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/Portail/WebBundle/Resources/config/routing.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Portail/WebBundle/Resources/views/Home/partieEncartConnexion.html.twig" afterPath="$PROJECT_DIR$/src/Portail/WebBundle/Resources/views/Home/partieEncartConnexion.html.twig" />
     </list>
     <ignored path="P6.iws" />
@@ -61,10 +60,10 @@
       <file leaf-file-name="partieEncartConnexion.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Portail/WebBundle/Resources/views/Home/partieEncartConnexion.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+            <state relative-caret-position="405">
+              <caret line="27" column="60" lean-forward="false" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
               <folding>
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -607,12 +606,12 @@
       <updated>1480065973849</updated>
       <workItem from="1480065975512" duration="421000" />
       <workItem from="1483006935781" duration="1473000" />
-      <workItem from="1484397117806" duration="4264000" />
+      <workItem from="1484397117806" duration="4474000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6158000" />
+    <option name="totallyTimeSpent" value="6368000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="140" y="43" width="1400" height="916" extended-state="0" />
@@ -830,10 +829,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Portail/WebBundle/Resources/views/Home/partieEncartConnexion.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+        <state relative-caret-position="405">
+          <caret line="27" column="60" lean-forward="false" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
           <folding>
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
