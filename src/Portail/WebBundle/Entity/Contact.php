@@ -27,7 +27,7 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
-     * @Assert\Type("string")
+     * @Assert\Regex("/^[a-zA-Z]{3,15}/", message="Le nom doit faire entre 3 et 15 lettres.")
      */
     private $nom;
 
@@ -35,7 +35,7 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255)
-     * @Assert\Type("string")
+     * @Assert\Regex("/^[a-zA-Z]{3,15}/", message="Le prénom doit faire entre 3 et 15 lettres.")
      */
     private $prenom;
 
@@ -54,7 +54,7 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="objet", type="string", length=255)
-     * @Assert\Type("string")
+     * @Assert\Regex("/^[a-zA-Z]{3,15}/", message="L'objet' doit faire entre 3 et 15 lettres.")
      */
     private $objet;
 

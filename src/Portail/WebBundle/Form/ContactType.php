@@ -27,7 +27,7 @@ class ContactType extends AbstractType
                 'placeholder' => 'Votre prénom',
             ))
         )
-        ->add('email', TextType::class, array(
+        ->add('email', EmailType::class, array(
             'attr' => array(
                 'placeholder' => 'Email',
             ))
