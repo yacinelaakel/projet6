@@ -9,3 +9,6 @@ portail_web_recherche:
 portail_web_observation:
     path:     /observation
     defaults: { _controller: PortailWebBundle:Observation:observation }
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

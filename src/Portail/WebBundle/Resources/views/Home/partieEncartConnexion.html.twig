@@ -1,18 +1,33 @@
 {# Image background perroquet #}
 <div id="partPerroquet" style="background-image: url({{ asset('images/background.jpg') }});" class="backgroundImage">
-	{# Encart connexion/créer un compte #}
-	<div class="text-center" id="boiteConnexion">
-		<h1 style="text-shadow: 1px 1px black; padding: 0; margin: 0">
-			Bienvenue sur notre Application
-		</h1> <br>
+    {# Encart connexion/créer un compte #}
+    <div class="text-center" id="boiteConnexion">
+        <h1 style="text-shadow: 1px 1px black; padding: 0; margin: 0">
+            Bienvenue sur notre Application
+        </h1> <br>
+        {#Vérification si session membre ouverte ou non #}
+        {# Si session ouverte : affiche connecté en tant que .....Nom Prénom.... #}
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        Connecté en tant que {{ app.user.username }}
+        -
+        <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
 
-		<p class="paragraphes" style="margin-bottom: 50px;">
-			Avant de saisir vos observations d'oiseaux vous devez vous identifier. Si vous n'avez pas de compte, cliquez sur créer un compte.
-		</p>
+        {% else %}
+        {#Si session non ouverte ,  affiche le panneau création compte ou connexion#}
 
-		<div class="row">
-			<button class="col-sm-offset-1 col-sm-4 btn btn-secondary btn-lg" style="color: #485156; margin-right: 15px; background-color: white">CONNEXION</button>
-			<button class="col-sm-6 btn btn-success btn-lg">CRÉER UN COMPTE</button>				
-		</div>
-	</div>
+        <p class="paragraphes" style="margin-bottom: 50px;">
+            Avant de saisir vos observations d'oiseaux vous devez vous identifier. Si vous n'avez pas de compte, cliquez
+            sur créer un compte.
+        </p>
+
+        <div class="row">
+            <button href="{{ path('fos_user_security_login') }}"
+                    class="col-sm-offset-1 col-sm-4 btn btn-secondary btn-lg"
+                    style="color: #485156; margin-right: 15px; background-color: white">CONNEXION
+            </button>
+            <button class="col-sm-6 btn btn-success btn-lg">CRÉER UN COMPTE</button>
+            {% endif %}
+
+        </div>
+    </div>
 </div>
