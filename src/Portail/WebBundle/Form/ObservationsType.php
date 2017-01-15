@@ -32,6 +32,7 @@ class ObservationsType extends AbstractType
             'scale' => 9,
             'attr' => array(
                'step' => 0.00001,
+               'placeholder' => 0.0001
             ))
         )
         ->add('latitude', NumberType::class, array(
@@ -39,6 +40,7 @@ class ObservationsType extends AbstractType
             'scale' => 9,
             'attr' => array(
                'step' => 0.00001,
+               'placeholder' => 0.0001
             ))
         )
         ->add('nbIndividus', IntegerType::class, array(
@@ -46,7 +48,7 @@ class ObservationsType extends AbstractType
                 'placeholder' => 1,
             ))
         )
-        ->add('photo', TextType::class)
+        ->add('photo', TextType::class, ['required' => false])
         ->add('commentaire', TextareaType::class, array(
             'attr' => array(
                 'placeholder' => 'Faites nous part de vos impressions sur cette observation...',

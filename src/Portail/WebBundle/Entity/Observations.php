@@ -269,4 +269,22 @@ class Observations
     {
         return $this->commentaire;
     }
+
+    /**
+     * @Assert\Callback
+     */
+    public function isDateValid(ExecutionContextInterface $context)
+    {
+        $dateObservation = $this->getDateObservation();
+        $currentDate = date_create();
+        $diff = date_diff($currentDate, $dateObservation)->format('%d');
+
+        if ($diff < 0) {
+            $context
+                ->buildViolation('Invalide : jour interdit.')
+                ->atPath('dateObservation')
+                ->addViolation()
+            ;
+        }
+    }
 }

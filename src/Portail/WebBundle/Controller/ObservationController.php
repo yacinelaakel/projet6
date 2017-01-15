@@ -19,7 +19,8 @@ class ObservationController extends Controller
 
         // On rentre dans le if si l'utilisateur a soumis le formulaire de contact et que les informations sont valide
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-        	
+
+        	return $this->redirectToRoute('portail_web_observation', ['_fragment' => 'saisieOiseau']);
         } 
         return $this->render('PortailWebBundle:Home:partieObservation.html.twig', array('form' => $form->createView()));
     }

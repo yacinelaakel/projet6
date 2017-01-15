@@ -15,6 +15,17 @@ a:hover {
 	font-weight: lighter;
 }
 
+h4 {
+    padding-top: 0; 
+    margin-top: 0; 
+    margin-bottom: 15px;
+}
+
+.divh1 {
+    color: #81BD5B; 
+    margin-top: 35px;
+}
+
 .help-block {
     color: #d9534f !important;
 }
@@ -47,6 +58,10 @@ footer {
 	color: white;
     background: #4A4A4A; /*dark grey*/
     padding: 25px;
+}
+
+#imgFooter {
+    padding-bottom: 40px;
 }
 
 #listFooter {
@@ -187,6 +202,12 @@ a.btn-social,
 	}
 }
 
+#h1Connexion {
+    text-shadow: 1px 1px black; 
+    padding: 0; 
+    margin: 0;
+}
+
 /*Ce bouton bootstrap ne marchait pas bien étrangement j'ai donc changé sa couleur manuellement*/
 .btn-secondary:hover {
 	filter: brightness(65%) !important;
@@ -194,6 +215,10 @@ a.btn-social,
 
 /*Partie comment fonctionne l'application*/
 /*Encarts fonctionnement de l'application*/
+#partFonctionnement {
+    margin-top: 20px;
+}
+
 .boiteFonctionnement {
 	margin-top: 25px;
 	margin-bottom: 25px;
@@ -208,6 +233,10 @@ a.btn-social,
 /*Change la couleur du titre en vert lors du survol d'un encart*/
 .boiteFonctionnement:hover h4 {
 	color: #81BD5B;
+}
+
+#hrSpecial {
+    margin-bottom: 0;
 }
 
 .hrFonctionnement {
@@ -241,18 +270,10 @@ a.btn-social,
     }
 }
 
-/*boutons recherche et saisie*/
-.rechercheEtSaisie {
-    color: #81BD5B;
-    background-color: rgba(72,81,86, 0.1);
+.part {
+    background-color: rgba(72,81,86, 0.1); 
+    padding-bottom: 25px
 }
-
-#rechercheButton:hover, #saisieButton:hover {
-    background-color: #81BD5B;
-    color: white;
-    cursor: pointer;
-}
-
 
 .imgPropos {
     width: 100%;
@@ -260,14 +281,23 @@ a.btn-social,
 }
 
 /*Partie contact*/ 
+#partContact {
+    padding-bottom: 25px;
+}
+
 input:not([type="submit"]) {
     padding: 20px !important;
 }
 
 textarea {
     height: 150px !important;
+    width: 100% !important;
 }
 
 input:focus, textarea:focus, select:focus {
   border-color: #81BD5B !important;
+}
+
+.col-sm-12, .col-xs-12 {
+    margin-bottom: 30px !important;
 }
