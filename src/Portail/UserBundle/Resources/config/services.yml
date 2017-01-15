@@ -1,4 +1,8 @@
 services:
 #    portail_user.example:
 #        class: Portail\UserBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+#        argum;ents: ["@service_id", "plain_value", "%parameter%"]
+  portail_user.user.form.registration:
+        class: Portail\UserBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: portail_user.user.registration }

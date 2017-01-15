@@ -1,0 +1,9 @@
+{# Hérite de la vue parente situé app/Resources/views/base.html.twig #}
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    {# inclus la partie encart connexion #}
+    {% include 'fos_user_registration_register' %}
+
+{% endblock %}
