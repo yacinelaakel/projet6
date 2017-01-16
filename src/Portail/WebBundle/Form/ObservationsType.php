@@ -29,17 +29,17 @@ class ObservationsType extends AbstractType
         ->add('heureObservation', TimeType::class)
         ->add('longitude', NumberType::class, array(
             'required' => true,
-            'scale' => 9,
+            'scale' => 18,
             'attr' => array(
-               'step' => 0.00001,
+               'step' => 0.000000000000001,
                'placeholder' => 0.0001
             ))
         )
         ->add('latitude', NumberType::class, array(
             'required' => true,
-            'scale' => 9,
+            'scale' => 18,
             'attr' => array(
-               'step' => 0.00001,
+               'step' => 0.000000000000001,
                'placeholder' => 0.0001
             ))
         )
@@ -50,8 +50,9 @@ class ObservationsType extends AbstractType
         )
         ->add('photo', TextType::class, ['required' => false])
         ->add('commentaire', TextareaType::class, array(
+            'required' => false,
             'attr' => array(
-                'placeholder' => 'Faites nous part de vos impressions sur cette observation...',
+                'placeholder' => 'Faites nous part de vos impressions sur cette observation...'
             ))
         );
     }

@@ -14,11 +14,12 @@ class HomeController extends Controller
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
 
+        $form->handleRequest($request);
+
         // On rentre dans le if si l'utilisateur a soumis le formulaire de contact et que les informations sont valide
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $request->getSession()->getFlashBag()->add('good', 'Message bien envoyé.');
-
             //L'instruction ci dessous permet de renvoyer à la page d'accueil mais à la partie #partContact
             return $this->redirectToRoute('portail_web_homepage', ['_fragment' => 'partContact']);
         } else {

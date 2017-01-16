@@ -111,6 +111,7 @@ class Observations
      */
     public function __construct()
     {
+        //Une observation est par défaut en cours de validation
         $this->setEtat("En cours");
     }
 
@@ -334,6 +335,7 @@ class Observations
             ;
         }
     }
+
 
     /**
      * Set oiseaux

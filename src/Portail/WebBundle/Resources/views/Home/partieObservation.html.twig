@@ -5,9 +5,14 @@
 {# Partie Saisie Oiseau #}
 <div id="saisieOiseau" class="part">
 	<div class="container">
-		<h2 class="text-center" style="margin-top: 35px">SAISIR UNE OBSERVATION D'OISEAU</h2>
+		<h2 class="text-center">SAISIR UNE OBSERVATION D'OISEAU</h2>
 		<hr>	
 
+		{% for message in app.session.flashbag.get('good') %}
+			<div class="alert alert-success">
+		    	<p>{{ message }}</p>
+		    </div>
+		{% endfor %}
 		{# Formulaire de saisie d'observation #}
 			{# Le formulaire sera soumis au contrôleur SaisieController #}
 			<form method="post">
@@ -25,16 +30,16 @@
 			    	</div>
 
 					<div class="col-sm-12 col-md-2">
-						{{ form_label(form.longitude, 'Longitude') }}
-				        {{ form_widget(form.longitude) }}
-				        {{ form_errors(form.longitude) }}
-					</div>
-
-					<div class="col-sm-12 col-md-2">
 						{{ form_label(form.latitude, 'Latitude') }}
 				        {{ form_widget(form.latitude) }}
 				        {{ form_errors(form.latitude) }}
 		    		</div>
+
+					<div class="col-sm-12 col-md-2">
+						{{ form_label(form.longitude, 'Longitude') }}
+				        {{ form_widget(form.longitude) }}
+				        {{ form_errors(form.longitude) }}
+					</div>
 
 					<div class="col-sm-12 col-md-2">
 						{{ form_label(form.nbIndividus, "Nombre d'individus") }}
@@ -50,7 +55,15 @@
 				</div>
 
 				{# Intégration googlemap ici #}
-
+				<div class="row">
+					<div id="map" class="col-xs-12 map"></div>					
+				</div>
+			<div id="divLat">
+				
+			</div>			
+			<div id="divLong">
+				
+			</div>
 				<div class="row">
 					<div class="col-xs-12">
 						{{ form_label(form.commentaire, "Commentaire") }}
@@ -70,8 +83,8 @@
 </div>
 
 <script>
-
 	$(function() {
+		// Ajoute un calendrier
 		$('#portail_webbundle_observations_dateObservation').datepicker({
 			//format de la date
 			dateFormat: 'dd-mm-yy',
@@ -82,13 +95,57 @@
   			maxDate: '0',
 		});
 
-		//Utilise l'heure actuelle comme heure par défaut
+		//Utilise l'heure actuelle comme heure par défaut dans le select
 		var dt = new Date();
 		var hour = dt.getHours();
 		var minute = dt.getMinutes();
 		$('#portail_webbundle_observations_heureObservation_hour').val(hour);
 		$('#portail_webbundle_observations_heureObservation_minute').val(minute);
-	});
 
+		// Googlemap
+		// Valeur par défaut de la carte
+		var myOptions = {
+		    zoom: 14, //Plus le zoom est élevé plus la carte est rapproché
+		    //Position par défaut de la carte : j'ai choisi une forêt au hasard
+		    center: new google.maps.LatLng(48.755903266133146, 2.589597702026367),
+		    disableDefaultUI: true,
+		    scaleControl: true, //Affiche les informations sur l'échelle de distance 
+		    zoomControl: true, //Autorise le zoom avec la molette
+		    zoomControlOptions: {
+		      style: google.maps.ZoomControlStyle.HYBRID
+		    },
+		    mapTypeId: 'hybrid',
+		    draggableCursor:'crosshair', //Remplace la main par une croix pour mieux cibler
+		    draggingCursor: 'move'
+		}
+
+		//Crée la carte google map et appelle la fonction myOptions pour définir les valeurs par défaut au démarrage
+		var map = new google.maps.Map(document.getElementById("map"),myOptions);
+		//marqueur
+		var marker;
+		//Icône de l'oiseau qui fera office de marqueur
+		var locator = "{{ asset('images/locator.png') }}"; 
+		//Au clic sur un endroit de la carte
+		google.maps.event.addListener(map, 'click', function(event) {
+			//Récupère la position du clic et crée un marqueur
+			placeMarker(event.latLng.lat(), event.latLng.lng());
+			//Affecte aux champs Latitude et longitude les coordonnées sur lesquelles la personne a cliqué
+			document.getElementById("portail_webbundle_observations_latitude").value = event.latLng.lat();
+			document.getElementById("portail_webbundle_observations_longitude").value = event.latLng.lng();
+		});
+		//Fonction qui crée un marqueur
+		function placeMarker(latitude, longitude) {
+			//On autorise qu'un marqueur à la fois
+			if (marker) {
+				marker.setPosition({lat: latitude, lng: longitude});
+			} else {
+				marker = new google.maps.Marker({
+					position: {lat: latitude, lng: longitude},
+					map: map,
+					icon: locator,
+				});
+			}
+		}
+	});
 </script>
 {% endblock %}

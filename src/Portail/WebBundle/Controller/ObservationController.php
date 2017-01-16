@@ -17,11 +17,20 @@ class ObservationController extends Controller
         $observation = new Observations();
         $form = $this->createForm(ObservationsType::class, $observation);
 
-        // On rentre dans le if si l'utilisateur a soumis le formulaire de contact et que les informations sont valide
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $observationRemplie = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($observationRemplie);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('good', 'Votre observation a bien été validée.');
         	return $this->redirectToRoute('portail_web_observation', ['_fragment' => 'saisieOiseau']);
         } 
+        
         return $this->render('PortailWebBundle:Home:partieObservation.html.twig', array('form' => $form->createView()));
     }
 }
