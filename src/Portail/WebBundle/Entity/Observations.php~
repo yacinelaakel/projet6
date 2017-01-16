@@ -24,6 +24,12 @@ class Observations
     private $id;
 
     /**
+     * @ORM\OneToOne(targetEntity="Portail\WebBundle\Entity\Oiseaux")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $oiseaux;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_observation", type="datetime")
@@ -40,18 +46,24 @@ class Observations
     private $heureObservation;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="longitude", type="string", length=255)
-     * @Assert\Type("string")
+     * @ORM\Column(name="longitude", type="float")
+     * @Assert\Type(
+     *     type="float",
+     *     message="La valeur n'est pas de type {{ type }}."
+     * )
      */
     private $longitude;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="latitude", type="string", length=255)
-     * @Assert\Type("string")
+     * @ORM\Column(name="latitude", type="float")
+     * @Assert\Type(
+     *     type="float",
+     *     message="La valeur n'est pas de type {{ type }}."
+     * )
      */
     private $latitude;
 
@@ -84,6 +96,22 @@ class Observations
      * @Assert\Type("string")
      */
     private $commentaire;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etat", type="string", length=255)
+     * @Assert\Type("string")
+     */
+    private $etat;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->setEtat("En cours");
+    }
 
 
     /**
@@ -263,5 +291,70 @@ class Observations
     {
         return $this->commentaire;
     }
-}
 
+    /**
+     * Set etat
+     *
+     * @param string $etat
+     *
+     * @return Observations
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+    
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return string
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * @Assert\Callback
+     */
+    public function isDateValid(ExecutionContextInterface $context)
+    {
+        $dateObservation = $this->getDateObservation();
+        $currentDate = date_create();
+        $diff = date_diff($currentDate, $dateObservation)->format('%d');
+
+        if ($diff < 0) {
+            $context
+                ->buildViolation('Invalide : jour interdit.')
+                ->atPath('dateObservation')
+                ->addViolation()
+            ;
+        }
+    }
+
+    /**
+     * Set oiseau
+     *
+     * @param \Portail\WebBundle\Entity\Oiseaux $oiseau
+     *
+     * @return Observations
+     */
+    public function setOiseau(\Portail\WebBundle\Entity\Oiseaux $oiseau)
+    {
+        $this->oiseau = $oiseau;
+    
+        return $this;
+    }
+
+    /**
+     * Get oiseau
+     *
+     * @return \Portail\WebBundle\Entity\Oiseaux
+     */
+    public function getOiseau()
+    {
+        return $this->oiseau;
+    }
+}

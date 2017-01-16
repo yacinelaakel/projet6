@@ -24,6 +24,13 @@ class Observations
     private $id;
 
     /**
+     * @ORM\OneToOne(targetEntity="Portail\WebBundle\Entity\Oiseaux")
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
+     */
+    private $oiseaux;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_observation", type="datetime")
@@ -90,6 +97,22 @@ class Observations
      * @Assert\Type("string")
      */
     private $commentaire;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etat", type="string", length=255)
+     * @Assert\Type("string")
+     */
+    private $etat;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->setEtat("En cours");
+    }
 
 
     /**
@@ -271,6 +294,30 @@ class Observations
     }
 
     /**
+     * Set etat
+     *
+     * @param string $etat
+     *
+     * @return Observations
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+    
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return string
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
      * @Assert\Callback
      */
     public function isDateValid(ExecutionContextInterface $context)
@@ -286,5 +333,29 @@ class Observations
                 ->addViolation()
             ;
         }
+    }
+
+    /**
+     * Set oiseaux
+     *
+     * @param \Portail\WebBundle\Entity\Oiseaux $oiseaux
+     *
+     * @return Observations
+     */
+    public function setOiseaux(\Portail\WebBundle\Entity\Oiseaux $oiseaux)
+    {
+        $this->oiseaux = $oiseaux;
+    
+        return $this;
+    }
+
+    /**
+     * Get oiseaux
+     *
+     * @return \Portail\WebBundle\Entity\Oiseaux
+     */
+    public function getOiseaux()
+    {
+        return $this->oiseaux;
     }
 }
