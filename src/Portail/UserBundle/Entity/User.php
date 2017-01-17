@@ -21,7 +21,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User extends BaseUser
 {
     /**
-     * @var int
+     *
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -29,7 +29,7 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @var string
+     *
      * @ORM\Column(type="string", length=100)
      *
      * @Assert\NotBlank(message="Merci de saisir votre nom", groups={"Registration", "Profile"})
@@ -41,10 +41,10 @@ class User extends BaseUser
      *     groups={"Registration", "Profile"}
      * )
      */
-    protected $name;
+     protected $nom;
 
     /**
-     * @var string
+     *
      * @ORM\Column(type="string", length=100)
      *
      * @Assert\NotBlank(message="Merci de saisir votre prénom", groups={"Registration", "Profile"})
@@ -56,158 +56,64 @@ class User extends BaseUser
      *     groups={"Registration", "Profile"}
      * )
      */
-    protected $surname;
+    protected $prenom;
 
-    /**
-     * @var \DateTime
-     * @ORM\Column(name="naissance", type="date")
-     *
-     * @Assert\NotBlank(message="Merci de saisir votre nom", groups={"Registration", "Profile"})
-     * @Assert\Datetime()
-     * @Assert\LessThan(
-     *     "today",
-     *     message = "merci de vérifier la date de naissance"
-     * )
-     */
-    protected $naissance;
-
-    /**
-     * @var string
-     * @ORM\Column(type="string", length=255)
-     *
-     * @Assert\NotBlank(message="Merci de saisir votre ville", groups={"Registration", "Profile"})
-     * @Assert\Length(
-     *     min=2,
-     *     max=255,
-     *     minMessage="Votre saisie est trop courte",
-     *     maxMessage="votre saisie est trop longue",
-     *     groups={"Registration", "Profile"}
-     * )
-     * @Assert\NotBlank()
-     * @ORM\Column(name="ville", type="string", length=255)
-     *
-     */
-    protected $ville;
 
 
 
 
     public function __construct()
     {
-        $this->naissance = new \Date();
-
+        parent::__construct();
     }
 
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+
 
     /**
-     * Set name
+     * Set nom
      *
-     * @param string $name
+     * @param string $nom
      *
      * @return User
      */
-    public function setNom($name)
+    public function setNom($nom)
     {
-        $this->name = $name;
+        $this->nom = $nom;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get nom
      *
      * @return string
      */
-    public function getName()
+    public function getNom()
     {
-        return $this->name;
+        return $this->nom;
     }
 
     /**
-     * Set surname
+     * Set prenom
      *
-     * @param string $surname
+     * @param string $prenom
      *
      * @return User
      */
-    public function setSurname($surname)
+    public function setPrenom($prenom)
     {
-        $this->surname = $surname;
+        $this->prenom = $prenom;
 
         return $this;
     }
 
     /**
-     * Get surname
+     * Get prenom
      *
      * @return string
      */
-    public function getSurname()
+    public function getPrenom()
     {
-        return $this->surname;
+        return $this->prenom;
     }
-
-
-    /**
-     * Set naissance
-     *
-     * @param \DateTime $naissance
-     *
-     * @return User
-     */
-    public function setnaissance($naissance)
-    {
-        $this->naissance = $naissance;
-
-        return $this;
-    }
-
-    /**
-     * Get naissance
-     *
-     * @return \DateTime
-     */
-    public function getnaissance()
-    {
-        return $this->naissance;
-    }
-
-    /**
-     * Set ville
-     *
-     * @param string $ville
-     *
-     * @return User
-     */
-    public function setVille($ville)
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    /**
-     * Get ville
-     *
-     * @return string
-     */
-    public function getVille()
-    {
-        return $this->ville;
-    }
-
-
-
-
-
-
 }

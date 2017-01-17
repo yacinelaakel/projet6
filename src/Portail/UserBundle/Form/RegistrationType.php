@@ -9,38 +9,30 @@ namespace Portail\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RegistrationType extends AbstractType
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
-            ->add('name')
-            ->add('surname')
-            ->add('naissance')
-            ->add('ville')
-        ;
+            ->add('Prenom', TextType::class)
+            ->add('Nom', TextType::class);
+
 
     }
-    /**
-     * {@inheritdoc}
-     */
+
     public function getParent()
     {
         return 'FOS\UserBundle\Form\Type\RegistrationFormType';
-
-        // Or for Symfony < 2.8
-        // return 'fos_user_registration';
     }
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
+
+    public function getName()
     {
-        return 'portail_user_inscription';
+        return 'Portail_user_registration';
     }
 
 
