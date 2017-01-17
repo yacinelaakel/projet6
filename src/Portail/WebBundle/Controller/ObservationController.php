@@ -20,18 +20,14 @@ class ObservationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // $file stores the uploaded PDF file
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            //ici $observation est remplie avec les données que l'utilisateur a rentré
+            //Récupère la photo que l'utilisateur a upload
             $photo = $observation->getPhoto();
 
-            // Generate a unique name for the file before saving it
-            $fileName = md5(uniqid()).'.'.$photo->guessExtension();
+            //Fait appel au service portail.file_uploader qui lui même utilise la classe WebBundle/FileUploader/FileUploader.php
+            $fileName = $this->get('portail.file_uploader')->upload($file);
 
-            // Move the file to the directory where brochures are stored
-            $photo->move($this->getParameter('dossier_photos'), $fileName);
-
-            // Update the 'brochure' property to store the PDF file name
-            // instead of its contents
+            //C'est le nom de la photo qui sera stocké, et non pas la photo en elle même
             $observation->setPhoto($fileName);
 
             $em = $this->getDoctrine()->getManager();
