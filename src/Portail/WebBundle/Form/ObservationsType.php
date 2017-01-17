@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -48,7 +49,7 @@ class ObservationsType extends AbstractType
                 'placeholder' => 1,
             ))
         )
-        ->add('photo', TextType::class, ['required' => false])
+        ->add('photo', FileType::class, ['required' => false])
         ->add('commentaire', TextareaType::class, array(
             'required' => false,
             'attr' => array(

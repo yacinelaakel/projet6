@@ -104,47 +104,5 @@ class Oiseaux
     {
         return $this->nomLa;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->observations = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add observation
-     *
-     * @param \Portail\WebBundle\Entity\Observations $observation
-     *
-     * @return Oiseaux
-     */
-    public function addObservation(\Portail\WebBundle\Entity\Observations $observation)
-    {
-        $this->observations[] = $observation;
-        //On associe l'observation à l'oiseau
-        $observation->setOiseau($this);
-    
-        return $this;
-    }
-
-    /**
-     * Remove observation
-     *
-     * @param \Portail\WebBundle\Entity\Observations $observation
-     */
-    public function removeObservation(\Portail\WebBundle\Entity\Observations $observation)
-    {
-        $this->observations->removeElement($observation);
-    }
-
-    /**
-     * Get observations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getObservations()
-    {
-        return $this->observations;
-    }
 }
+

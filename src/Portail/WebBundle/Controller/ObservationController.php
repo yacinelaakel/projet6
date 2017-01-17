@@ -20,11 +20,22 @@ class ObservationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // $file stores the uploaded PDF file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $photo = $observation->getPhoto();
 
-            $observationRemplie = $form->getData();
+            // Generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'.$photo->guessExtension();
+
+            // Move the file to the directory where brochures are stored
+            $photo->move($this->getParameter('dossier_photos'), $fileName);
+
+            // Update the 'brochure' property to store the PDF file name
+            // instead of its contents
+            $observation->setPhoto($fileName);
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($observationRemplie);
+            $em->persist($observation);
             $em->flush();
 
             $request->getSession()->getFlashBag()->add('good', 'Votre observation a bien été validée.');

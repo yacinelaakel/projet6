@@ -290,7 +290,7 @@ a.btn-social,
     padding-bottom: 25px;
 }
 
-input:not([type="submit"]) {
+input:not([type="submit"]):not([type="file"]) {
     padding: 20px !important;
 }
 
@@ -305,6 +305,66 @@ input:focus, textarea:focus, select:focus {
 
 .col-sm-12, .col-xs-12 {
     margin-bottom: 30px !important;
+}
+
+/*Partie observation*/
+#rowPhoto {
+    padding-right: 50px;
+    margin-bottom: 100px;
+}
+
+.input-file-container {
+    position: relative;
+    height: 150px;
+}
+
+.input-file-trigger {
+    display: block;
+    height: 150px;
+    width: 100%;
+    border: 3px solid #81BD5B;
+    text-align: center;
+    transition: all .4s;
+    cursor: pointer;
+    background-color: white;
+}
+
+.input-file-trigger i {
+    position:relative;
+    top: calc(50% - 35px); /* 50% - 3/4 of icon height */
+}
+
+.input-file-container input[type="file"] {
+    position: absolute;
+    z-index: -2;
+    height: 150px;
+    width: 90%;
+    opacity: 0;
+}
+
+
+.input-file-trigger:hover,
+.input-file-trigger:focus {
+  background: #81BD5B;
+  color: white;
+}
+
+/* styles du retour visuel */
+.file-return {
+    margin: 0;
+}
+.file-return:not(:empty) {
+    margin: 1em 0;
+}
+.file-return {
+    font-style: italic;
+    font-size: .9em;
+}
+
+.file-return:not(:empty):before {
+    content: "Photo choisie: ";
+    font-style: normal;
+    font-weight: normal;
 }
 
 /*Googlemap */

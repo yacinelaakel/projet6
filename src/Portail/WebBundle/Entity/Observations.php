@@ -24,11 +24,11 @@ class Observations
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Portail\WebBundle\Entity\Oiseaux")
+     * @ORM\ManyToOne(targetEntity="Portail\WebBundle\Entity\Oiseaux", inversedBy="observations")
      * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
-    private $oiseaux;
+    private $oiseau;
 
     /**
      * @var \DateTime
@@ -86,7 +86,7 @@ class Observations
      * @var string
      *
      * @ORM\Column(name="photo", type="string", length=255, nullable=true)
-     * @Assert\Type("string")
+     * @Assert\File(mimeTypes={ "image/png" })
      */
     private $photo;
 
@@ -359,5 +359,29 @@ class Observations
     public function getOiseaux()
     {
         return $this->oiseaux;
+    }
+
+    /**
+     * Set oiseau
+     *
+     * @param \Portail\WebBundle\Entity\Oiseaux $oiseau
+     *
+     * @return Observations
+     */
+    public function setOiseau(\Portail\WebBundle\Entity\Oiseaux $oiseau)
+    {
+        $this->oiseau = $oiseau;
+    
+        return $this;
+    }
+
+    /**
+     * Get oiseau
+     *
+     * @return \Portail\WebBundle\Entity\Oiseaux
+     */
+    public function getOiseau()
+    {
+        return $this->oiseau;
     }
 }

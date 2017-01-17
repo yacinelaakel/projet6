@@ -14,71 +14,75 @@
 		    </div>
 		{% endfor %}
 		{# Formulaire de saisie d'observation #}
-			{# Le formulaire sera soumis au contrôleur SaisieController #}
-			<form method="post">
-		    	{{ form_errors(form) }}
+		{# Le formulaire sera soumis au contrôleur ObservationController #}
+		<form method="post" enctype="multipart/form-data">
+	    	{{ form_errors(form) }}
 
-				<div class="row">
-					<div class="col-sm-12 col-md-2">
-						{{ form_row(form.dateObservation) }}
-					</div>
-
-					<div class="col-sm-12 col-md-2">
-						{{ form_label(form.heureObservation, 'Heure') }}
-				        {{ form_widget(form.heureObservation) }}
-				        {{ form_errors(form.heureObservation) }}
-			    	</div>
-
-					<div class="col-sm-12 col-md-2">
-						{{ form_label(form.latitude, 'Latitude') }}
-				        {{ form_widget(form.latitude) }}
-				        {{ form_errors(form.latitude) }}
-		    		</div>
-
-					<div class="col-sm-12 col-md-2">
-						{{ form_label(form.longitude, 'Longitude') }}
-				        {{ form_widget(form.longitude) }}
-				        {{ form_errors(form.longitude) }}
-					</div>
-
-					<div class="col-sm-12 col-md-2">
-						{{ form_label(form.nbIndividus, "Nombre d'individus") }}
-				        {{ form_widget(form.nbIndividus) }}
-				        {{ form_errors(form.nbIndividus) }}
-		    		</div>
-
-					<div class="col-sm-12 col-md-2">
-						{{ form_label(form.photo, "Photo (facultatif)") }}
-				        {{ form_widget(form.photo) }}
-				        {{ form_errors(form.photo) }}
-		    		</div>	
+			<div class="row">
+				<div class="col-sm-12 col-md-2">
+					{{ form_row(form.dateObservation) }}
 				</div>
 
-				{# Intégration googlemap ici #}
-				<div class="row">
-					<div id="map" class="col-xs-12 map"></div>					
+				<div class="col-sm-12 col-md-2">
+					{{ form_label(form.heureObservation, 'Heure') }}
+			        {{ form_widget(form.heureObservation) }}
+			        {{ form_errors(form.heureObservation) }}
+		    	</div>
+
+				<div class="col-sm-12 col-md-3">
+					{{ form_label(form.latitude, 'Latitude') }}
+			        {{ form_widget(form.latitude) }}
+			        {{ form_errors(form.latitude) }}
+	    		</div>
+
+				<div class="col-sm-12 col-md-3">
+					{{ form_label(form.longitude, 'Longitude') }}
+			        {{ form_widget(form.longitude) }}
+			        {{ form_errors(form.longitude) }}
 				</div>
-			<div id="divLat">
-				
-			</div>			
-			<div id="divLong">
-				
+
+				<div class="col-sm-12 col-md-2">
+					{{ form_label(form.nbIndividus, "Nombre d'individus") }}
+			        {{ form_widget(form.nbIndividus) }}
+			        {{ form_errors(form.nbIndividus) }}
+	    		</div>
 			</div>
-				<div class="row">
-					<div class="col-xs-12">
-						{{ form_label(form.commentaire, "Commentaire") }}
-				        {{ form_widget(form.commentaire) }}
-				        {{ form_errors(form.commentaire) }}
-			    	</div>		
-				</div>
 
-		        {{ form_rest(form) }}
-				<div class="row text-center">
-					<div class="col-xs-12">
-		        		<input type="submit" value="Envoyer la saisie" class="btn btn-success btn-lg" />
-			    	</div>
-				</div>
-	    	</form>
+			{# Intégration googlemap ici #}
+			<div class="row">
+				<div id="map" class="col-xs-12 map"></div>					
+			</div>
+			
+			{# Barre de recherche d'oiseau ici #}
+
+			{# Photo #}
+			<div class="row" id="rowPhoto">
+				<div class="col-md-offset-5 col-md-3 input-file-container">
+					{{ form_label(form.photo, "Photo (facultatif, format png)") }}
+					{{ form_widget(form.photo) }}
+			        {{ form_errors(form.photo) }}
+		          	<label for="my-file" class="input-file-trigger" tabindex="0">
+		          		<i class="fa fa-picture-o fa-5x" aria-hidden="true"></i>
+		          	</label>
+		          	<p class="file-return"></p>
+	    		</div>	
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12">
+					{{ form_label(form.commentaire, "Commentaire") }}
+			        {{ form_widget(form.commentaire) }}
+			        {{ form_errors(form.commentaire) }}
+		    	</div>		
+			</div>
+
+	        {{ form_rest(form) }}
+			<div class="row text-center">
+				<div class="col-xs-12">
+	        		<input type="submit" value="Envoyer la saisie" class="btn btn-success btn-lg" />
+		    	</div>
+			</div>
+    	</form>
 	</div>
 </div>
 
@@ -95,12 +99,47 @@
   			maxDate: '0',
 		});
 
-		//Utilise l'heure actuelle comme heure par défaut dans le select
+
 		var dt = new Date();
+		var day = dt.getDate();
+		var month = ("0" + (dt.getMonth() + 1)).slice(-2);
+		var year = dt.getFullYear();
+
+		//Utilise la date actuelle comme date par défaut dans le select
+		$('#portail_webbundle_observations_dateObservation').val(day + "-" + month + "-" + year);
+
+		//Utilise l'heure actuelle comme heure par défaut dans le select
 		var hour = dt.getHours();
 		var minute = dt.getMinutes();
 		$('#portail_webbundle_observations_heureObservation_hour').val(hour);
 		$('#portail_webbundle_observations_heureObservation_minute').val(minute);
+
+		//Photo
+		var fileInput  = document.querySelector( ".input-file-container input[type='file']" ),  
+    		button     = document.querySelector( ".input-file-trigger" ),
+    		the_return = document.querySelector(".file-return");
+ 
+		// action lorsque la "barre d'espace" ou "Entrée" est pressée
+		button.addEventListener( "keydown", function( event ) {
+		    if ( event.keyCode == 13 || event.keyCode == 32 ) {
+		        fileInput.focus();
+		    }
+		});
+		 
+		// action lorsque le label est cliqué
+		button.addEventListener( "click", function( event ) {
+		   fileInput.focus();
+		   return false;
+		});
+		 
+		// affiche un retour visuel dès que input:file change
+		fileInput.addEventListener( "change", function( event ) {  
+		    the_return.innerHTML = this.value;  
+		});
+
+		$(".input-file-trigger").click(function() {
+    		$("#portail_webbundle_observations_photo").click();
+		});
 
 		// Googlemap
 		// Valeur par défaut de la carte

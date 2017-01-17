@@ -24,10 +24,11 @@ class Observations
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Portail\WebBundle\Entity\Oiseaux")
+     * @ORM\ManyToOne(targetEntity="Portail\WebBundle\Entity\Oiseaux", inversedBy="observations")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
      */
-    private $oiseaux;
+    private $oiseau;
 
     /**
      * @var \DateTime
@@ -110,6 +111,7 @@ class Observations
      */
     public function __construct()
     {
+        //Une observation est par défaut en cours de validation
         $this->setEtat("En cours");
     }
 
@@ -334,27 +336,28 @@ class Observations
         }
     }
 
+
     /**
-     * Set oiseau
+     * Set oiseaux
      *
-     * @param \Portail\WebBundle\Entity\Oiseaux $oiseau
+     * @param \Portail\WebBundle\Entity\Oiseaux $oiseaux
      *
      * @return Observations
      */
-    public function setOiseau(\Portail\WebBundle\Entity\Oiseaux $oiseau)
+    public function setOiseaux(\Portail\WebBundle\Entity\Oiseaux $oiseaux)
     {
-        $this->oiseau = $oiseau;
+        $this->oiseaux = $oiseaux;
     
         return $this;
     }
 
     /**
-     * Get oiseau
+     * Get oiseaux
      *
      * @return \Portail\WebBundle\Entity\Oiseaux
      */
-    public function getOiseau()
+    public function getOiseaux()
     {
-        return $this->oiseau;
+        return $this->oiseaux;
     }
 }
