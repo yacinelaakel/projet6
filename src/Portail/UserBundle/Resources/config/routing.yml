@@ -7,5 +7,5 @@ fos_user:
 
 
 portail_user_inscription:
-    path:     /inscription
-    defaults: { _controller: PortailUserBundle:User:inscription }
+    path: /register
+    defaults: { _controller: "@FOSUser/Registration/register.html.twig" }
