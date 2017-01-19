@@ -30,6 +30,10 @@ class ObservationController extends Controller
             //C'est le nom de la photo qui sera stocké, et non pas la photo en elle même
             $observation->setPhoto($fileName);
 
+            //Il faudra ajouter cette observation à la collection d'observations de l'oiseau concerné
+            //Il faudra ajouter cette observation à la collection d'observations de l'utilisateur concerné
+            //Il faudra tester si l'utilisateur est un validateur. Si c'est le cas mettre l'observation à "Validé"
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($observation);
             $em->flush();
