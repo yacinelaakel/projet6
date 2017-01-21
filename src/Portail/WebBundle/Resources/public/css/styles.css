@@ -310,7 +310,7 @@ input:focus, textarea:focus, select:focus {
 /*Partie observation*/
 #rowPhoto {
     padding-right: 50px;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 
 .input-file-container {

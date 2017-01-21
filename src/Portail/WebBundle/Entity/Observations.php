@@ -99,10 +99,14 @@ class Observations
     private $commentaire;
 
     /**
-     * @var string
+     * @var int
+     * 0 = rejeté, 1 = en cours de validation, 2 = validé
      *
-     * @ORM\Column(name="etat", type="string", length=255)
-     * @Assert\Type("string")
+     * @ORM\Column(name="etat", type="integer")
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 2
+     * )
      */
     private $etat;
 
@@ -112,7 +116,7 @@ class Observations
     public function __construct()
     {
         //Une observation est par défaut en cours de validation
-        $this->setEtat("En cours");
+        $this->setEtat(1);
     }
 
 
@@ -297,7 +301,7 @@ class Observations
     /**
      * Set etat
      *
-     * @param string $etat
+     * @param integer $etat
      *
      * @return Observations
      */
@@ -311,7 +315,7 @@ class Observations
     /**
      * Get etat
      *
-     * @return string
+     * @return integer
      */
     public function getEtat()
     {
