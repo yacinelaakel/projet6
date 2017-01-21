@@ -6,16 +6,36 @@
 <div id="rechercheOiseau" style="background-color: rgba(72,81,86, 0.1); padding-bottom: 15px">
 	<div class="container">
 		<h2 class="text-center">RECHERCHER UNE ESPÈCE D'OISEAU</h2>
-		<hr>	
+		<hr>
 
 		{# Formulaire de recherche #}
-		<div class="col-xs-12">
-			Ici sera le formulaire de recherche
-		</div>
+
+		<div class="row">
+		<form method="post">
+			<div class="row">
+					<div class="col-sm-12 col-md-2">
+						{{ form_row(form.nomFr) }}
+					</div>
+			</div>
+			<div class="row">
+	  	  <div class="col-sm-12 col-md-2" id="match"></div>
+			</div>
 		{# Bouton #}
 		<div class="text-center">
 			<button class="btn btn-success btn-lg">Lancer la recherche</button>
 		</div>
-	</div>
+		</form>
+
 </div>
+{% block javascripts %}
+{% javascripts
+		'@PortailWebBundle/Resources/public/js/autocomplete.js'
+		 %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+<script>
+var ROOT_URL = "{{ url('portail_web_ajax_autocomplete_recherche')}}";
+
+</script>
+{% endjavascripts %}
+{% endblock %}
 {% endblock %}
