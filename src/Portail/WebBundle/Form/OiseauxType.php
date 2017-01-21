@@ -5,6 +5,7 @@ namespace Portail\WebBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class OiseauxType extends AbstractType
 {
@@ -13,9 +14,16 @@ class OiseauxType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nomFr')->add('nomLa');
+        $builder
+        ->add('nomFr',TextType::class, array(
+        'label' => "Nom Français (Verniculaire)",
+            'attr' => array(
+                'placeholder' => 'Tapez 3 lettres',
+            ))
+            )
+        ->add('nomLa');
     }
-    
+
     /**
      * {@inheritdoc}
      */
