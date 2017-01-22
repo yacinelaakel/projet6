@@ -405,6 +405,11 @@ input:focus, textarea:focus, select:focus {
     margin-bottom: 0 !important;
 }
 
+#nomLatin {
+    font-style: italic;
+    color: grey;
+}
+
 /*Googlemap */
 .mapObservation {
     height: 450px;

@@ -7,9 +7,7 @@
 	<div class="container">
 		<h2 class="text-center">SAISIR UNE OBSERVATION D'OISEAU</h2>
 		<hr>	
-		{% if oiseauChoisi is defined %}
-			{{dump(oiseauChoisi[0].nomFr)}}
-		{% endif %}
+		
 		{# Le formulaire sera soumis au contrôleur saisieOiseauAction #}
 		<form method="post">
 	    	{{ form_errors(form) }}
@@ -37,24 +35,6 @@
 
 		<script>
 			var ROOT_URL = "{{ url('portail_web_ajax_autocomplete_recherche')}}";
-
-			var myOptions = {
-			    zoom: 14, //Plus le zoom est élevé plus la carte est rapproché
-			    //Position par défaut de la carte : celle de l'utilisateur
-			    center: new google.maps.LatLng(48.89118367456307, 2.353992462158203),
-			    disableDefaultUI: true,
-			    scaleControl: true, //Affiche les informations sur l'échelle de distance 
-			    zoomControl: true, //Autorise le zoom avec la molette
-			    zoomControlOptions: {
-			      style: google.maps.ZoomControlStyle.HYBRID
-			    },
-			    mapTypeId: 'hybrid',
-			    draggableCursor:'crosshair', //Remplace la main par une croix pour mieux cibler
-			    draggingCursor: 'move'
-			}
-
-			//Crée la carte google map et appelle la fonction myOptions pour définir les valeurs par défaut au démarrage
-			var map = new google.maps.Map(document.getElementById("map"),myOptions);
 		</script>
 	{% endjavascripts %}
 {% endblock %}

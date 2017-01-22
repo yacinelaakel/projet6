@@ -11,15 +11,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class OiseauxRepository extends \Doctrine\ORM\EntityRepository
 {
-	public function oiseauChoisi($nomOiseau) {
+	public function oiseauChoisi($oiseauNomFr, $oiseauNomLat) {
 		$qb = $this->createQueryBuilder('c')
-		   ->where('c.nomFr = :nomOiseau')
-		   ->setParameter('nomOiseau', $nomOiseau);
+		   ->where('c.nomFr = :oiseauNomFr')
+		   ->andWhere('c.nomLa = :oiseauNomLat')
+		   ->setParameters(array('oiseauNomFr' => $oiseauNomFr, 'oiseauNomLat' => $oiseauNomLat));
 
 		$query = $qb->getQuery();
 
-		$results = $query->getResult();
+		$result = $query->getResult();
 
-		return $results;
+		return $result;
 	}
 }

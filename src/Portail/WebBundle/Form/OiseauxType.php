@@ -17,7 +17,7 @@ class OiseauxType extends AbstractType
     {
         $builder
         ->add('nomFr',TextType::class, array(
-        'label' => "Nom de l'oiseau",
+        'label' => "Nom de l'oiseau (français)",
             'attr' => array(
                 'placeholder' => 'Tapez 3 lettres',
             )));

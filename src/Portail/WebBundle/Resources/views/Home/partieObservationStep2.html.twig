@@ -8,7 +8,9 @@
 		<h2 class="text-center">SAISIR UNE OBSERVATION D'OISEAU</h2>
 		<hr>	
 		
-		{{oiseauChoisi}}
+				{% if oiseauChoisi is defined %}
+			{{dump(oiseauChoisi)}}
+		{% endif %}
 		{% for message in app.session.flashbag.get('good') %}
 			<div class="alert alert-success">
 		    	<p>{{ message }}</p>
@@ -59,7 +61,7 @@
 			{# Photo #}
 			<div class="row" id="rowPhoto">
 				<div class="col-md-offset-5 col-md-3 input-file-container">
-					{{ form_label(form.photo, "Photo (facultatif, format png)") }}
+					{{ form_label(form.photo, "Photo (facultatif) Format png/jpg/jpeg. Taille max: 1024ko") }}
 					{{ form_widget(form.photo) }}
 			        {{ form_errors(form.photo) }}
 		          	<label for="my-file" class="input-file-trigger" tabindex="0">

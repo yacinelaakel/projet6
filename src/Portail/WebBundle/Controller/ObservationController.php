@@ -29,10 +29,16 @@ class ObservationController extends Controller
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            //On va chercher l'oiseau que l'utilisateur a tapé
-            $oiseauChoisi = $repository->oiseauChoisi($oiseau->getNomFr());
 
-        return $this->render('PortailWebBundle:Home:partieObservationStep1.html.twig', array('form' => $form->createView(), 'listOiseaux' => $listOiseaux, 'oiseauChoisi' => $oiseauChoisi));
+            $oiseau = explode("Nom latin : ", $oiseau->getNomFr(), 2);
+
+            // On va chercher l'oiseau que l'utilisateur a tapé dans la base de données
+            $oiseauChoisi = $repository->oiseauChoisi($oiseau[0], $oiseau[1]);  
+            foreach ($oiseauChoisi as $item) {
+                $oiseauChoisi = $item->getNomFr();
+            }
+
+            return $this->redirectToRoute('portail_web_observationStep2', array('nomFr' => $oiseauChoisi));      
         }
 
         return $this->render('PortailWebBundle:Home:partieObservationStep1.html.twig', array('form' => $form->createView(), 'listOiseaux' => $listOiseaux));

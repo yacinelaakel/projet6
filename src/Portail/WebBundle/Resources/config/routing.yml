@@ -11,7 +11,7 @@ portail_web_observationStep1:
     defaults: { _controller: PortailWebBundle:Observation:saisieOiseau }
 
 portail_web_observationStep2:
-    path:     /observationStep2/{oiseauChoisi}
+    path:     /observationStep2-{nomFr}
     defaults: { _controller: PortailWebBundle:Observation:observation }
 
 fos_user:
