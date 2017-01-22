@@ -269,7 +269,7 @@ a.btn-social,
     font-size: 4em;
 }
 
-@media all and (max-width: 492px) { /*L'encart prendra 100% de la largeur de l'écran si c'est un smartphone*/
+@media all and (max-width: 492px) {
     .iconFonctionnement {
         font-size: 2em;
     }
@@ -313,7 +313,7 @@ input:focus, textarea:focus, select:focus {
     margin-bottom: 100px;
 }
 
-@media all and (max-width: 492px) { /*L'encart prendra 100% de la largeur de l'écran si c'est un smartphone*/
+@media all and (max-width: 492px) {
     #rowPhoto {
         margin-bottom: 160px;
     }
@@ -376,6 +376,11 @@ input:focus, textarea:focus, select:focus {
 
 
 /*Partie Recherche*/
+#rechercheOiseau {
+    background-color: rgba(72,81,86, 0.1); 
+    padding-bottom: 15px;
+}
+
 #rowRecherche {
     margin-bottom: 30px;
 }

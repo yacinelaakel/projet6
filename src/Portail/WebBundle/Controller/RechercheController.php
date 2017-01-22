@@ -28,11 +28,17 @@ class RechercheController extends Controller
 
     if($form->isSubmitted() && $form->isValid()) {
 
-      $formRempli = $oiseau->getNomFr();
+      $oiseau = explode("Nom latin : ", $oiseau->getNomFr(), 2);
 
-      //Récupérer les observations associés à cet oiseau
-      
-      return $this->render('PortailWebBundle:Home:partieRecherche.html.twig', array('form' => $form->createView(),'formRempli' => $formRempli));
+      // On va chercher l'oiseau que l'utilisateur a tapé dans la base de données
+      $oiseauChoisi = $repository->oiseauChoisi($oiseau[0], $oiseau[1]);  
+      foreach ($oiseauChoisi as $item) {
+          //Récupère les observations associées à cet oiseau
+          $observations = $item->getObservations();
+          $oiseauChoisi = $item->getNomFr();
+      }
+
+      return $this->render('PortailWebBundle:Home:partieRecherche.html.twig', array('form' => $form->createView(),'observations' => $observations, 'oiseauChoisi' => $oiseauChoisi));
     }
 
     return $this->render('PortailWebBundle:Home:partieRecherche.html.twig', array(

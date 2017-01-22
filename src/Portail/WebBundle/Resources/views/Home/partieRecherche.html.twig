@@ -3,11 +3,23 @@
 
 {% block body %}
 {# Partie Recherche Oiseau #}
-<div id="rechercheOiseau" style="background-color: rgba(72,81,86, 0.1); padding-bottom: 15px">
+<div id="rechercheOiseau">
 	<div class="container">
 		<h2 class="text-center">RECHERCHER UNE ESPÈCE D'OISEAU</h2>
 		<hr>
-
+	
+		{% if observations is defined %}
+			<div class="alert alert-info">
+				<p><span id="oiseauChoisi">{{oiseauChoisi}}</span> a été observé à ces endroits :</p>
+				{% for observation in observations %}				
+	        		<p class="loop">
+	        			Observation {{loop.index}} : 
+	        			[<span id="lat{{loop.index}}">{{observation.latitude}}</span>, 
+	        			<span id="lon{{loop.index}}">{{observation.longitude}}</span>]
+	        		</p>
+	    		{% endfor %}
+    		</div>
+		{% endif %}
 		{# Formulaire de recherche #}
 		<form method="post">
 	    	{{ form_errors(form) }}
@@ -41,8 +53,7 @@
 			var myOptions = {
 			    zoom: 14, //Plus le zoom est élevé plus la carte est rapproché
 			    //Position par défaut de la carte : celle de l'utilisateur
-			    center: new google.maps.LatLng(48.89118367456307, 2.353992462158203),
-			    disableDefaultUI: true,
+			    center: new google.maps.LatLng(48.890116568205, 2.3590564727783),
 			    scaleControl: true, //Affiche les informations sur l'échelle de distance 
 			    zoomControl: true, //Autorise le zoom avec la molette
 			    zoomControlOptions: {
@@ -55,6 +66,47 @@
 
 			//Crée la carte google map et appelle la fonction myOptions pour définir les valeurs par défaut au démarrage
 			var map = new google.maps.Map(document.getElementById("map"),myOptions);
+
+  			var markers = [];
+			for(var i = 1; i <= document.querySelectorAll('.loop').length; i++) {
+				var marker = markers[i];
+				marker = new google.maps.Marker({
+    				position: {lat: Number(document.getElementById('lat' + i).innerHTML), lng: Number(document.getElementById('lon' + i).innerHTML)},
+    				map: map,
+    				title: document.getElementById('oiseauChoisi').innerHTML,
+    				icon : "{{ asset('images/locator.png') }}"
+  				});
+  				marker.addListener('click', function() {
+    				infowindow.open(map, this);
+  				});
+			}
+
+		  	var contentString = '<div id="content">'+
+		      	'<div id="siteNotice">'+
+		    	'</div>'+
+			    '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+			    '<div id="bodyContent">'+
+			    '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+			    'sandstone rock formation in the southern part of the '+
+			    'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+			    'south west of the nearest large town, Alice Springs; 450&#160;km '+
+			    '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+			    'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+			    'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+			    'Aboriginal people of the area. It has many springs, waterholes, '+
+			    'rock caves and ancient paintings. Uluru is listed as a World '+
+			    'Heritage Site.</p>'+
+			    '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+			    'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+			    '(last visited June 22, 2009).</p>'+
+			    '</div>'+
+			    '</div>';
+
+  			var infowindow = new google.maps.InfoWindow({
+    			content: contentString
+  			});
+
+});
 		</script>
 	{% endjavascripts %}
 {% endblock %}

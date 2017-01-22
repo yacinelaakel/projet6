@@ -57,12 +57,14 @@ class ObservationController extends Controller
             //ici $observation est remplie avec les données que l'utilisateur a rentré
             //Récupère la photo que l'utilisateur a upload
             $photo = $observation->getPhoto();
+            
+            if($photo != null) {
+                //Fait appel au service portail.file_uploader qui lui même utilise la classe WebBundle/FileUploader/FileUploader.php
+                $fileName = $this->get('portail.file_uploader')->upload($photo);
 
-            //Fait appel au service portail.file_uploader qui lui même utilise la classe WebBundle/FileUploader/FileUploader.php
-            $fileName = $this->get('portail.file_uploader')->upload($photo);
-
-            //C'est le nom de la photo qui sera stocké, et non pas la photo en elle même
-            $observation->setPhoto($fileName);
+                //C'est le nom de la photo qui sera stocké, et non pas la photo en elle même
+                $observation->setPhoto($fileName);
+            }
 
             //Avec addObservation() l'oiseau va ajouter à sa collection l'observation et l'observation va s'associer à son oiseau
             $oiseauChoisi->addObservation($observation);
