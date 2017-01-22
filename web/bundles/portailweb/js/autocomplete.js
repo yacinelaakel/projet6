@@ -19,7 +19,7 @@ $(document).ready(function(){
 					});
 				},
 				error: function() { // if error
-					$('#match').text('Problème !');
+					$('#match').text('Aucun oiseau trouvé !');
 				}
 			});
 		} else {

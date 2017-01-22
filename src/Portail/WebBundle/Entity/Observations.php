@@ -85,6 +85,7 @@ class Observations
     /**
      * @var string
      *
+     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
      * @Assert\File(
      *     maxSize = "1024k",
      *     mimeTypes = {"image/png", "image/jpeg"},

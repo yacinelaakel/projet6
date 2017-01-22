@@ -59,12 +59,14 @@ class ObservationController extends Controller
             $photo = $observation->getPhoto();
 
             //Fait appel au service portail.file_uploader qui lui même utilise la classe WebBundle/FileUploader/FileUploader.php
-            $fileName = $this->get('portail.file_uploader')->upload($file);
+            $fileName = $this->get('portail.file_uploader')->upload($photo);
 
             //C'est le nom de la photo qui sera stocké, et non pas la photo en elle même
             $observation->setPhoto($fileName);
 
-            //Il faudra ajouter cette observation à la collection d'observations de l'oiseau concerné
+            //Avec addObservation() l'oiseau va ajouter à sa collection l'observation et l'observation va s'associer à son oiseau
+            $oiseauChoisi->addObservation($observation);
+
             //Il faudra ajouter cette observation à la collection d'observations de l'utilisateur concerné
             //Il faudra tester si l'utilisateur est un validateur. Si c'est le cas mettre l'observation à "Validé"
 
@@ -72,8 +74,8 @@ class ObservationController extends Controller
             $em->persist($observation);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('good', 'Votre observation a bien été validée.');
-        	return $this->redirectToRoute('portail_web_observation', ['_fragment' => 'saisieOiseau']);
+            $request->getSession()->getFlashBag()->add('good', 'Votre observation a bien été validée ! Vous pouvez soumettre de nouvelles observations si vous le souhaitez.');
+        	return $this->redirectToRoute('portail_web_observationStep1');
         } 
         
         return $this->render('PortailWebBundle:Home:partieObservationStep2.html.twig', array('form' => $form->createView(), 'oiseauChoisi' => $oiseauChoisi));

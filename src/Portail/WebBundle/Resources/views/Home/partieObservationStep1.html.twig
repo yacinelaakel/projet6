@@ -7,6 +7,12 @@
 	<div class="container">
 		<h2 class="text-center">SAISIR UNE OBSERVATION D'OISEAU</h2>
 		<hr>	
+
+		{% for message in app.session.flashbag.get('good') %}
+			<div class="alert alert-success">
+		    	<p>{{ message }}</p>
+		    </div>
+		{% endfor %}
 		
 		{# Le formulaire sera soumis au contrôleur saisieOiseauAction #}
 		<form method="post">

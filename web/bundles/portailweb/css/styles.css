@@ -310,7 +310,13 @@ input:focus, textarea:focus, select:focus {
 /*Partie observation*/
 #rowPhoto {
     padding-right: 50px;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
+}
+
+@media all and (max-width: 492px) { /*L'encart prendra 100% de la largeur de l'écran si c'est un smartphone*/
+    #rowPhoto {
+        margin-bottom: 160px;
+    }
 }
 
 .input-file-container {
@@ -352,6 +358,7 @@ input:focus, textarea:focus, select:focus {
 /* styles du retour visuel */
 .file-return {
     margin: 0;
+    margin-bottom: 30px;
 }
 .file-return:not(:empty) {
     margin: 1em 0;
