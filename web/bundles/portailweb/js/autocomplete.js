@@ -15,7 +15,7 @@ $(document).ready(function(){
 					$('#matchList li').on('click', function() { // When click on an element in the list
 						$('#portail_webbundle_oiseaux_nomFr').val($(this).text()); // Update the field with the new element
 						$('#match').text(''); // Clear the <div id="match"></div>
-						location.hash = "#rechercheOiseau";
+						location.hash = "#myNavbar";
 					});
 				},
 				error: function() { // if error

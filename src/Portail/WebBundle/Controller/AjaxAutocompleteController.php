@@ -17,7 +17,7 @@ class AjaxAutocompleteController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $query = $em->createQuery(''
-                . 'SELECT c.id, c.nomFr '
+                . 'SELECT c.id, c.nomFr, c.nomLa '
                 . 'FROM PortailWebBundle:Oiseaux c '
                 . 'WHERE c.nomFr LIKE :data '
                 . 'ORDER BY c.nomFr ASC'
@@ -27,8 +27,8 @@ class AjaxAutocompleteController extends Controller
 
         $oiseauxList = '<ul id="matchList">';
         foreach ($results as $result) {
-            $matchStringBold = preg_replace('/('.$data.')/i', '<strong>$1</strong>', $result['nomFr']); // Replace text field input by bold one
-            $oiseauxList .= '<li id="'.$result['nomFr'].'">'.$matchStringBold.'</li>'; // Create the matching list - we put maching name in the ID too
+            $matchStringBold = preg_replace('/('.$data.')/i', '<strong>$1</strong>', $result['nomFr'].'&nbsp; Nom latin:&nbsp;'.$result['nomLa']); // Replace text field input by bold one
+            $oiseauxList .= '<li id="'.$result['nomFr'].$result['nomLa'].'">'.$matchStringBold.'</li>'; // Create the matching list - we put maching name in the ID too
         }
         $oiseauxList .= '</ul>';
 
