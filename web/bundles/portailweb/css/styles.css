@@ -367,7 +367,50 @@ input:focus, textarea:focus, select:focus {
     font-weight: normal;
 }
 
+
+/*Partie Recherche*/
+#rowRecherche {
+    margin-bottom: 30px;
+}
+
+#btnRecherche {
+    margin-top: 21px;
+}
+
+#match {
+    background-color: white;
+    border-radius: 5px;
+}
+
+#match ul {
+    padding-left: 0;
+}
+
+#match li {
+    padding-bottom: 15px;
+    padding-top: 15px;
+    padding-left: 25px;
+    border-bottom: 1px solid rgba(129,189,91, 0.5);
+    border-left: none;
+    list-style: none;
+}
+
+#match li:hover {
+    background-color: #81BD5B;
+    color: white;
+    cursor: pointer;
+}
+
+.col-md-10 .form-group, .col-xs-12 .form-group {
+    margin-bottom: 0 !important;
+}
+
 /*Googlemap */
-.map {
+.mapObservation {
     height: 450px;
 }
+
+.mapRecherche {
+    height: 600px;
+}
+

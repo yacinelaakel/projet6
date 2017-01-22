@@ -2,33 +2,32 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-{# Partie Recherche Oiseau #}
-<div id="rechercheOiseau" style="background-color: rgba(72,81,86, 0.1); padding-bottom: 15px">
+{# Partie Saisie Oiseau #}
+<div id="saisieOiseau" class="part">
 	<div class="container">
-		<h2 class="text-center">RECHERCHER UNE ESPÈCE D'OISEAU</h2>
-		<hr>
-
-		{# Formulaire de recherche #}
+		<h2 class="text-center">SAISIR UNE OBSERVATION D'OISEAU</h2>
+		<hr>	
+		{% if oiseauChoisi is defined %}
+			{{dump(oiseauChoisi[0].nomFr)}}
+		{% endif %}
+		{# Le formulaire sera soumis au contrôleur saisieOiseauAction #}
 		<form method="post">
 	    	{{ form_errors(form) }}
 
 			<div class="row" id="rowRecherche">
-				<div class="col-md-10">
+				<div class="col-xs-12">
 					{{ form_row(form.nomFr) }}
 					<div id="match"></div>
 				</div>
-				<div class="col-md-2">
-	        		<input type="submit" value="Voir sur la carte" class="btn btn-success btn-lg" id="btnRecherche" />
-		    	</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 text-center">
+	        		<input type="submit" value="Choisir cet oiseau" class="btn btn-success btn-lg" id="btnRecherche">
+		    	</div>				
 			</div>
 
 	        {{ form_rest(form) }}
     	</form>
-
-		{# Intégration googlemap ici #}
-		<div class="row">
-			<div id="map" class="col-xs-12 mapRecherche"></div>					
-		</div>
 	</div>
 </div>
 

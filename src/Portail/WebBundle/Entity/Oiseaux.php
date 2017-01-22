@@ -18,7 +18,7 @@ class Oiseaux
     /**
      * @var int
      *
-     * @ORM\Column(name="CD_NOM", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -34,7 +34,7 @@ class Oiseaux
      * @var string
      *
      * @ORM\Column(name="NOM_VERN", type="string", length=255)
-     * @Assert\Type("string")
+     * @Assert\Regex("/^[a-zA-Z]{3,40}/", message="Le nom doit être valide (entre 3 et 40 lettres).")
      */
     private $nomFr;
 
@@ -42,7 +42,7 @@ class Oiseaux
      * @var string
      *
      * @ORM\Column(name="LB_NOM", type="string", length=255)
-     * @Assert\Type("string")
+     * @Assert\Regex("/^[a-zA-Z]{3,40}/", message="Le nom doit être valide (entre 3 et 40 lettres).")
      */
     private $nomLa;
 

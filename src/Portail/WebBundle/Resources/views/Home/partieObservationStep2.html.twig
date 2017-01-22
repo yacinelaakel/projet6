@@ -7,7 +7,8 @@
 	<div class="container">
 		<h2 class="text-center">SAISIR UNE OBSERVATION D'OISEAU</h2>
 		<hr>	
-
+		
+		{{oiseauChoisi}}
 		{% for message in app.session.flashbag.get('good') %}
 			<div class="alert alert-success">
 		    	<p>{{ message }}</p>
@@ -50,7 +51,7 @@
 
 			{# Intégration googlemap ici #}
 			<div class="row">
-				<div id="map" class="col-xs-12 map"></div>					
+				<div id="map" class="col-xs-12 mapObservation"></div>					
 			</div>
 			
 			{# Barre de recherche d'oiseau ici #}

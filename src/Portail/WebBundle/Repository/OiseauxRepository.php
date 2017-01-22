@@ -1,6 +1,7 @@
 <?php
 
 namespace Portail\WebBundle\Repository;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * OiseauxRepository
@@ -10,4 +11,15 @@ namespace Portail\WebBundle\Repository;
  */
 class OiseauxRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function oiseauChoisi($nomOiseau) {
+		$qb = $this->createQueryBuilder('c')
+		   ->where('c.nomFr = :nomOiseau')
+		   ->setParameter('nomOiseau', $nomOiseau);
+
+		$query = $qb->getQuery();
+
+		$results = $query->getResult();
+
+		return $results;
+	}
 }

@@ -12,9 +12,37 @@ use Portail\WebBundle\Entity\Oiseaux;
 // Contrôleur pour la saisie de l'observation des oiseaux
 class ObservationController extends Controller
 {
-    public function observationAction(Request $request)
-    {
+    public function saisieOiseauAction(Request $request) {
+        $oiseau = new Oiseaux();
+
+        $form = $this->createForm(OiseauxType::class, $oiseau);
+
+        $repository = $this->getDoctrine()->getManager()->getRepository('PortailWebBundle:Oiseaux');
+
+        $listOiseaux = $repository->findBy(
+            array(),                      // Critere
+            array('id' => 'desc'),        // Tri
+            null,                         // Limite
+            null                          // Offset
+        );
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            //On va chercher l'oiseau que l'utilisateur a tapé
+            $oiseauChoisi = $repository->oiseauChoisi($oiseau->getNomFr());
+
+        return $this->render('PortailWebBundle:Home:partieObservationStep1.html.twig', array('form' => $form->createView(), 'listOiseaux' => $listOiseaux, 'oiseauChoisi' => $oiseauChoisi));
+        }
+
+        return $this->render('PortailWebBundle:Home:partieObservationStep1.html.twig', array('form' => $form->createView(), 'listOiseaux' => $listOiseaux));
+
+    }
+
+    public function observationAction(Request $request, Oiseaux $oiseauChoisi)
+    {   
         $observation = new Observations();
+
         $form = $this->createForm(ObservationsType::class, $observation);
 
         $form->handleRequest($request);
@@ -42,6 +70,6 @@ class ObservationController extends Controller
         	return $this->redirectToRoute('portail_web_observation', ['_fragment' => 'saisieOiseau']);
         } 
         
-        return $this->render('PortailWebBundle:Home:partieObservation.html.twig', array('form' => $form->createView()));
+        return $this->render('PortailWebBundle:Home:partieObservationStep2.html.twig', array('form' => $form->createView(), 'oiseauChoisi' => $oiseauChoisi));
     }
 }

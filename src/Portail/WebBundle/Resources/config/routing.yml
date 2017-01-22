@@ -6,8 +6,12 @@ portail_web_recherche:
     path:     /recherche
     defaults: { _controller: PortailWebBundle:Recherche:recherche }
 
-portail_web_observation:
-    path:     /observation
+portail_web_observationStep1:
+    path:     /observationStep1
+    defaults: { _controller: PortailWebBundle:Observation:saisieOiseau }
+
+portail_web_observationStep2:
+    path:     /observationStep2/{oiseauChoisi}
     defaults: { _controller: PortailWebBundle:Observation:observation }
 
 fos_user:
