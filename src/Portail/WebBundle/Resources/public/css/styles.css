@@ -386,7 +386,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 #btnRecherche {
-    margin-top: 21px;
+    margin-top: 25px;
 }
 
 #match {
@@ -409,12 +409,15 @@ input:focus, textarea:focus, select:focus {
 
 #match li:hover {
     background-color: #81BD5B;
-    color: white;
     cursor: pointer;
 }
 
 .col-md-10 .form-group, .col-xs-12 .form-group {
     margin-bottom: 0 !important;
+}
+
+.form-control {
+        height: auto;
 }
 
 #nomLatin {
@@ -431,3 +434,21 @@ input:focus, textarea:focus, select:focus {
     height: 600px;
 }
 
+#container {
+    display: flex;
+    flex-direction: row;
+}
+
+.infoContent {
+    font-size: 15px;
+    font-weight: 400;
+    padding: 10px;
+    background-color: #81BD5B;
+    margin: 1px;
+    margin-right: 4px;
+}
+
+.photoOiseau {
+    max-width: 120px;
+    max-height: 100px;
+}

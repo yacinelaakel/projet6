@@ -35,10 +35,9 @@ class RechercheController extends Controller
       foreach ($oiseauChoisi as $item) {
           //Récupère les observations associées à cet oiseau
           $observations = $item->getObservations();
-          $oiseauChoisi = $item->getNomFr();
       }
 
-      return $this->render('PortailWebBundle:Home:partieRecherche.html.twig', array('form' => $form->createView(),'observations' => $observations, 'oiseauChoisi' => $oiseauChoisi));
+      return $this->render('PortailWebBundle:Home:partieRecherche.html.twig', array('form' => $form->createView(),'observations' => $observations));
     }
 
     return $this->render('PortailWebBundle:Home:partieRecherche.html.twig', array(
