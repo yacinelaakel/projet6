@@ -9,15 +9,7 @@
 		<hr>
 	
 		{% if observations is defined %}
-			{% for observation in observations %}				
-        		<p class="loop">
-        			<input type="hidden" id="lat{{loop.index}}" value="{{observation.latitude}}"></input> 
-        			<input type="hidden" id="lon{{loop.index}}" value="{{observation.longitude}}"></input>
-        			<input type="hidden" id="nb{{loop.index}}" value="{{observation.nbIndividus}}"></input>
-        			<input type="hidden" id="com{{loop.index}}" value="{{observation.commentaire}}"></input>
-					<input type="hidden" id="photo{{loop.index}}" value="{{ asset('uploads/photos/' ~ observation.photo) }}"></input>
-        		</p>
-    		{% endfor %}
+			<input type="hidden" id="tabObservations" value="{{ observations }}"></input>
 		{% endif %}
 		
 		{# Formulaire de recherche #}
@@ -43,56 +35,15 @@
 	</div>
 </div>
 
-{% block javascripts %}
-	{% javascripts '@PortailWebBundle/Resources/public/js/autocomplete.js' %}
-		<script type="text/javascript" src="{{ asset_url }}"></script>
+{% javascripts '@PortailWebBundle/Resources/public/js/autocomplete.js' %}
+	<script type="text/javascript" src="{{ asset_url }}"></script>
+	<script>
+		var ROOT_URL = "{{ url('portail_web_ajax_autocomplete_recherche')}}";
+	</script>
+{% endjavascripts %}
 
-		<script>
-			var ROOT_URL = "{{ url('portail_web_ajax_autocomplete_recherche')}}";
-
-			var myOptions = {
-			    zoom: 14, //Plus le zoom est élevé plus la carte est rapproché
-			    //Position par défaut de la carte : celle de l'utilisateur
-			    center: new google.maps.LatLng(48.890116568205, 2.3590564727783),
-			    scaleControl: true, //Affiche les informations sur l'échelle de distance 
-			    zoomControl: true, //Autorise le zoom avec la molette
-			    zoomControlOptions: {
-			      style: google.maps.ZoomControlStyle.HYBRID
-			    },
-			    mapTypeId: 'hybrid',
-			    draggableCursor:'crosshair', //Remplace la main par une croix pour mieux cibler
-			    draggingCursor: 'move'
-			}
-
-			//Crée la carte google map et appelle la fonction myOptions pour définir les valeurs par défaut au démarrage
-			var map = new google.maps.Map(document.getElementById("map"),myOptions);
-
-  			var infowindow = new google.maps.InfoWindow({});
-
-  			var markers = [];
-			for(var i = 1; i <= document.querySelectorAll('.loop').length; i++) {
-				var marker = markers[i];
-				marker = new google.maps.Marker({
-    				position: {lat: Number(document.getElementById('lat' + i).value), lng: Number(document.getElementById('lon' + i).value)},
-    				map: map,
-    				info: 
-    				'<div id="container"><div class="infoContent"><h3>Position</h3><hr>Latitude : ' 
-    				+ document.getElementById('lat' + i).value + '<br>Longitude : ' 
-    				+ document.getElementById('lon' + i).value
-    				+ '</div><div class="infoContent"><h3>Nombre</h3><hr>' 
-    				+ document.getElementById('nb' + i).value 
-					+ ' individu(s)</div><div class="infoContent"><h3>Commentaire</h3><hr>' 
-					+ document.getElementById('com' + i).value + '</div><div class="infoContent"><h3>Photo</h3><hr>  		<img src="' + document.getElementById('photo' + i).value + '" class="photoOiseau" /></div>    </div>',
-    				icon : "{{ asset('images/locator.png') }}"
-  				});
-  				marker.addListener('click', function() {
-  					infowindow.setContent(this.info);
-    				infowindow.open(map, this);
-  				});
-			} 
-
-		</script>
-	{% endjavascripts %}
-{% endblock %}
+{% javascripts '@PortailWebBundle/Resources/public/js/rechercheOiseau.js' %}
+	<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
 
 {% endblock %}

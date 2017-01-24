@@ -37,14 +37,23 @@ class RechercheController extends Controller
           $observations = $item->getObservations();
       }
 
-      return $this->render('PortailWebBundle:Home:partieRecherche.html.twig', array('form' => $form->createView(),'observations' => $observations));
+      //On va convertir en json les observations pour éviter de passer par le DOM pour les récupérer
+      $response = array();
+      foreach($observations as $observation) {
+        $response[] = array(
+          'latitude' => $observation->getLatitude(),
+          'longitude' => $observation->getLongitude(),
+          'commentaire' => $observation->getCommentaire(),
+          'photo' => $observation->getPhoto(),
+          'nbIndividus' => $observation->getNbIndividus()
+        );
+      }
+
+      $jsonResponse = json_encode($response);
+      return $this->render('PortailWebBundle:Home:partieRecherche.html.twig', array('form' => $form->createView(),'observations' => $jsonResponse));
     }
 
-    return $this->render('PortailWebBundle:Home:partieRecherche.html.twig', array(
-      'form' => $form->createView(),
-      'listOiseaux' => $listOiseaux,
-    ));
-
+    return $this->render('PortailWebBundle:Home:partieRecherche.html.twig', array('form' => $form->createView(),'listOiseaux' => $listOiseaux));
   }
 
 }
