@@ -1,6 +1,6 @@
 if(navigator.geolocation) {
 	navigator.geolocation.getCurrentPosition(function(position) {
-			// Valeur par défaut de la carte
+		// Valeur par défaut de la carte
 		var myOptions = {
 		    zoom: 7, //Plus le zoom est élevé plus la carte est rapproché
 		    //Position par défaut de la carte
@@ -38,7 +38,7 @@ if(navigator.geolocation) {
 					});
 					marker.addListener('click', function() {
 						infowindow.setContent(this.info);
-					infowindow.open(map, this);
+						infowindow.open(map, this);
 					});
 			} 
 		}

@@ -37,6 +37,12 @@ class RechercheController extends Controller
           $observations = $item->getObservations();
       }
 
+      if($observations->isEmpty()) {
+        $erreur = true;
+      } else {
+        $erreur = false;
+      }
+
       //On va convertir en json les observations pour éviter de passer par le DOM pour les récupérer
       $response = array();
       foreach($observations as $observation) {
@@ -50,7 +56,7 @@ class RechercheController extends Controller
       }
 
       $jsonResponse = json_encode($response);
-      return $this->render('PortailWebBundle:Home:partieRecherche.html.twig', array('form' => $form->createView(),'observations' => $jsonResponse));
+      return $this->render('PortailWebBundle:Home:partieRecherche.html.twig', array('form' => $form->createView(),'observations' => $jsonResponse, 'erreur' => $erreur));
     }
 
     return $this->render('PortailWebBundle:Home:partieRecherche.html.twig', array('form' => $form->createView(),'listOiseaux' => $listOiseaux));

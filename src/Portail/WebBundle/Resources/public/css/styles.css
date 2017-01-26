@@ -390,8 +390,10 @@ input:focus, textarea:focus, select:focus {
 }
 
 #match {
+
     background-color: white;
     border-radius: 5px;
+
 }
 
 #match ul {
