@@ -27,6 +27,14 @@
 		    </div>
 	        {{ form_rest(form) }}
     	</form>
+    	
+	  	{% if erreur is defined %}
+	   		{% if erreur == true %}
+	    		<div class="alert alert-danger">
+	    			<p class="text-center">Aucun oiseau n'a été trouvé !</p>
+	    		</div>
+	   		{% endif %}
+		{% endif %}
 
 		{# Intégration googlemap ici #}
 		<div class="row">
