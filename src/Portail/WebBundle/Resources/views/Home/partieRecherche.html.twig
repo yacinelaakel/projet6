@@ -7,11 +7,11 @@
 	<div class="container">
 		<h2 class="text-center">RECHERCHER UNE ESPÈCE D'OISEAU</h2>
 		<hr>
-	
+
 		{% if observations is defined %}
 			<input type="hidden" id="tabObservations" value="{{ observations }}"></input>
 		{% endif %}
-		
+
 		{# Formulaire de recherche #}
 		<form method="post">
 	    	{{ form_errors(form) }}
@@ -27,7 +27,7 @@
 		    </div>
 	        {{ form_rest(form) }}
     	</form>
-    	
+
 	  	{% if erreur is defined %}
 	   		{% if erreur == true %}
 	    		<div class="alert alert-danger">
@@ -38,7 +38,7 @@
 
 		{# Intégration googlemap ici #}
 		<div class="row">
-			<div id="map" class="col-xs-12 mapRecherche"></div>					
+			<div id="map" class="col-xs-12 mapRecherche"></div>
 		</div>
 	</div>
 </div>
@@ -47,6 +47,7 @@
 	<script type="text/javascript" src="{{ asset_url }}"></script>
 	<script>
 		var ROOT_URL = "{{ url('portail_web_ajax_autocomplete_recherche')}}";
+		var locator = "{{ asset('images/locator.png') }}"
 	</script>
 {% endjavascripts %}
 
