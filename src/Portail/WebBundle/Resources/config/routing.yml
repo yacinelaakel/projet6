@@ -20,3 +20,13 @@ fos_user:
 portail_web_ajax_autocomplete_recherche:
     path: /ajax/recherche/update/data
     defaults: { _controller: PortailWebBundle:AjaxAutocomplete:updateData }
+
+portail_user_inscription:
+    path: /user/inscription
+    defaults: { _controller: PortailUserBundle:Inscription:Inscription }
+    methods:  ['GET','POST']
+
+portail_user_connexion:
+    path: /user/connexion
+    defaults: { _controller: PortailUserBundle:Securite:Connexion }
+    methods:  ['GET','POST']

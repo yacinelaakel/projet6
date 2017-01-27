@@ -1,0 +1,38 @@
+{# Hérite de la vue parente situé app/Resources/views/base.html.twig #}
+{% extends "::base.html.twig" %}
+
+
+{% block body %}
+
+
+
+
+
+
+    {# Image background perroquet #}
+    <div id="partPerroquet" style="background-image: url({{ asset('images/background.jpg') }});" class="backgroundImage">
+        {# Encart connexion/créer un compte #}
+        <div class="text-center" id="boiteConnexion">
+            <h1 id="h1Connexion">
+                Bienvenue
+            </h1> <br>
+            {#Vérification si session membre ouverte ou non #}
+            {# Si session ouverte : affiche connecté en tant que .....Nom Prénom.... #}
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                Connecté en tant que {{ app.user.username }}
+                -
+                <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+
+            {% else %}
+                {#Si session non ouverte ,  affiche le panneau création compte ou connexion#}
+
+                {% block fos_user_content %}
+                    {{ include('@FOSUser/Security/login_content.html.twig') }}
+                {% endblock fos_user_content %}
+            {% endif %}
+
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

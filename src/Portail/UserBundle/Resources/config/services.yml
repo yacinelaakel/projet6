@@ -2,10 +2,3 @@ services:
 #    portail_user.example:
 #        class: Portail\UserBundle\Example
 #        argum;ents: ["@service_id", "plain_value", "%parameter%"]
-
-
-
-  portail_user.user.form.registration:
-      class: Portail\UserBundle\Form\RegistrationType
-      tags:
-        - { name: form.type, alias: portail_user_registration }
