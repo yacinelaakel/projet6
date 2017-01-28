@@ -21,8 +21,10 @@ class AjaxAutocompleteController extends Controller
                 . 'FROM PortailWebBundle:Oiseaux c '
                 . 'WHERE c.nomFr LIKE :data '
                 . 'ORDER BY c.nomFr ASC'
+
                 )
                 ->setParameter('data', '%' . $data . '%');
+        $query->setMaxResults(5);
         $results = $query->getResult();
 
         $oiseauxList = '<ul id="matchList">';

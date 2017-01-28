@@ -1,0 +1,47 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    {# Banniere Image #}
+    <div class="container">
+        <div class="row">
+            <div class=" col-lg-12">
+                <img  class="img-responsive" src="{{ asset('images/banniere-provisoire.jpg') }}" alt="Banniere oiseau">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-offset-2 col-lg-8">
+                <h1 class="text-center">CREER UN COMPTE</h1>
+                <p class="text-center"> Texte de présentation</p>
+                <br>
+                <hr WIDTH="70%" size="70px"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-offset-1 col-lg-5">
+                {% block fos_user_content %}
+                    {% include "@FOSUser/Registration/register_content.html.twig" %}
+                {% endblock fos_user_content %}
+            </div>
+            <div class="col-lg-5">
+                <h3>Condition d'utilisation de l'application</h3>
+                <br><br><br>
+                <span><img src="{{ asset('images/Icon-green.png') }}"></span>
+                <br>
+                <br>
+                <br>
+                <span><img src="{{ asset('images/Icon-green.png') }}"></span>
+                <br><br><br>
+                <span><img src="{{ asset('images/Icon-green.png') }}"></span>
+                <br><br><br>
+                <span><img src="{{ asset('images/Icon-green.png') }}"></span>
+                <br><br><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12"><br><br><br></div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

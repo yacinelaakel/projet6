@@ -13,6 +13,13 @@ use Portail\WebBundle\Entity\Oiseaux;
 class ObservationController extends Controller
 {
     public function saisieOiseauAction(Request $request) {
+        //L'utilisateur n'a pas le droit de venir si il n'est pas connecté
+        $securityContext = $this->container->get('security.authorization_checker');
+        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            $request->getSession()->getFlashBag()->add('info', 'Veuillez vous connecter ou vous inscrire.');
+            return $this->redirectToRoute('portail_web_homepage');
+        }
+
         $oiseau = new Oiseaux();
 
         $form = $this->createForm(OiseauxType::class, $oiseau);
@@ -66,11 +73,16 @@ class ObservationController extends Controller
                 $observation->setPhoto($fileName);
             }
 
+            //Si l'observateur est un professionnel
+            if($this->container->get('security.authorization_checker')->isGranted('ROLE_MODERATEUR')) {
+                //Son observation est automatiquement validée
+                $observation->setEtat(2);
+            }
+
             //Avec addObservation() l'oiseau va ajouter à sa collection l'observation et l'observation va s'associer à son oiseau
             $oiseauChoisi->addObservation($observation);
 
             //Il faudra ajouter cette observation à la collection d'observations de l'utilisateur concerné
-            //Il faudra tester si l'utilisateur est un validateur. Si c'est le cas mettre l'observation à "Validé"
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($observation);

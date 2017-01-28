@@ -5,29 +5,35 @@
         <h1 id="h1Connexion">
             Bienvenue sur notre Application
         </h1> <br>
+        {% for message in app.session.flashbag.get('info') %}
+            <div class="alert alert-danger">
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
         {#Vérification si session membre ouverte ou non #}
         {# Si session ouverte : affiche connecté en tant que .....Nom Prénom.... #}
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        Connecté en tant que {{ app.user.username }}
-        -
-        <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+            Connecté en tant que {{ app.user.username }}
+            -
+            <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
 
         {% else %}
-        {#Si session non ouverte ,  affiche le panneau création compte ou connexion#}
+            {#Si session non ouverte ,  affiche le panneau création compte ou connexion#}
 
-        <p class="paragraphes" style="margin-bottom: 50px;">
-            Avant de saisir vos observations d'oiseaux vous devez vous identifier. Si vous n'avez pas de compte, cliquez
-            sur créer un compte.
-        </p>
+            <p class="paragraphes" style="margin-bottom: 50px;">
+                Avant de saisir vos observations d'oiseaux vous devez vous identifier. Si vous n'avez pas de compte, cliquez
+                sur créer un compte.
+            </p>
 
-        <div class="row">
-            <a href="{{ path('fos_user_security_login') }}"
-                    class="col-sm-offset-1 col-sm-4 btn btn-secondary btn-lg"
-                    style="color: #485156; margin-right: 15px; background-color: white">CONNEXION
-            </a>
-            <a href="{{ path('fos_user_registration_register') }}" class="col-sm-6 btn btn-success btn-lg">CRÉER UN COMPTE</a>
-            {% endif %}
-
-        </div>
+            <div class="row">
+                <a href="{{ path('portail_user_connexion') }}"
+                        class="col-sm-offset-1 col-sm-4 btn btn-secondary btn-lg linkCo"
+                        style="color: #485156; margin-right: 15px; background-color: white">CONNEXION
+                </a>
+                <a href="{{ path('portail_user_inscription') }}" class="col-sm-6 btn btn-success btn-lg linkCo">
+                    CRÉER UN COMPTE
+                </a>
+            </div>
+        {% endif %}
     </div>
 </div>

@@ -3,11 +3,11 @@ body {
 	font-family: 'Montserrat', sans-serif;
 }
 
-a {
+a:not(.linkCo) {
 	color: #485156 !important; /*dark grey*/
 }
 
-a:hover {
+a:hover:not(.linkCo) {
 	color: #81BD5B !important; /*vert*/
 }
 
@@ -56,6 +56,10 @@ li+li {
 	.logo {
 		max-width: 200px;
 	}
+}
+
+#monCompte {
+    color: #81BD5B !important;
 }
 
 /*Footer*/
@@ -390,6 +394,9 @@ input:focus, textarea:focus, select:focus {
 }
 
 #match {
+    position: absolute;
+    z-index: 90;
+    width: 90%;
     background-color: white;
     border-radius: 5px;
 }
@@ -446,9 +453,13 @@ input:focus, textarea:focus, select:focus {
     background-color: #81BD5B;
     margin: 1px;
     margin-right: 4px;
+    transition: 0.3s ease;
 }
 
 .photoOiseau {
     max-width: 120px;
     max-height: 100px;
+    cursor: pointer;
 }
+
+
