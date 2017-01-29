@@ -31,10 +31,10 @@ class User extends BaseUser
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Portail\UserBundle\Entity\Profile", mappedBy="user", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="Portail\UserBundle\Entity\Profile", cascade={"persist"})
      * @Assert\Valid()
      */
-    private $Profile;
+    private $profile;
 
 
     public function __construct()
@@ -52,7 +52,8 @@ class User extends BaseUser
      */
     public function addProfile(\Portail\UserBundle\Entity\Profile $profile)
     {
-        $this->Profile[] = $profile;
+        $this->profile[] = $profile;
+        $profile->setUser($this);
 
         return $this;
     }
@@ -64,7 +65,7 @@ class User extends BaseUser
      */
     public function removeProfile(\Portail\UserBundle\Entity\Profile $profile)
     {
-        $this->Profile->removeElement($profile);
+        $this->profile->removeElement($profile);
     }
 
     /**
@@ -74,6 +75,8 @@ class User extends BaseUser
      */
     public function getProfile()
     {
-        return $this->Profile;
+        return $this->profile;
     }
+
+
 }

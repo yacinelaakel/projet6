@@ -64,7 +64,7 @@ class Profile
     private $conditiongenerale;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Portail\UserBundle\Entity\Profile", inversedBy="user", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="Portail\UserBundle\Entity\Profile", cascade={"persist"})
      */
     private $user;
 
