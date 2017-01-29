@@ -7,3 +7,8 @@ services:
     portail.file_uploader:
         class: Portail\WebBundle\FileUploader\FileUploader
         arguments: ["%dossier_photos%"]
+
+    user.form.registration:
+        class: Portail\UserBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: user_user_registration }
