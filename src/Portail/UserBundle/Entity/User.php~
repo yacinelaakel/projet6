@@ -1,25 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jonathan
- * Date: 14/01/2017
- * Time: 22:29
- */
-
-// src/PortailUserBundle/Entity/User.php
 
 namespace Portail\UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Portail\WebBundle\Entity\Observations;
-
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
  */
+
 class User extends BaseUser
 {
     /**
@@ -36,183 +27,169 @@ class User extends BaseUser
     private $observations;
 
     /**
-     *
-     * @ORM\Column(type="string", length=100)
-     *
-     * @Assert\NotBlank(message="Merci de saisir votre nom", groups={"Registration", "Profile"})
-     * @Assert\Length(
-     *     min=3,
-     *     max=100,
-     *     minMessage="Votre saisie est trop courte",
-     *     maxMessage="votre saisie est trop longue",
-     *     groups={"Registration", "Profile"}
-     * )
-     */
-     protected $nom;
-
-    /**
-     *
-     * @ORM\Column(type="string", length=100)
-     *
-     * @Assert\NotBlank(message="Merci de saisir votre prénom", groups={"Registration", "Profile"})
-     * @Assert\Length(
-     *     min=3,
-     *     max=100,
-     *     minMessage="Votre saisie est trop courte",
-     *     maxMessage="votre saisie est trop longue",
-     *     groups={"Registration", "Profile"}
-     * )
-     */
-    protected $prenom;
-
-    /**
-     *
      * @ORM\Column(type="string", length=255)
      *
-     * @Assert\NotBlank(message="Merci de saisir votre ville", groups={"Registration", "Profile"})
+     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
      * @Assert\Length(
-     *     min=2,
+     *     min=3,
      *     max=255,
-     *     minMessage="Votre saisie est trop courte",
-     *     maxMessage="votre saisie est trop longue",
+     *     minMessage="The name is too short.",
+     *     maxMessage="The name is too long.",
      *     groups={"Registration", "Profile"}
      * )
      */
-    protected $ville;
+    protected $name;
 
     /**
-     * @var \DateTime
-     * @Assert\NotBlank()
-     * @ORM\Column(name="datenaissance", type="date")
-     * @Assert\Date()
-     * @Assert\LessThan(
-     *     "today",
-     *     message = "merci de vérifier la date de naissance"
-     * )
-     */
-    protected $datenaissance;
-
-    /**
+     * @ORM\Column(type="string", length=255)
      *
-     * @ORM\Column(type="string", length=100)
-     *
-     * @Assert\NotBlank(message="Merci de saisir votre profession", groups={"Registration", "Profile"})
+     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
      * @Assert\Length(
-     *     min=4,
-     *     max=100,
-     *     minMessage="Votre saisie est trop courte",
-     *     maxMessage="votre saisie est trop longue",
+     *     min=3,
+     *     max=255,
+     *     minMessage="The name is too short.",
+     *     maxMessage="The name is too long.",
      *     groups={"Registration", "Profile"}
      * )
      */
-    protected $profession;
+    protected $surname;
 
-   /**
-     * @var bool
-     * @Assert\Type(type="bool")
-     * @ORM\Column(name="conditiongenerale", type="boolean")
-     */
-    protected $conditiongenerale;
-
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-        /**
-     * Set nom
+    /**
+     * @ORM\Column(type="string", length=255)
      *
-     * @param string $nom
+     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage="The name is too short.",
+     *     maxMessage="The name is too long.",
+     *     groups={"Registration", "Profile"}
+     * )
+     */
+    protected $city;
+
+    /**
+     * @ORM\Column(type="date",)
+     */
+    protected $dateboth;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage="The name is too short.",
+     *     maxMessage="The name is too long.",
+     *     groups={"Registration", "Profile"}
+     * )
+     */
+    protected $job;
+
+
+
+
+
+
+
+
+    // ...
+
+    /**
+     * Set name
+     *
+     * @param string $name
      *
      * @return User
      */
-    public function setNom($nom)
+    public function setName($name)
     {
-        $this->nom = $nom;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get name
      *
      * @return string
      */
-    public function getNom()
+    public function getName()
     {
-        return $this->nom;
+        return $this->name;
     }
 
     /**
-     * Set prenom
+     * Set surname
      *
-     * @param string $prenom
+     * @param string $surname
      *
      * @return User
      */
-    public function setPrenom($prenom)
+    public function setSurname($surname)
     {
-        $this->prenom = $prenom;
+        $this->surname = $surname;
 
         return $this;
     }
 
     /**
-     * Get prenom
+     * Get surname
      *
      * @return string
      */
-    public function getPrenom()
+    public function getSurname()
     {
-        return $this->prenom;
+        return $this->surname;
     }
 
     /**
-     * Set ville
+     * Set city
      *
-     * @param string $ville
+     * @param string $city
      *
      * @return User
      */
-    public function setVille($ville)
+    public function setCity($city)
     {
-        $this->ville = $ville;
+        $this->city = $city;
 
         return $this;
     }
 
     /**
-     * Get ville
+     * Get city
      *
      * @return string
      */
-    public function getVille()
+    public function getCity()
     {
-        return $this->ville;
+        return $this->city;
     }
 
     /**
-     * Set datenaissance
+     * Set dateboth
      *
-     * @param \DateTime $datenaissance
+     * @param \DateTime $dateboth
      *
      * @return User
      */
-    public function setDatenaissance($datenaissance)
+    public function setDateboth($dateboth)
     {
-        $this->datenaissance = $datenaissance;
+        $this->dateboth = $dateboth;
 
         return $this;
     }
 
     /**
-     * Get datenaissance
+     * Get dateboth
      *
      * @return \DateTime
      */
-    public function getDatenaissance()
+    public function getDateboth()
     {
-        return $this->datenaissance;
+        return $this->dateboth;
     }
 
     /**
@@ -240,27 +217,50 @@ class User extends BaseUser
     }
 
     /**
-     * Set conditiongenerale
+     * Set condition
      *
-     * @param boolean $conditiongenerale
+     * @param boolean $condition
      *
      * @return User
      */
-    public function setConditiongenerale($conditiongenerale)
+    public function setCondition($condition)
     {
-        $this->conditiongenerale = $conditiongenerale;
+        $this->condition = $condition;
 
         return $this;
     }
 
     /**
-     * Get conditiongenerale
+     * Get condition
      *
      * @return boolean
      */
-    public function getConditiongenerale()
+    public function getCondition()
     {
-        return $this->conditiongenerale;
+        return $this->condition;
     }
-    
+
+    /**
+     * Set job
+     *
+     * @param string $job
+     *
+     * @return User
+     */
+    public function setJob($job)
+    {
+        $this->job = $job;
+
+        return $this;
+    }
+
+    /**
+     * Get job
+     *
+     * @return string
+     */
+    public function getJob()
+    {
+        return $this->job;
+    }
 }

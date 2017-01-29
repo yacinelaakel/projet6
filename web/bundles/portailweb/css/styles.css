@@ -453,7 +453,6 @@ input:focus, textarea:focus, select:focus {
     background-color: #81BD5B;
     margin: 1px;
     margin-right: 4px;
-    transition: 0.3s ease;
 }
 
 .photoOiseau {

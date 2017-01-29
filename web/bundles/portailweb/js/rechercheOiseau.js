@@ -23,9 +23,7 @@ if(navigator.geolocation) {
 			var observations = JSON.parse(document.getElementById('tabObservations').value);
 
 			//Infobulle qui s'ouvre au clic sur une observation
-			var infowindow = new google.maps.InfoWindow({
-				minWidth: 1000
-			});
+			var infowindow = new google.maps.InfoWindow({});
 
 			//Il y a un marqueur pour chaque observation
 	 		var markers = [];
@@ -33,9 +31,14 @@ if(navigator.geolocation) {
 
 			var affichageObservations = function(cb) {
 				var arrayImg = [];
-				for(var i = 0; i < nbObservations; i++) {
+				for (var i = 0; i < nbObservations; i++) {
 					var marker = markers[i];
-					var imgSrc = "/projet-6/web/uploads/photos/" + observations[i].photo + "";
+
+					if (observations[i].photo != null) {
+					 	var imgSrc = "/projet-6/web/uploads/photos/" + observations[i].photo + "";
+					} else {
+						var imgSrc = "/projet-6/web/images/no-image.png";
+					}
 					arrayImg.push(imgSrc);
 
 					marker = new google.maps.Marker({
@@ -54,8 +57,8 @@ if(navigator.geolocation) {
 
 			affichageObservations(function(arrayImg) {
 				document.addEventListener('click', function(e) {
-					for(var i = 0; i < arrayImg.length; i++) {
-						if(e.target.id == 'photo' + i){
+					for (var i = 0; i < arrayImg.length; i++) {
+						if (e.target.id == 'photo' + i) {
 							document.getElementById('imagepreview').setAttribute('src', document.getElementById('photo' + i).getAttribute('src'));
  							$('#imagemodal').modal('show');
 						}

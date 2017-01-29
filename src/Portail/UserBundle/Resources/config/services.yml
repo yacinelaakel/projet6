@@ -1,4 +1,0 @@
-services:
-#    portail_user.example:
-#        class: Portail\UserBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
