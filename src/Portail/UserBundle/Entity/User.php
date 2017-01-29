@@ -11,6 +11,7 @@
 namespace Portail\UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -28,231 +29,51 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @var ArrayCollection
      *
-     * @ORM\Column(type="string", length=100)
-     *
-     * @Assert\NotBlank(message="Merci de saisir votre nom", groups={"Registration", "Profile"})
-     * @Assert\Length(
-     *     min=3,
-     *     max=100,
-     *     minMessage="Votre saisie est trop courte",
-     *     maxMessage="votre saisie est trop longue",
-     *     groups={"Registration", "Profile"}
-     * )
+     * @ORM\OneToMany(targetEntity="Portail\UserBundle\Entity\Profile", mappedBy="user", cascade={"persist"})
+     * @Assert\Valid()
      */
-     protected $nom;
+    private $Profile;
 
-    /**
-     *
-     * @ORM\Column(type="string", length=100)
-     *
-     * @Assert\NotBlank(message="Merci de saisir votre prénom", groups={"Registration", "Profile"})
-     * @Assert\Length(
-     *     min=3,
-     *     max=100,
-     *     minMessage="Votre saisie est trop courte",
-     *     maxMessage="votre saisie est trop longue",
-     *     groups={"Registration", "Profile"}
-     * )
-     */
-    protected $prenom;
-
-    /**
-     *
-     * @ORM\Column(type="string", length=255)
-     *
-     * @Assert\NotBlank(message="Merci de saisir votre ville", groups={"Registration", "Profile"})
-     * @Assert\Length(
-     *     min=2,
-     *     max=255,
-     *     minMessage="Votre saisie est trop courte",
-     *     maxMessage="votre saisie est trop longue",
-     *     groups={"Registration", "Profile"}
-     * )
-     */
-    protected $ville;
-
-    /**
-     * @var \DateTime
-     * @Assert\NotBlank()
-     * @ORM\Column(name="datenaissance", type="date")
-     * @Assert\Date()
-     * @Assert\LessThan(
-     *     "today",
-     *     message = "merci de vérifier la date de naissance"
-     * )
-     */
-    protected $datenaissance;
-
-    /**
-     *
-     * @ORM\Column(type="string", length=100)
-     *
-     * @Assert\NotBlank(message="Merci de saisir votre profession", groups={"Registration", "Profile"})
-     * @Assert\Length(
-     *     min=4,
-     *     max=100,
-     *     minMessage="Votre saisie est trop courte",
-     *     maxMessage="votre saisie est trop longue",
-     *     groups={"Registration", "Profile"}
-     * )
-     */
-    protected $profession;
-
-   /**
-     * @var bool
-     * @Assert\Type(type="bool")
-     * @ORM\Column(name="conditiongenerale", type="boolean")
-     */
-    protected $conditiongenerale;
 
     public function __construct()
     {
         parent::__construct();
     }
 
-        /**
-     * Set nom
+
+    /**
+     * Add profile
      *
-     * @param string $nom
+     * @param \Portail\UserBundle\Entity\Profile $profile
      *
      * @return User
      */
-    public function setNom($nom)
+    public function addProfile(\Portail\UserBundle\Entity\Profile $profile)
     {
-        $this->nom = $nom;
+        $this->Profile[] = $profile;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Remove profile
      *
-     * @return string
+     * @param \Portail\UserBundle\Entity\Profile $profile
      */
-    public function getNom()
+    public function removeProfile(\Portail\UserBundle\Entity\Profile $profile)
     {
-        return $this->nom;
+        $this->Profile->removeElement($profile);
     }
 
     /**
-     * Set prenom
+     * Get profile
      *
-     * @param string $prenom
-     *
-     * @return User
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function setPrenom($prenom)
+    public function getProfile()
     {
-        $this->prenom = $prenom;
-
-        return $this;
+        return $this->Profile;
     }
-
-    /**
-     * Get prenom
-     *
-     * @return string
-     */
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    /**
-     * Set ville
-     *
-     * @param string $ville
-     *
-     * @return User
-     */
-    public function setVille($ville)
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    /**
-     * Get ville
-     *
-     * @return string
-     */
-    public function getVille()
-    {
-        return $this->ville;
-    }
-
-    /**
-     * Set datenaissance
-     *
-     * @param \DateTime $datenaissance
-     *
-     * @return User
-     */
-    public function setDatenaissance($datenaissance)
-    {
-        $this->datenaissance = $datenaissance;
-
-        return $this;
-    }
-
-    /**
-     * Get datenaissance
-     *
-     * @return \DateTime
-     */
-    public function getDatenaissance()
-    {
-        return $this->datenaissance;
-    }
-
-    /**
-     * Set profession
-     *
-     * @param string $profession
-     *
-     * @return User
-     */
-    public function setProfession($profession)
-    {
-        $this->profession = $profession;
-
-        return $this;
-    }
-
-    /**
-     * Get profession
-     *
-     * @return string
-     */
-    public function getProfession()
-    {
-        return $this->profession;
-    }
-
-    /**
-     * Set conditiongenerale
-     *
-     * @param boolean $conditiongenerale
-     *
-     * @return User
-     */
-    public function setConditiongenerale($conditiongenerale)
-    {
-        $this->conditiongenerale = $conditiongenerale;
-
-        return $this;
-    }
-
-    /**
-     * Get conditiongenerale
-     *
-     * @return boolean
-     */
-    public function getConditiongenerale()
-    {
-        return $this->conditiongenerale;
-    }
-    
 }
