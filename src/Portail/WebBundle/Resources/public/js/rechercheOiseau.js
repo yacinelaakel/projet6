@@ -23,9 +23,7 @@ if(navigator.geolocation) {
 			var observations = JSON.parse(document.getElementById('tabObservations').value);
 
 			//Infobulle qui s'ouvre au clic sur une observation
-			var infowindow = new google.maps.InfoWindow({
-				minWidth: 1000
-			});
+			var infowindow = new google.maps.InfoWindow({});
 
 			//Il y a un marqueur pour chaque observation
 	 		var markers = [];

@@ -31,6 +31,13 @@ class Observations
     private $oiseau;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Portail\UserBundle\Entity\User", inversedBy="observations")
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
+     */
+    private $utilisateur;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_observation", type="datetime")
@@ -86,7 +93,11 @@ class Observations
      * @var string
      *
      * @ORM\Column(name="photo", type="string", length=255, nullable=true)
-     * @Assert\File(mimeTypes={ "image/png" })
+     * @Assert\File(
+     *     maxSize = "1024k",
+     *     mimeTypes = {"image/png", "image/jpeg"},
+     *     mimeTypesMessage = "Veuillez utiliser une image valide"
+     * )
      */
     private $photo;
 
@@ -100,12 +111,12 @@ class Observations
 
     /**
      * @var int
-     * 0 = rejeté, 1 = en cours de validation, 3 = validé
+     * 0 = rejeté, 1 = en cours de validation, 2 = validé
      *
      * @ORM\Column(name="etat", type="integer")
      * @Assert\Range(
      *      min = 0,
-     *      max = 3
+     *      max = 2
      * )
      */
     private $etat;
@@ -301,7 +312,7 @@ class Observations
     /**
      * Set etat
      *
-     * @param string $etat
+     * @param integer $etat
      *
      * @return Observations
      */
@@ -315,7 +326,7 @@ class Observations
     /**
      * Get etat
      *
-     * @return string
+     * @return integer
      */
     public function getEtat()
     {

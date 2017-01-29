@@ -10,7 +10,7 @@
 
 		{% for message in app.session.flashbag.get('good') %}
 			<div class="alert alert-success">
-		    	<p>{{ message }}</p>
+		    	<p>{{ dump(message) }}</p>
 		    </div>
 		{% endfor %}
 		

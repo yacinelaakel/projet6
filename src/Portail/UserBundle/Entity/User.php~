@@ -263,40 +263,4 @@ class User extends BaseUser
         return $this->conditiongenerale;
     }
     
-
-    /**
-     * Add observation
-     *
-     * @param \Portail\WebBundle\Entity\Observations $observation
-     *
-     * @return User
-     */
-    public function addObservation(\Portail\WebBundle\Entity\Observations $observation)
-    {
-        $this->observations[] = $observation;
-        //On associe l'observation à son utilisateur
-        $observation->setUtilisateur($this);
-    
-        return $this;
-    }
-
-    /**
-     * Remove observation
-     *
-     * @param \Portail\WebBundle\Entity\Observations $observation
-     */
-    public function removeObservation(\Portail\WebBundle\Entity\Observations $observation)
-    {
-        $this->observations->removeElement($observation);
-    }
-
-    /**
-     * Get observations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getObservations()
-    {
-        return $this->observations;
-    }
 }

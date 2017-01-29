@@ -31,6 +31,13 @@ class Observations
     private $oiseau;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Portail\UserBundle\Entity\User", inversedBy="observations")
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
+     */
+    private $utilisateur;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_observation", type="datetime")
@@ -391,5 +398,29 @@ class Observations
     public function getOiseau()
     {
         return $this->oiseau;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \Portail\UserBundle\Entity\User $utilisateur
+     *
+     * @return Observations
+     */
+    public function setUtilisateur(\Portail\UserBundle\Entity\User $utilisateur)
+    {
+        $this->utilisateur = $utilisateur;
+    
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \Portail\UserBundle\Entity\User
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
     }
 }

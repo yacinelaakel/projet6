@@ -83,12 +83,14 @@ class ObservationController extends Controller
             $oiseauChoisi->addObservation($observation);
 
             //Il faudra ajouter cette observation à la collection d'observations de l'utilisateur concerné
+            $user = $this->getUser();
+            $user->addObservation($observation);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($observation);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('good', 'Votre observation a bien été validée ! Vous pouvez soumettre de nouvelles observations si vous le souhaitez.');
+            $request->getSession()->getFlashBag()->add('good', $user);
         	return $this->redirectToRoute('portail_web_observationStep1');
         } 
         
