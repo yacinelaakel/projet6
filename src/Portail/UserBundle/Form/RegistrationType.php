@@ -29,6 +29,7 @@ class RegistrationType extends AbstractType
             ->add('city', TextType::class, array('label' => 'Ville'))
             ->add('job', TextType::class,array('label' => 'Profession'))
 
+
     ;
     }
 

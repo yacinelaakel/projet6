@@ -21,12 +21,6 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Portail\WebBundle\Entity\Observations", mappedBy="utilisateur")
-     * @Assert\Valid()
-     */
-    private $observations;
-
-    /**
      * @ORM\Column(type="string", length=255)
      *
      * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
