@@ -90,7 +90,7 @@ class ObservationController extends Controller
             $em->persist($observation);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('good', $user);
+            $request->getSession()->getFlashBag()->add('good', 'Votre observation a bien été validée. Vous pouvez soumettre de nouvelles observations.');
         	return $this->redirectToRoute('portail_web_observationStep1');
         } 
         
