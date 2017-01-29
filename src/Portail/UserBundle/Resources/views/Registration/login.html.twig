@@ -13,9 +13,9 @@
             {#Vérification si session membre ouverte ou non #}
             {# Si session ouverte : affiche connecté en tant que .....Nom Prénom.... #}
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                Connecté en tant que {{ app.user.username }}
+                Connecté en tant que <span style="color: #81BD5B; font-size: 20px;">{{ app.user.username }}</span>
                 -
-                <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                <a href="{{ path('fos_user_security_logout') }}" id="btnDeconnexion">Déconnexion</a>
 
             {% else %}
                 {#Si session non ouverte ,  affiche le panneau création compte ou connexion#}
@@ -27,40 +27,32 @@
                         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}
 
-                    <form action="{{ path("fos_user_security_check") }}" method="post">
+                    <form action="{{ path("fos_user_security_check") }}" method="post" id="formConnexion">
                         {% if csrf_token %}
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
                         {% endif %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label for="username">{{ 'security.login.username'|trans }}</label><br>
+                                <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />                                
+                            </div>
+                        </div>
 
-                        <label for="username">{{ 'security.login.username'|trans }}</label>
-                        <br>
-                        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
-                        <br>
-                        <br>
-                        <label for="password">{{ 'security.login.password'|trans }}</label>
-                        <br>
-                        <input type="password" id="password" name="_password" required="required" />
-                        <br>
-                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-                        <br>
-                        <input class="center-block btn btn-success" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label for="password">{{ 'security.login.password'|trans }}</label><br>
+                                <input type="password" id="password" name="_password" required="required" / style="margin-bottom: 20px"> <br>
+
+                                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                                <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>    
+                            </div>
+                        </div>
+                        
+                        <input class="center-block btn btn-success btn-lg" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
                     </form>
 
                 {% endblock fos_user_content %}
             {% endif %}
-
         </div>
     </div>
-    </div>
-
-<script>
-    $(function() {
-        //Permet de déplacer l'écran sur la partie contact
-        if($("#partContactExist").length) {
-            location.hash = "#partContact";
-        }
-
-    });
-</script>
 {% endblock %}

@@ -21,6 +21,12 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="Portail\WebBundle\Entity\Observations", mappedBy="utilisateur")
+     * @Assert\Valid()
+     */
+    private $observations;
+
+    /**
      * @ORM\Column(type="string", length=255)
      *
      * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
@@ -81,14 +87,13 @@ class User extends BaseUser
      */
     protected $job;
 
+    /**
+     * @ORM\Column(type="boolean")
+     * @Assert\IsTrue(message = "Vous devez accepter les conditions d'utilisation")
+     */
 
+    protected $conditionUtilisation;
 
-
-
-
-
-
-    // ...
 
     /**
      * Set name
@@ -256,5 +261,39 @@ class User extends BaseUser
     public function getJob()
     {
         return $this->job;
+    }
+
+    /**
+     * Add observation
+     *
+     * @param \Portail\WebBundle\Entity\Observations $observation
+     *
+     * @return User
+     */
+    public function addObservation(\Portail\WebBundle\Entity\Observations $observation)
+    {
+        $this->observations[] = $observation;
+        $observation->setUtilisateur($this);
+        return $this;
+    }
+
+    /**
+     * Remove observation
+     *
+     * @param \Portail\WebBundle\Entity\Observations $observation
+     */
+    public function removeObservation(\Portail\WebBundle\Entity\Observations $observation)
+    {
+        $this->observations->removeElement($observation);
+    }
+
+    /**
+     * Get observations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObservations()
+    {
+        return $this->observations;
     }
 }

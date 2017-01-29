@@ -12,6 +12,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class RegistrationType extends AbstractType
 {
@@ -28,7 +29,7 @@ class RegistrationType extends AbstractType
                 'format' => 'dd/MM/yyyy'))
             ->add('city', TextType::class, array('label' => 'Ville'))
             ->add('job', TextType::class,array('label' => 'Profession'))
-
+            ->add('conditionUtilisation', CheckboxType::class, array('label' => "J'accepte les conditions d'utilisation"))
 
     ;
     }

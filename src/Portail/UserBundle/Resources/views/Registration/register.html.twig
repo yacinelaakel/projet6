@@ -4,70 +4,76 @@
 {# Vue accueil (sans header ni footer) #}
 {% block body %}
 <style>
-    input{
-        color: #fff;
-        background-color: #5cb85c;
-        border-color: #4cae4c;
-        display: inline-block;
-        padding: 9px 12px;
-        padding-top: 7px;
 
-        font-size: 14px;
-        line-height: 20px;
-
-        text-align: center;
-        vertical-align: middle;
-        cursor: pointer;
-
-        -webkit-border-radius: 3px;
-        -webkit-border-radius: 3px;
-        -webkit-border-radius: 3px;
-        background-image: none !important;
-        border: none;
-        text-shadow: none;
-        box-shadow: none;
-        transition: all 0.12s linear 0s !important;
-        font: 14px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
-        margin-right: 5px;
-        min-width: 120px;
-        margin-bottom: 8px;
-    }
 </style>
 
     {# Banniere Image #}
+    <div style="background-image: url({{ asset('images/banniere-provisoire.jpg') }});" class="banniereOiseau">
+    </div>
+
     <div class="container">
         <div class="row">
-            <div class=" col-lg-12">
-                <img  class="img-responsive" src="{{ asset('images/banniere-provisoire.jpg') }}" alt="Banniere oiseau">
+            <div class="col-md-offset-2 col-md-8">
+                <h1 class="text-center" style="color: #81BD5B;">CRÉER UN COMPTE</h1>
+                <p class="text-center">
+                    La création d'un compte vous permettra de saisir vos observations <br>
+                    Dans votre espace personnel vous avez accès à l'historique de vos observations
+                </p>
+                <hr>
             </div>
         </div>
+
         <div class="row">
-            <div class="col-lg-offset-2 col-lg-8">
-                <h1 class="text-center">CREER UN COMPTE</h1>
-                <p class="text-center"> Texte de présentation</p>
-                <br>
-                <hr WIDTH="70%" size="70px"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-offset-1 col-lg-5">
+            <div class="col-md-offset-1 col-md-5" id="formAccount">
                 {% block fos_user_content %}
                     {{ render(controller("FOSUserBundle:Registration:register")) }}
                 {% endblock fos_user_content %}
             </div>
-            <div class="col-lg-5">
-                <h3>Condition d'utilisation de l'application</h3>
-                <br><br><br>
-                <span><img src="{{ asset('images/Icon-green.png') }}"></span>
-                <br>
-                <br>
-                <br>
-                <span><img src="{{ asset('images/Icon-green.png') }}"></span>
-                <br><br><br>
-                <span><img src="{{ asset('images/Icon-green.png') }}"></span>
-                <br><br><br>
-                <span><img src="{{ asset('images/Icon-green.png') }}"></span>
-                <br><br><br>
+            <div class="col-md-5">
+                <h3>Conditions d'utilisation de l'application</h3>
+                <hr>
+
+                <div class="row">
+                    <div class="col-xs-1">
+                        <img src="{{ asset('images/Icon-green.png') }}">
+                    </div>
+                    <div class="col-xs-11">
+                        <p class="paragraphes">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus eveniet nobis aliquam quam odio quisquam cupiditate dicta recusandae ratione saepe impedit, maxime, earum omnis quia sint. Excepturi aliquid, necessitatibus dolore.
+                        </p>
+                    </div>
+                </div>
+                <p class="paragraphes">
+                <div class="row">
+                    <div class="col-xs-1">
+                        <img src="{{ asset('images/Icon-green.png') }}">
+                    </div>
+                    <div class="col-xs-11">
+                        <p class="paragraphes">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus eveniet nobis aliquam quam odio quisquam cupiditate dicta recusandae ratione saepe impedit, maxime, earum omnis quia sint. Excepturi aliquid, necessitatibus dolore.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1">
+                        <img src="{{ asset('images/Icon-green.png') }}">
+                    </div>
+                    <div class="col-xs-11">
+                        <p class="paragraphes">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus eveniet nobis aliquam quam odio quisquam cupiditate dicta recusandae ratione saepe impedit, maxime, earum omnis quia sint. Excepturi aliquid, necessitatibus dolore.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1">
+                        <img src="{{ asset('images/Icon-green.png') }}">
+                    </div>
+                    <div class="col-xs-11">
+                        <p class="paragraphes">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus eveniet nobis aliquam quam odio quisquam cupiditate dicta recusandae ratione saepe impedit, maxime, earum omnis quia sint. Excepturi aliquid, necessitatibus dolore.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -75,19 +81,10 @@
         </div>
     </div>
 
-
-
-
-
-
-
-    <script>
-        $(function() {
-            //Permet de déplacer l'écran sur la partie contact
-            if($("#partContactExist").length) {
-                location.hash = "#partContact";
-            }
-
-        });
-    </script>
+<script>
+    $(function() {
+        $('.fos_user_registration_register input[type="submit"]').parent().addClass('text-center');
+        $('.fos_user_registration_register input[type="submit"]').css('padding', '15').css("fontSize", "20px").css("marginTop", "15px").css("borderRadius", "5px");
+    });
+</script>
 {% endblock %}

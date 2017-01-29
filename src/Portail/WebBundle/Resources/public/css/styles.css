@@ -462,3 +462,39 @@ input:focus, textarea:focus, select:focus {
 }
 
 
+/*Tout ce qui touche au compte*/
+.banniereOiseau {
+    background-size: 100% 300px;
+    background-repeat: no-repeat; /*on affiche qu'une fois l'image*/
+    padding-bottom: 246px; /*permet de placer l'encart noir de connexion*/
+}
+
+#formAccount a:first-child {
+    display: none;
+}
+
+.fos_user_registration_register input[type="submit"] { 
+    color: #fff;
+    background-color: #5cb85c;
+    border: none;
+    text-shadow: none;
+    box-shadow: none;
+    margin-right: 5px;
+}
+
+#btnDeconnexion {
+    color:  #d9534f !important;
+    text-decoration: none;
+}
+
+#btnDeconnexion:hover {
+    color:  #d9534f !important;
+}
+
+#formConnexion input:not([type="submit"]) {
+    color: black;
+    border-radius: 5px;
+    border: none;
+    text-shadow: none;
+    box-shadow: none;   
+}

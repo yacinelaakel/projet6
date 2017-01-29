@@ -3,7 +3,7 @@
     {# Encart connexion/créer un compte #}
     <div class="text-center" id="boiteConnexion">
         <h1 id="h1Connexion">
-            Bienvenue sur notre Application
+            Bienvenue
         </h1> <br>
         {% for message in app.session.flashbag.get('info') %}
             <div class="alert alert-danger">
@@ -13,9 +13,9 @@
         {#Vérification si session membre ouverte ou non #}
         {# Si session ouverte : affiche connecté en tant que .....Nom Prénom.... #}
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            Connecté en tant que {{ app.user.username }}
+            Connecté en tant que <span style="color: #81BD5B; font-size: 20px">{{ app.user.username }}</span>
             -
-            <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+            <a href="{{ path('fos_user_security_logout') }}" id="btnDeconnexion">Déconnexion</a>
 
         {% else %}
             {#Si session non ouverte ,  affiche le panneau création compte ou connexion#}

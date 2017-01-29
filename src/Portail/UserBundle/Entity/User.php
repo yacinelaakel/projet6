@@ -87,14 +87,12 @@ class User extends BaseUser
      */
     protected $job;
 
+    /**
+     * @ORM\Column(type="boolean")
+     * @Assert\IsTrue(message = "Vous devez accepter les conditions d'utilisation")
+     */
+    protected $conditionUtilisation;
 
-
-
-
-
-
-
-    // ...
 
     /**
      * Set name
@@ -296,5 +294,29 @@ class User extends BaseUser
     public function getObservations()
     {
         return $this->observations;
+    }
+
+    /**
+     * Set conditionUtilisation
+     *
+     * @param boolean $conditionUtilisation
+     *
+     * @return User
+     */
+    public function setConditionUtilisation($conditionUtilisation)
+    {
+        $this->conditionUtilisation = $conditionUtilisation;
+    
+        return $this;
+    }
+
+    /**
+     * Get conditionUtilisation
+     *
+     * @return boolean
+     */
+    public function getConditionUtilisation()
+    {
+        return $this->conditionUtilisation;
     }
 }
