@@ -1,1 +1,28 @@
-Hello World!
+{# Hérite de la vue parente situé app/Resources/views/base.html.twig #}
+{% extends "::base.html.twig" %}
+
+{# Vue accueil (sans header ni footer) #}
+{% block body %}
+
+    {# inclus la partie encart connexion #}
+    {% include 'PortailWebBundle:Home:partieEncartConnexion.html.twig' %}
+
+    {# Partie Comment fonctionne l'application #}
+    {% include 'PortailWebBundle:Home:partieFonctionnementApp.html.twig' %}
+
+    {# Partie A propos #}
+    {% include 'PortailWebBundle:Home:partieApropos.html.twig' %}
+
+    {# Partie Contact #}
+    {% include 'PortailWebBundle:Home:partieContact.html.twig' %}
+
+    <script>
+        $(function() {
+            //Permet de déplacer l'écran sur la partie contact
+            if($("#partContactExist").length) {
+                location.hash = "#partContact";
+            }
+
+        });
+    </script>
+{% endblock %}

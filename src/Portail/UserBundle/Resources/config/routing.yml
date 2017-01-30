@@ -1,3 +1,21 @@
 portail_user_homepage:
     path:     /
     defaults: { _controller: PortailUserBundle:Default:index }
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+portail_user_inscription:
+    path: /register
+    defaults: { _controller: PortailUserBundle:Registration:register }
+    methods:  ['GET','POST']
+
+portail_user_connexion:
+    path: /login
+    defaults: { _controller: PortailUserBundle:Login:login }
+    methods:  ['GET','POST']
+
+portail_user_profile:
+    path: /profile/
+    defaults: { _controller: PortailUserBundle:Profile:show }
+    methods:  ['GET','POST']
