@@ -35,9 +35,9 @@ if(navigator.geolocation) {
 					var marker = markers[i];
 
 					if (observations[i].photo != null) {
-					 	var imgSrc = "/projet-6/web/uploads/photos/" + observations[i].photo + "";
+					 	var imgSrc = upimage + observations[i].photo + "";
 					} else {
-						var imgSrc = "/projet-6/web/images/no-image.png";
+						var imgSrc = noimage;
 					}
 					arrayImg.push(imgSrc);
 
@@ -72,7 +72,7 @@ if(navigator.geolocation) {
    	// 				$('#imagepreview').attr('src', $('#photo' + i).attr('src')); // here asign the image to the modal when the user click the enlarge link
    	// 				$('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
 				// });
-				
+
 
 		}
 
