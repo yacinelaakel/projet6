@@ -11,9 +11,19 @@ portail_user_connexion:
     defaults: { _controller: PortailUserBundle:Login:login }
     methods:  ['GET','POST']
 
-portail_user_profile:
+portail_user_profile_show:
     path: /profile/
     defaults: { _controller: PortailUserBundle:Profile:show }
+    methods:  ['GET','POST']
+
+portail_user_profile_edit:
+    path: /profile/edit
+    defaults: { _controller: PortailUserBundle:Profile:edit }
+    methods:  ['GET','POST']
+
+portail_user_confirmed:
+    path: /confirmed
+    defaults: { _controller: PortailUserBundle:Registration:confirmed }
     methods:  ['GET','POST']
 
 portail_user_profile_observations:

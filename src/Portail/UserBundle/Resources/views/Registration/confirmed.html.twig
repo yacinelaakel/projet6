@@ -12,17 +12,23 @@
             </h1> <br>
             {#Vérification si session membre ouverte ou non #}
             {# Si session ouverte : affiche connecté en tant que .....Nom Prénom.... #}
+
             {% trans_default_domain 'FOSUserBundle' %}
 
             {% block fos_user_content %}
-                <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-                {% if targetUrl %}
-                    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
-                {% endif %}
+               Bonjour {{ user.surname }} {{ user.name }}
+                <br>
+                Votre inscription est finalisé, votre e-mail de connexion {{ user.email }} a été bien pris en compte.
+                <br>
+                vous pouvez dès à présent vous faire part de vos observations.
+
+
+
             {% endblock fos_user_content %}
 
+            test
+
         </div>
-    </div>
     </div>
 
     <script>
