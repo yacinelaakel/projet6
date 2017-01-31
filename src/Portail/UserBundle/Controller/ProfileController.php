@@ -87,7 +87,7 @@ class ProfileController extends Controller
             $userManager->updateUser($user);
 
             if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('fos_user_profile_show');
+                $url = $this->generateUrl('portail_user_profile_show');
                 $response = new RedirectResponse($url);
             }
 
@@ -97,7 +97,7 @@ class ProfileController extends Controller
         }
 
         return $this->render('PortailUserBundle:Profile:edit.html.twig', array(
-            'user' => $user,
+            'form' => $form->createView(),
         ));
     }
 

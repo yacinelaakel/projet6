@@ -1,11 +1,19 @@
+{# Hérite de la vue parente situé app/Resources/views/base.html.twig #}
+{% extends "::base.html.twig" %}
+
+
+{% block body %}
+
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% block content %}
 
-{{ form_start(form, { 'action': path('app_user_profile'), 'attr': { 'class': 'app_user_profile' } }) }}
+
+{{ form_start(form, { 'action': path('portail_user_profile_edit'), 'attr': { 'class': 'portail_user_profile_edit' } }) }}
+
     {{ form_widget(form) }}
 <div>
     <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
 </div>
 {{ form_end(form) }}
 {% endblock %}
+
