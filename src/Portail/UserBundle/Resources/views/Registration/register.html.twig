@@ -3,10 +3,6 @@
 
 {# Vue accueil (sans header ni footer) #}
 {% block body %}
-<style>
-
-</style>
-
     {# Banniere Image #}
     <div style="background-image: url({{ asset('images/banniere-provisoire.jpg') }});" class="banniereOiseau">
     </div>
@@ -24,12 +20,12 @@
         </div>
 
         <div class="row">
-            <div class="col-md-offset-1 col-md-5" id="formAccount">
+            <div class="col-md-offset-1 col-md-4" id="formAccount">
                 {% block fos_user_content %}
                     {{ render(controller("FOSUserBundle:Registration:register")) }}
                 {% endblock fos_user_content %}
             </div>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <h3>Conditions d'utilisation de l'application</h3>
                 <hr>
 

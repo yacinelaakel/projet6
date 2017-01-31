@@ -7,7 +7,7 @@ a:not(.linkCo) {
 	color: #485156 !important; /*dark grey*/
 }
 
-a:hover:not(.linkCo) {
+a:hover:not(.linkCo):not(.btn-social) {
 	color: #81BD5B !important; /*vert*/
 }
 
@@ -424,7 +424,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 .form-control {
-        height: auto;
+    height: auto;
 }
 
 #nomLatin {
@@ -497,4 +497,94 @@ input:focus, textarea:focus, select:focus {
     border: none;
     text-shadow: none;
     box-shadow: none;   
+}
+
+input {
+    height: auto;
+}
+
+#divCompteAccueil {
+    background-color: #EDEEEE;
+}
+
+#ulCompte {
+    border-right: 1px solid #81BD5B;
+    border-left: 1px solid #81BD5B;
+    border-top: 1px solid #81BD5B;
+}
+
+.listCompte {
+    border: none;
+    border-bottom: 1px solid #81BD5B;
+}
+
+.listCompte:first-child p {
+    font-size: larger;
+    color: rgba(72,81,86, 0.9);
+}
+
+.listCompte:not(:last-child) {
+    margin-bottom: -4px;
+}
+
+.listCompte p {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    padding: 20px;
+}
+
+.iconCompte {
+    font-size: 2em;
+    color:  #81BD5B;
+    vertical-align: middle;
+    float: left;
+}
+
+.listCompte:hover .iconCompte{
+    color: white;
+}
+
+#ulCompte a { 
+    border: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+}
+
+#ulCompte a:hover { 
+    background-color: #81BD5B;
+    color: #333 !important;
+}
+
+#h2Compte {
+    margin-top: 0; 
+    padding-top: 0;
+}
+
+#infoInput {
+    border: 1px solid #81BD5B;
+}
+
+#infoInput p {
+    font-size: 18px;
+}
+
+.photoCompte {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.photoCompte:hover {
+    cursor: pointer;
+}
+
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#81BD5B;}
+.tg td{font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#81BD5B;color:#333;}
+.tg th{font-size:20px !important; font-weight: normal; padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;;color:#81BD5B;background-color:#fff;}
+.tg .tg-ecrz{font-size:14px;vertical-align:middle;}
+.tg .tg-nrw8{font-size:14px}
+.tg .tg-yw4l{vertical-align:middle;}
+
+.tg tr:nth-child(odd) {
+    background-color: white;
 }

@@ -13,10 +13,10 @@
         {#Vérification si session membre ouverte ou non #}
         {# Si session ouverte : affiche connecté en tant que .....Nom Prénom.... #}
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            Connecté en tant que <span style="color: #81BD5B; font-size: 20px">{{ app.user.username }}</span>
-            -
-            <a href="{{ path('fos_user_security_logout') }}" id="btnDeconnexion">Déconnexion</a>
-
+            <h3>            
+                Connecté sous le pseudo <span style="color: #81BD5B;">{{ app.user.username }}</span> <br><br>
+                <a href="{{ path('fos_user_security_logout') }}" id="btnDeconnexion">Déconnexion</a>
+            </h3>
         {% else %}
             {#Si session non ouverte ,  affiche le panneau création compte ou connexion#}
 

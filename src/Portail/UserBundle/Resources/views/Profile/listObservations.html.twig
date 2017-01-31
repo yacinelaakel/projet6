@@ -1,0 +1,104 @@
+{# Hérite de la vue parente situé app/Resources/views/base.html.twig #}
+{% extends "::base.html.twig" %}
+
+
+{% block body %}
+    <div style="background-image: url({{ asset('images/banniere-provisoire.jpg') }});" class="banniereOiseau"></div>
+
+    <div class="container" id="divCompteAccueil">
+        <h1 class="divh1">
+            MON COMPTE
+        </h1>
+        <hr>
+
+        <div class="row" style="margin-bottom: 20px">
+            {% include 'PortailUserBundle:Profile:menuCompte.html.twig' %}
+                    
+            <div class="col-md-9" id="infoInput">
+                <h2 id="h2Compte">Mes observations</h2><hr>
+
+                <div class="row">
+                    <div class="col-xs-12" style="overflow-x:auto;">
+                        <table class="tg">
+                        <tr> 
+                            <th class="tg-nrw8 text-center">Nom</th>
+                            <th class="tg-ecrz text-center">Photo</th>
+                            <th class="tg-ecrz text-center">Date et heure</th>
+                            <th class="tg-ecrz text-center">Lieu</th>
+                            <th class="tg-ecrz text-center">État</th>
+                        </tr>
+                        {% for observation in listObservations %}
+                            <tr>
+                                <td class="tg-yw4l">
+                                    <p class="text-center">{{nomOiseaux[loop.index - 1].nomFr}}</p>
+                                </td>
+
+                                <td class="tg-yw4l">
+                                    <img id="photo{{loop.index}}" src="{{ asset('uploads/photos/' ~ observation.photo) }}" class="photoCompte">
+                                </td>
+
+                                
+                                <td class="tg-yw4l">
+                                    <p class="paragraphes text-center">
+                                        {{observation.dateObservation|date('d-m-Y')}} <br>
+                                        à {{observation.heureObservation|date('h:i')}}
+                                    </p>
+                                </td>
+
+                                <td class="tg-yw4l">
+                                    <p class="paragraphes text-center">
+                                        Latitude : {{observation.latitude}} <br>
+                                        Longitude : {{observation.longitude}}
+                                    </p>
+                                </td>                                
+
+                                <td class="tg-yw4l">
+                                    <p class="text-center text-warning">
+                                        {% if observation.etat == 0 %}
+                                            <span class="text-danger">Rejeté</span>
+                                        {% elseif observation.etat == 1 %}
+                                            <span class="text-warning">En attente de validation</span>
+                                        {% else %}
+                                            <span class="text-success">Validé</span>
+                                        {% endif %}
+                                    </p>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </table>                    
+                    </div>
+                </div> 
+            </div>
+
+        </div> 
+
+        <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                <img src="" id="imagepreview" style="width: 100%; height: 100%;" >
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+              </div>
+            </div>
+          </div>
+        </div> 
+
+    </div>
+
+<script>
+    nbObservations = "{{listObservations|length}}";
+    document.addEventListener('click', function(e) {
+        for (var i = 1; i <= nbObservations; i++) {
+            if (e.target.id == 'photo' + i) {
+                document.getElementById('imagepreview').setAttribute('src', document.getElementById('photo' + i).getAttribute('src'));
+                $('#imagemodal').modal('show');
+            }
+        }
+    });
+</script>
+{% endblock %}

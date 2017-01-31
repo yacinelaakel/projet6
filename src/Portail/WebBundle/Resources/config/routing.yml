@@ -14,19 +14,6 @@ portail_web_observationStep2:
     path:     /observationStep2-{nomFr}
     defaults: { _controller: PortailWebBundle:Observation:observation }
 
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
 portail_web_ajax_autocomplete_recherche:
     path: /ajax/recherche/update/data
     defaults: { _controller: PortailWebBundle:AjaxAutocomplete:updateData }
-
-portail_user_inscription:
-    path: /register
-    defaults: { _controller: PortailUserBundle:Registration:register }
-    methods:  ['GET','POST']
-
-portail_user_connexion:
-    path: /login
-    defaults: { _controller: PortailUserBundle:Login:login }
-    methods:  ['GET','POST']

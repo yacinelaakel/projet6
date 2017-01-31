@@ -33,11 +33,16 @@ if(navigator.geolocation) {
 				var arrayImg = [];
 				for (var i = 0; i < nbObservations; i++) {
 					var marker = markers[i];
+					//Remplace "null" par ""
+					if(observations[i].commentaire == null) {
+						observations[i].commentaire = "Pas de commentaire";
+					}
 
+					//Si il y a une photo on stock son url, sinon on stock l'url de la photo "no-image"
 					if (observations[i].photo != null) {
-					 	var imgSrc = "/projet-6/web/uploads/photos/" + observations[i].photo + "";
+					 	var imgSrc = upimage + observations[i].photo + "";
 					} else {
-						var imgSrc = "/projet-6/web/images/no-image.png";
+						var imgSrc = noimage;
 					}
 					arrayImg.push(imgSrc);
 
@@ -52,6 +57,7 @@ if(navigator.geolocation) {
 							infowindow.open(map, this);
 						});
 				}
+				//Callback pour faire des traitements lorsque les marqueurs ont été placé
 				cb(arrayImg);
 			}
 

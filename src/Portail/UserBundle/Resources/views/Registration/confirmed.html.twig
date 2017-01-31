@@ -1,0 +1,37 @@
+{# Hérite de la vue parente situé app/Resources/views/base.html.twig #}
+{% extends "::base.html.twig" %}
+
+
+{% block body %}
+    {# Image background perroquet #}
+    <div id="partPerroquet" style="background-image: url({{ asset('images/background.jpg') }});" class="backgroundImage">
+        {# Encart connexion/créer un compte #}
+        <div class="text-center" id="boiteConnexion">
+            <h1 id="h1Connexion">
+                Bienvenue
+            </h1> <br>
+            {#Vérification si session membre ouverte ou non #}
+            {# Si session ouverte : affiche connecté en tant que .....Nom Prénom.... #}
+            {% trans_default_domain 'FOSUserBundle' %}
+
+            {% block fos_user_content %}
+                <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+                {% if targetUrl %}
+                    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+                {% endif %}
+            {% endblock fos_user_content %}
+
+        </div>
+    </div>
+    </div>
+
+    <script>
+        $(function() {
+            //Permet de déplacer l'écran sur la partie contact
+            if($("#partContactExist").length) {
+                location.hash = "#partContact";
+            }
+
+        });
+    </script>
+{% endblock %}

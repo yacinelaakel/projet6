@@ -20,5 +20,4 @@ class RegistrationController extends Controller
     {
         return $this->render('PortailUserBundle:Registration:register.html.twig');
     }
-
 }

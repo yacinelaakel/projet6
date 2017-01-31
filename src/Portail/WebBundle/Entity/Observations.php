@@ -5,6 +5,7 @@ namespace Portail\WebBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Portail\WebBundle\Entity\Oiseaux;
 
 /**
  * Observations
@@ -353,27 +354,27 @@ class Observations
 
 
     /**
-     * Set oiseaux
+     * Set oiseau
      *
-     * @param \Portail\WebBundle\Entity\Oiseaux $oiseaux
+     * @param \Portail\WebBundle\Entity\Oiseaux $oiseau
      *
      * @return Observations
      */
-    public function setOiseaux(\Portail\WebBundle\Entity\Oiseaux $oiseaux)
+    public function setOiseaux(\Portail\WebBundle\Entity\Oiseaux $oiseau)
     {
-        $this->oiseaux = $oiseaux;
+        $this->oiseaux = $oiseau;
     
         return $this;
     }
 
     /**
-     * Get oiseaux
+     * Get oiseau
      *
-     * @return \Portail\WebBundle\Entity\Oiseaux
+     * @return \Portail\WebBundle\Entity\Oiseau
      */
     public function getOiseaux()
     {
-        return $this->oiseaux;
+        return $this->oiseau;
     }
 
     /**

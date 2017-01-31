@@ -1,0 +1,64 @@
+{# Hérite de la vue parente situé app/Resources/views/base.html.twig #}
+{% extends "::base.html.twig" %}
+
+
+{% block body %}
+    <div style="background-image: url({{ asset('images/banniere-provisoire.jpg') }});" class="banniereOiseau"></div>
+
+    <div class="container" id="divCompteAccueil">
+        <h1 class="divh1">
+            MON COMPTE
+        </h1>
+        <hr>
+        <div class="row" style="margin-bottom: 20px">
+            {% include 'PortailUserBundle:Profile:menuCompte.html.twig' %}
+
+            <div class="col-md-9" id="infoInput">
+                <h2 id="h2Compte">Mes informations</h2><hr>
+
+                {% trans_default_domain 'FOSUserBundle' %}
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>Nom <br>
+                            <input type="text" value="{{ user.name }}" class="form-control"></input>
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>Prenom <br>
+                            <input type="text" value="{{ user.surname }}" class="form-control"></input>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>{{ 'profile.show.username'|trans }} <br>
+                            <input type="text" value="{{ user.username }}" class="form-control"></input>
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>{{ 'profile.show.email'|trans }} <br>
+                            <input type="text" value="{{ user.email }}" class="form-control"></input>
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>Ville <br>
+                            <input type="text" value="{{ user.city }}" class="form-control"></input>
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>Profession <br>
+                            <input type="text" value="{{ user.job }}" class="form-control"></input>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>         
+    </div>
+
+{% endblock %}

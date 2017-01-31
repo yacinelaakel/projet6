@@ -4,12 +4,12 @@
 
 {% block body %}
     {# Image background perroquet #}
-    <div id="partPerroquet" style="background-image: url({{ asset('images/background.jpg') }});" class="backgroundImage">
+    <div style="background-image: url({{ asset('images/background.jpg') }});" class="backgroundImage">
         {# Encart connexion/créer un compte #}
         <div class="text-center" id="boiteConnexion">
             <h1 id="h1Connexion">
-                Bienvenue
-            </h1> <br>
+                Connexion
+            </h1>
             {#Vérification si session membre ouverte ou non #}
             {# Si session ouverte : affiche connecté en tant que .....Nom Prénom.... #}
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -19,12 +19,14 @@
 
             {% else %}
                 {#Si session non ouverte ,  affiche le panneau création compte ou connexion#}
+                <p><a href="{{ path('portail_user_inscription') }}" style="color: #81BD5B !important">
+                    ou créez un compte</a></p>
 
                 {% block fos_user_content %}
                     {% trans_default_domain 'FOSUserBundle' %}
 
                     {% if error %}
-                        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        <p style="color: #d9534f">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
                     {% endif %}
 
                     <form action="{{ path("fos_user_security_check") }}" method="post" id="formConnexion">
