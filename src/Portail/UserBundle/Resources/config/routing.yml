@@ -1,9 +1,11 @@
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
 portail_user_inscription:
     path: /register
     defaults: { _controller: PortailUserBundle:Registration:register }
+    methods:  ['GET','POST']
+
+portail_user_confirmed:
+    path: /confirmed
+    defaults: { _controller: PortailUserBundle:Registration:confirmed }
     methods:  ['GET','POST']
 
 portail_user_connexion:

@@ -12,4 +12,3 @@ services:
         class: Portail\UserBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: user_user_registration }
-
