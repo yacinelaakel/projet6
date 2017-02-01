@@ -1,8 +1,8 @@
 {# Hérite de la vue parente situé app/Resources/views/base.html.twig #}
 {% extends "::base.html.twig" %}
 
-
 {% block body %}
+	
     <div style="background-image: url({{ asset('images/banniere-provisoire.jpg') }});" class="banniereOiseau"></div>
 
     <div class="container" id="divCompteAccueil">
@@ -15,9 +15,15 @@
             {% include 'PortailUserBundle:Profile:menuCompte.html.twig' %}
                     
             <div class="col-md-9" id="infoInput">
-                <h2 id="h2Compte">Mes observations</h2><hr>
+                <h2 id="h2Compte">Observations à valider</h2><hr>
+					
+				<div class="alert alert-info">
+					<p>
+						Ces observations ont été soumis par des particuliers et attendent votre validation.
+					</p>
+				</div>
 
-                <div class="row">
+                <div class="row" id="row">
                     <div class="col-xs-12">
                         <table class="tg">
                         <tr> 
@@ -27,7 +33,7 @@
                             <th class="tg-ecrz text-center">Lieu</th>
                             <th class="tg-ecrz text-center">État</th>
                         </tr>
-                        {% for observation in listObservations %}
+                        {% for observation in observationsEnAttente %}
                             <tr>
                                 <td class="tg-yw4l">
                                     <p class="text-center">{{nomOiseaux[loop.index - 1].nomFr}}</p>
@@ -58,17 +64,17 @@
                                         Latitude : {{observation.latitude}} <br>
                                         Longitude : {{observation.longitude}}
                                     </p>
-                                </td>                                
+                                </td> 
 
                                 <td class="tg-yw4l">
-                                    <p class="text-center text-warning">
-                                        {% if observation.etat == 0 %}
-                                            <span class="text-danger">Rejeté</span>
-                                        {% elseif observation.etat == 1 %}
-                                            <span class="text-warning">En attente de validation</span>
-                                        {% else %}
-                                            <span class="text-success">Validé</span>
-                                        {% endif %}
+                                    <p class="text-center">
+                                    	{# Si le validateur clique sur le bouton Validé on envoi l'id de l'observation ainsi que "valide" à true pour dire au contrôleur que l'on veut valider cette observation #}
+      									<a href="{{ path('portail_user_profile_validations', {'id': observation.id, 'valide' : true}) }}" style="margin-right: 20px">
+                                        	<i class="fa fa-check fa-2x"></i>
+                                        </a>
+      									<a href="{{ path('portail_user_profile_validations', {'id': observation.id, valide : observation.id, 'rejet' : true}) }}" class="aWrong">
+                                        	<i class="fa fa-times fa-2x"></i>
+                                        </a>
                                     </p>
                                 </td>
                             </tr>
@@ -99,7 +105,7 @@
     </div>
 
 <script>
-    nbObservations = "{{listObservations|length}}";
+    nbObservations = "{{observationsEnAttente|length}}";
     document.addEventListener('click', function(e) {
         for (var i = 1; i <= nbObservations; i++) {
             if (e.target.id == 'photo' + i) {

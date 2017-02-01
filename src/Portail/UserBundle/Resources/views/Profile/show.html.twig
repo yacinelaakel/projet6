@@ -10,6 +10,13 @@
             MON COMPTE
         </h1>
         <hr>
+
+        {% for message in app.session.flashbag.get('info') %}
+            <div class="alert alert-danger text-center">
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+
         <div class="row" style="margin-bottom: 20px">
             {% include 'PortailUserBundle:Profile:menuCompte.html.twig' %}
 

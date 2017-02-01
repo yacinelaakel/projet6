@@ -29,7 +29,7 @@ class AjaxAutocompleteController extends Controller
 
         $oiseauxList = '<ul id="matchList">';
         foreach ($results as $result) {
-            $matchStringBold = preg_replace('/('.$data.')/i', '<strong>$1</strong>',$result['nomFr'].'<br><span id="nomLatin">Nom latin : '.$result['nomLa'].'</span>'); // Replace text field input by bold one
+            $matchStringBold = preg_replace('/('.$data.')/i', '<strong>$1</strong>',$result['nomFr'].'<br><span id="nomLatin"> Nom latin : '.$result['nomLa'].'</span>'); // Replace text field input by bold one
             $oiseauxList .= '<li id="'.$result['nomFr'].$result['nomLa'].'">'.$matchStringBold.'</li>'; // Create the matching list - we put maching name in the ID too
         }
         $oiseauxList .= '</ul>';

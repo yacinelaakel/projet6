@@ -10,4 +10,14 @@ namespace Portail\WebBundle\Repository;
  */
 class ObservationsRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function observationsEnAttente() {
+		$qb = $this->createQueryBuilder('c')
+		   ->where('c.etat = 1');
+
+		$query = $qb->getQuery();
+
+		$result = $query->getResult();
+
+		return $result;
+	}
 }
