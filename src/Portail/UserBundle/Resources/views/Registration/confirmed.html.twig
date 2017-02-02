@@ -8,7 +8,7 @@
         {# Encart connexion/créer un compte #}
         <div class="text-center" id="boiteConnexion">
             <h1 id="h1Connexion">
-                Bienvenue
+                Bienvenue {{ user.surname }} {{ user.name }}
             </h1> <br>
             {#Vérification si session membre ouverte ou non #}
             {# Si session ouverte : affiche connecté en tant que .....Nom Prénom.... #}
@@ -16,28 +16,12 @@
             {% trans_default_domain 'FOSUserBundle' %}
 
             {% block fos_user_content %}
-               Bonjour {{ user.surname }} {{ user.name }}
-                <br>
-                Votre inscription est finalisé, votre e-mail de connexion {{ user.email }} a été bien pris en compte.
-                <br>
-                vous pouvez dès à présent vous faire part de vos observations.
-
-
-
+                <p>
+                    Votre inscription est finalisé, votre e-mail de connexion {{ user.email }} a été bien pris en compte.
+                    <br>
+                    vous pouvez dès à présent vous faire part de vos observations.     
+                </p>
             {% endblock fos_user_content %}
-
-            test
-
         </div>
     </div>
-
-    <script>
-        $(function() {
-            //Permet de déplacer l'écran sur la partie contact
-            if($("#partContactExist").length) {
-                location.hash = "#partContact";
-            }
-
-        });
-    </script>
 {% endblock %}

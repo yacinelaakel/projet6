@@ -12,7 +12,8 @@ class ObservationsRepository extends \Doctrine\ORM\EntityRepository
 {
 	public function observationsEnAttente() {
 		$qb = $this->createQueryBuilder('c')
-		   ->where('c.etat = 1');
+		   ->where('c.etat = 1')
+		   ->addOrderBy('c.id', 'DESC');
 
 		$query = $qb->getQuery();
 
