@@ -21,7 +21,7 @@
             </a>
         </li>
         {# La validation ne peut se faire que pour les validateurs #}
-        {# {% if is_granted('ROLE_MODERATEUR') %} #}
+        {% if is_granted('ROLE_MODERATEUR') %}
         <li class="listCompte">
             <a href="{{ path('portail_user_profile_validations') }}"> 
                 <p class="text-center">
@@ -29,7 +29,7 @@
                 </p>
             </a>
         </li>
-        {# {% endif %} #}
+        {% endif %}
         <li class="listCompte">
             <a href="{{ path('fos_user_security_logout') }}">
                 <p class="text-center">

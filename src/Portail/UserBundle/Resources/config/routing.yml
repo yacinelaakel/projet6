@@ -28,13 +28,13 @@ portail_user_confirmed:
 
 portail_user_profile_observations:
     path: /profile/observations
-    defaults: { _controller: PortailUserBundle:Profile:observations }
+    defaults: { _controller: PortailUserBundle:Observations:observations }
     methods:  ['GET','POST']
 
 portail_user_profile_validations:
     path: /profile/validations/{id}/{valide}/{rejet}
     defaults: 
-        _controller: PortailUserBundle:Profile:validations
+        _controller: PortailUserBundle:Observations:validations
         id: null
         valide: null
         rejet: null
