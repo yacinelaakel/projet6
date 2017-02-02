@@ -1,0 +1,10 @@
+{# Hérite de la vue parente situé app/Resources/views/base.html.twig #}
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    {# Image background perroquet #}
+    <div id="partPerroquet" style="background-image: url({{ asset('images/background.jpg') }});" class="backgroundImage">
+        <h1>Oups ! Cette page n'existe pas.</h1>
+        <h3><a href="{{ path('portail_web_homepage') }}">Retour à l'accueil</a></h3>
+    </div>
+{% endblock %}
