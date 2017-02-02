@@ -92,3 +92,24 @@ fos_user:
                 type: Portail\UserBundle\Form\RegistrationType
                 # if you are using Symfony < 2.8 you should use the type name instead
                 # type: app_user_registration
+
+easy_admin:
+    entities:
+        User:
+            class: Portail\UserBundle\Entity\User
+
+            form:
+                fields:
+                    - username
+                    - name
+                    - surname
+                    - email
+                    - city
+                    - dateboth
+                    - job
+                    - enabled
+                    - conditionUtilisation
+                    - lastLogin
+                    # if administrators are allowed to edit users' passwords and roles, add this:
+                    - { property: 'plainPassword', type: 'text', type_options: { required: false } }
+                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_AUTEUR':'ROLE_AUTEUR','ROLE_MODERATEUR':'ROLE_MODERATEUR','ROLE_ADMIN': 'ROLE_ADMIN' } } }
