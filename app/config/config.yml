@@ -94,10 +94,18 @@ fos_user:
                 # type: app_user_registration
 
 easy_admin:
+    site_name: '<strong>NAO - Administration</strong>'
+    design:
+        menu:
+            - { label: 'Retour Site', route: 'portail_web_homepage' }
+        # this is the only color you can change for the quick visual customization
+        brand_color: '#6db941'
+        color_scheme: 'light'
     entities:
         User:
             class: Portail\UserBundle\Entity\User
-
+            list:
+                fields: ['username', 'name', 'surname', 'email', 'enabled','roles']
             form:
                 fields:
                     - username
@@ -110,4 +118,4 @@ easy_admin:
                     - conditionUtilisation
                     # if administrators are allowed to edit users' passwords and roles, add this:
                     - { property: 'plainPassword', type: 'text', type_options: { required: false } }
-                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_AUTEUR':'ROLE_AUTEUR','ROLE_MODERATEUR':'ROLE_MODERATEUR','ROLE_ADMIN': 'ROLE_ADMIN' } } }
+                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER','ROLE_MODERATEUR':'ROLE_MODERATEUR','ROLE_SUPER_ADMIN': 'ROLE_SUPER_ADMIN' } } }
