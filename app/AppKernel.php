@@ -18,7 +18,8 @@ class AppKernel extends Kernel
             new Portail\WebBundle\PortailWebBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Portail\UserBundle\PortailUserBundle(),
-            new \FOS\UserBundle\FOSUserBundle()
+            new \FOS\UserBundle\FOSUserBundle(),
+            new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
