@@ -614,6 +614,10 @@ input {
             padding-left: 50%;
         }
 
+        td p {
+            float: right;
+        }
+
         td:before {
             /* Now like a table header */
             position: absolute;

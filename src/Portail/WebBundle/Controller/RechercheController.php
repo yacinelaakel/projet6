@@ -41,10 +41,19 @@ class RechercheController extends Controller
       $oiseauChoisi = $repository->oiseauChoisi($oiseau[0], $oiseau[1]);  
       foreach ($oiseauChoisi as $item) {
           //Récupère les observations associées à cet oiseau
-          $observations = $item->getObservations();
-      }      
+          $allObservations = $item->getObservations();
+      }    
+      
+      $allObservations->toArray();
+      //Récupère uniquement les observations qui sont validés 
+      $observationsValide = array();
+      foreach ($allObservations as $item) {
+        if($item->getEtat() == 2) {
+          array_push($observationsValide, $item);
+        }
+      }  
 
-      if($observations->isEmpty()) {        
+      if($observationsValide == null) {        
         $erreur = true;
       } else {
         $erreur = false;
@@ -52,7 +61,7 @@ class RechercheController extends Controller
 
       //On va convertir en json les observations pour éviter de passer par le DOM pour les récupérer
       $response = array();
-      foreach($observations as $observation) {
+      foreach($observationsValide as $observation) {
         $response[] = array(
           'latitude' => $observation->getLatitude(),
           'longitude' => $observation->getLongitude(),

@@ -16,7 +16,15 @@
                     
             <div class="col-md-9" id="infoInput">
                 <h2 id="h2Compte">Mes observations</h2><hr>
-
+                    
+                {% if listObservations is empty %}
+                    <div class="alert alert-info">
+                        <p>
+                            Vous n'avez aucune observation actuellement. <br>
+                            Rendez vous sur <a href="{{ path('portail_web_observationStep1') }}">cette page</a> pour en ajouter.
+                        </p>
+                    </div>
+                {% endif %}
                 <div class="row">
                     <div class="col-xs-12">
                         <table class="tg">
