@@ -12,12 +12,6 @@ class RechercheController extends Controller
 {
   public function rechercheAction(Request $request)
   {
-    //L'utilisateur n'a pas le droit de venir si il n'est pas connecté
-    $securityContext = $this->container->get('security.authorization_checker');
-    if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-      $request->getSession()->getFlashBag()->add('info', 'Veuillez vous connecter ou vous inscrire.');
-      return $this->redirectToRoute('portail_web_homepage');
-    }
 
     $oiseau = new Oiseaux();
     $form = $this->createForm(OiseauxType::class, $oiseau);
