@@ -25,8 +25,15 @@ $(function() {
 		var marker;
 		//Icône de l'oiseau qui fera office de marqueur
 		var locator = "/projet-6/web/images/locator.png"; 
+		//On remplit les valeurs de latitude et longitude par défaut 
 		document.getElementById("portail_webbundle_observations_latitude").value = position.coords.latitude;
 		document.getElementById("portail_webbundle_observations_longitude").value = position.coords.longitude;
+		//On met le marqueur par défaut à l'endroit où se situe la personne
+		marker = new google.maps.Marker({
+			position: {lat: position.coords.latitude, lng: position.coords.longitude},
+			map: map,
+			icon: locator,
+		});
 		//Au clic sur un endroit de la carte
 		google.maps.event.addListener(map, 'click', function(event) {
 			//Récupère la position du clic et crée un marqueur

@@ -26,7 +26,8 @@
                 <div class="row" id="row">
                     <div class="col-xs-12">
                         <table class="tg">
-                        <tr> 
+                        <tr>
+                            <th class="tg-nrw8 text-center">Observateur</th>
                             <th class="tg-nrw8 text-center">Nom</th>
                             <th class="tg-ecrz text-center">Photo</th>
                             <th class="tg-ecrz text-center">Date et heure</th>
@@ -35,6 +36,10 @@
                         </tr>
                         {% for observation in observationsEnAttente %}
                             <tr>
+                                <td class="tg-yw4l">
+                                    <p class="text-center">{{nomObservateurs[loop.index - 1].nomObs}}</p>
+                                </td>
+
                                 <td class="tg-yw4l">
                                     <p class="text-center">{{nomOiseaux[loop.index - 1].nomFr}}</p>
                                 </td>

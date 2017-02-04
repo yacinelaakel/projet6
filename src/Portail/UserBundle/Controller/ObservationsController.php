@@ -78,11 +78,13 @@ class ObservationsController extends Controller
         $observationsEnAttente = $repository->observationsEnAttente();
 
         $nomOiseaux = array();
+        $nomObservateur = array();
         foreach ($observationsEnAttente as $observation) {
             $nomOiseaux[] = array('nomFr' => $observation->getOiseaux()->getNomFr());
+            $nomObservateurs[] = array('nomObs' => $observation->getUtilisateur()->getName() . ' ' . $observation->getUtilisateur()->getSurname());
         }
 
-        return $this->render('PortailUserBundle:Profile:validationObservations.html.twig', array('user' => $user, 'observationsEnAttente' => $observationsEnAttente, 'nomOiseaux' => $nomOiseaux));
+        return $this->render('PortailUserBundle:Profile:validationObservations.html.twig', array('user' => $user, 'observationsEnAttente' => $observationsEnAttente, 'nomOiseaux' => $nomOiseaux, 'nomObservateurs' => $nomObservateurs));
     }
 
 }
