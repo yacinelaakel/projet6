@@ -31,5 +31,4 @@ class HomeController extends Controller
 
         return $this->render('PortailWebBundle:Home:index.html.twig', array('form' => $form->createView()));
     }
-
 }

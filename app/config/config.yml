@@ -68,11 +68,13 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+  spool:     { type: memory }
+  transport: smtp
+  host:      smtp.mailtrap.io
+  username:  0575fda8e40871
+  password:  1a7d8f7218350b
+  auth_mode: cram-md5
+  port: 2525
 
 assetic:
   debug:          '%kernel.debug%'
@@ -87,6 +89,9 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: Portail\UserBundle\Entity\User
+    profile:
+            form:
+                type: Portail\UserBundle\Form\Type\ProfileFormType
     registration:
             form:
                 type: Portail\UserBundle\Form\RegistrationType

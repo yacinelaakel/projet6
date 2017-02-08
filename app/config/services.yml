@@ -12,3 +12,26 @@ services:
         class: Portail\UserBundle\Form\RegistrationType
         tags:
             - { name: form.type, alias: user_user_registration }
+
+    user.profile.form.type:
+        class: Portail\UserBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: portail_user_profile }
+
+
+    fos_user.resetting.form.factory:
+        class: FOS\UserBundle\Form\Factory\FormFactory
+        arguments: ['@form.factory', '%fos_user.resetting.form.name%', '%fos_user.resetting.form.type%', '%fos_user.resetting.form.validation_groups%']
+
+    user.resetting.form.type:
+        class: Portail\UserBundle\Form\Type\ResettingFormType
+        tags:
+            - { name: form.type, alias: portail_user_resetting }
+        arguments: ['%fos_user.model.user.class%']
+
+    fos_user.listener.resetting:
+        class: FOS\UserBundle\EventListener\ResettingListener
+        tags:
+            - { name: kernel.event_subscriber }
+        arguments: ['@router', '%fos_user.resetting.token_ttl%']

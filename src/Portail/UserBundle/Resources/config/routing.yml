@@ -21,6 +21,23 @@ portail_user_profile_edit:
     defaults: { _controller: PortailUserBundle:Profile:edit }
     methods:  ['GET','POST']
 
+portail_user_resetting_request:
+    path: /request
+    defaults: { _controller: PortailUserBundle:Resetting:request }
+    methods:  ['GET','POST']
+
+portail_user_resetting_send_email:
+    path: /send-email
+    defaults: { _controller: PortailUserBundle:Resetting:sendEmail }
+    methods:  ['GET','POST']
+
+
+portail_user_resetting_check_email:
+    path: /resetting/check-email
+    defaults: { _controller: PortailUserBundle:Resetting:checkEmail }
+    methods:  ['GET','POST']
+
+
 portail_user_confirmed:
     path: /confirmed
     defaults: { _controller: PortailUserBundle:Registration:confirmed }

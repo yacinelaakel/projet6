@@ -3,18 +3,41 @@
 
 
 {% block body %}
+	<style>
+		input, select {
+			margin-bottom: 20px;
+		}
+	</style>
+    {# Banniere Image #}
+    <div style="background-image: url({{ asset('images/banniere-provisoire.jpg') }});" class="banniereOiseau">
+    </div>
 
-{% trans_default_domain 'FOSUserBundle' %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <h1 class="text-center" style="color: #81BD5B;">MODIFIER LE COMPTE</h1>
+                <p class="text-center">Vous pouvez à tout moment modifier vos informations personnelles.</p>
+                <hr>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-xs-12" id="formAccount">
+				{% trans_default_domain 'FOSUserBundle' %}
 
+				{{ form_start(form, { 'action': path('portail_user_profile_edit'), 'attr': { 'class': 'portail_user_profile_edit' } }) }}
 
-{{ form_start(form, { 'action': path('portail_user_profile_edit'), 'attr': { 'class': 'portail_user_profile_edit' } }) }}
+    			{{ form_widget(form) }}
 
-    {{ form_widget(form) }}
-<div>
-    <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
-</div>
-{{ form_end(form) }}
+				<div class="text-center">
+					    <input type="submit" value="{{ 'profile.edit.submit'|trans }}" / class="btn text-center btn-success btn-lg">
+
+				</div>
+
+				{{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+ 
 
 {% endblock %}
-

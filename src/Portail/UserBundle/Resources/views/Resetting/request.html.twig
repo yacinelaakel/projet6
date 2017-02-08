@@ -1,0 +1,36 @@
+{# Hérite de la vue parente situé app/Resources/views/base.html.twig #}
+{% extends "::base.html.twig" %}
+
+
+{% block body %}
+    <style>
+        #username {
+            margin-bottom: 20px;
+            border-radius: 5px;
+            height: auto;
+            color: black;
+        }
+    </style>
+    {# Image background perroquet #}
+    <div style="background-image: url({{ asset('images/background.jpg') }});" class="backgroundImage">
+        {# Encart connexion/créer un compte #}
+        <div class="text-center" id="boiteConnexion">
+        <h1 id="h1Connexion">Mot de passe oublié / perdu</h1>
+        <hr>
+            {% trans_default_domain 'FOSUserBundle' %}
+
+            <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+                <div>
+                    <label for="username">{{ 'resetting.request.username'|trans }}</label>
+                    <br>
+                    <input type="text" id="username" name="username" required="required" / id="username">
+
+                </div>
+                <div>
+                    <input type="submit" value="{{ 'resetting.request.submit'|trans }}" class="btn btn-success btn-lg"/>
+                </div>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

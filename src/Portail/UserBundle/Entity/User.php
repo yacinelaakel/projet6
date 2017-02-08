@@ -29,12 +29,12 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string", length=255)
      *
-     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
+     * @Assert\NotBlank(message="Saisissez votre prénom.", groups={"Registration", "Profile"})
      * @Assert\Length(
      *     min=3,
-     *     max=255,
-     *     minMessage="The name is too short.",
-     *     maxMessage="The name is too long.",
+     *     max=15,
+     *     minMessage="Le prénom doit faire entre 3 et 15 lettres.",
+     *     maxMessage="Le prénom doit faire entre 3 et 15 lettres.",
      *     groups={"Registration", "Profile"}
      * )
      */
@@ -43,12 +43,12 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string", length=255)
      *
-     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
+     * @Assert\NotBlank(message="Saisissez votre nom..", groups={"Registration", "Profile"})
      * @Assert\Length(
      *     min=3,
-     *     max=255,
-     *     minMessage="The name is too short.",
-     *     maxMessage="The name is too long.",
+     *     max=15,
+     *     minMessage="Le nom doit faire entre 3 et 15 lettres.",
+     *     maxMessage="Le nom doit faire entre 3 et 15 lettres.",
      *     groups={"Registration", "Profile"}
      * )
      */
@@ -57,12 +57,12 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string", length=255)
      *
-     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
+     * @Assert\NotBlank(message="Saisissez votre Ville.", groups={"Registration", "Profile"})
      * @Assert\Length(
-     *     min=3,
-     *     max=255,
-     *     minMessage="The name is too short.",
-     *     maxMessage="The name is too long.",
+     *     min=2,
+     *     max=50,
+     *     minMessage="La ville doit faire entre 2 et 50 lettres.",
+     *     maxMessage="La ville doit faire entre 2 et 50 lettres.",
      *     groups={"Registration", "Profile"}
      * )
      */
@@ -76,12 +76,12 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string", length=255)
      *
-     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
+     * @Assert\NotBlank(message="Saisissez votre Profession.", groups={"Registration", "Profile"})
      * @Assert\Length(
      *     min=3,
-     *     max=255,
-     *     minMessage="The name is too short.",
-     *     maxMessage="The name is too long.",
+     *     max=50,
+     *     minMessage="minimum 3 caractères",
+     *     maxMessage="maximum 50 caractères",
      *     groups={"Registration", "Profile"}
      * )
      */
@@ -306,7 +306,7 @@ class User extends BaseUser
     public function setConditionUtilisation($conditionUtilisation)
     {
         $this->conditionUtilisation = $conditionUtilisation;
-    
+
         return $this;
     }
 
@@ -320,3 +320,4 @@ class User extends BaseUser
         return $this->conditionUtilisation;
     }
 }
+

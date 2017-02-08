@@ -35,6 +35,22 @@ h4 {
     color: #d9534f !important;
 }
 
+.topBtn {
+    width: 30px !important;
+    height: 30px !important;
+    line-height: 30px !important;
+}
+
+/*Topbar*/
+.topBar {
+    background-color: black;
+    color: white;
+}
+
+.textBar {
+    margin-top: 13px;
+}
+
 /*Barre de navigation du header*/
 .navbar {
 	background-color: white;

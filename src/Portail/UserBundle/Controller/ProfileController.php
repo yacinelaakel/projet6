@@ -22,6 +22,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * Controller managing the user profile.
@@ -46,20 +48,14 @@ class ProfileController extends Controller
     }
 
     /**
-     * Edit the user.
-     *
-     * @param Request $request
-     *
-     * @return Response
+     * Edit the user
+     * @Route("/profile/edit", name="edit_profile")
      */
     public function editAction(Request $request)
     {
         $user = $this->getUser();
-        if (!is_object($user) || !$user instanceof UserInterface) {
-            throw new AccessDeniedException('This user does not have access to this section.');
-        }
 
-        /** @var $dispatcher EventDispatcherInterface */
+        /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
         $dispatcher = $this->get('event_dispatcher');
 
         $event = new GetResponseUserEvent($user, $request);
@@ -69,16 +65,15 @@ class ProfileController extends Controller
             return $event->getResponse();
         }
 
-        /** @var $formFactory FactoryInterface */
+        /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
         $formFactory = $this->get('fos_user.profile.form.factory');
 
         $form = $formFactory->createForm();
         $form->setData($user);
-
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            /** @var $userManager UserManagerInterface */
+        if ($form->isValid()) {
+            /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
             $userManager = $this->get('fos_user.user_manager');
 
             $event = new FormEvent($form, $request);
@@ -97,8 +92,10 @@ class ProfileController extends Controller
         }
 
         return $this->render('PortailUserBundle:Profile:edit.html.twig', array(
-            'form' => $form->createView(),
-        ));
+            'form'              => $form->createView()));
+
+
+
     }
 
 }
