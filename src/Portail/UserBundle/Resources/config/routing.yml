@@ -56,3 +56,8 @@ portail_user_profile_validations:
         valide: null
         rejet: null
     methods:  ['GET','POST']
+
+portail_user_change_password:
+    path: /change-password
+    defaults: { _controller: PortailUserBundle:ChangePassword:changePassword }
+    methods:  ['GET','POST']

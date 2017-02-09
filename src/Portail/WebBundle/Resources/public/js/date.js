@@ -13,7 +13,7 @@ $(function() {
 
 
 	var dt = new Date();
-	var day = dt.getDate();
+	var day = ("0" + (dt.getDate())).slice(-2);
 	var month = ("0" + (dt.getMonth() + 1)).slice(-2);
 	var year = dt.getFullYear();
 

@@ -19,7 +19,6 @@ services:
         tags:
             - { name: form.type, alias: portail_user_profile }
 
-
     fos_user.resetting.form.factory:
         class: FOS\UserBundle\Form\Factory\FormFactory
         arguments: ['@form.factory', '%fos_user.resetting.form.name%', '%fos_user.resetting.form.type%', '%fos_user.resetting.form.validation_groups%']
@@ -35,3 +34,14 @@ services:
         tags:
             - { name: kernel.event_subscriber }
         arguments: ['@router', '%fos_user.resetting.token_ttl%']
+
+    fos_user.change_password.form.factory:
+        class: FOS\UserBundle\Form\Factory\FormFactory
+        arguments: ['@form.factory', '%fos_user.change_password.form.name%', '%fos_user.change_password.form.type%', '%fos_user.change_password.form.validation_groups%']
+
+    fos_user.change_password.form.type:
+        class: FOS\UserBundle\Form\Type\ChangePasswordFormType
+        tags:
+            - { name: form.type, alias: portail_user_change_password }
+        arguments: ['%fos_user.model.user.class%']
+
