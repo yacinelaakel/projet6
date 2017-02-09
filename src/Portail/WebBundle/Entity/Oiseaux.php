@@ -34,7 +34,7 @@ class Oiseaux
      * @var string
      *
      * @ORM\Column(name="NOM_VERN", type="string", length=255)
-     * @Assert\Regex("/^[a-zA-Z]{3,40}/", message="Le nom doit être valide (entre 3 et 40 lettres).")
+     * @Assert\Regex("/^[a-zA-Z]{3,100}/", message="Le nom doit être valide (entre 3 et 100 lettres).")
      */
     private $nomFr;
 
@@ -42,7 +42,7 @@ class Oiseaux
      * @var string
      *
      * @ORM\Column(name="LB_NOM", type="string", length=255)
-     * @Assert\Regex("/^[a-zA-Z]{3,40}/", message="Le nom doit être valide (entre 3 et 40 lettres).")
+     * @Assert\Regex("/^[a-zA-Z]{3,100}/", message="Le nom doit être valide (entre 3 et 100 lettres).")
      */
     private $nomLa;
 
