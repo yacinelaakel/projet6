@@ -78,7 +78,7 @@ class ObservationsController extends Controller
         $observationsEnAttente = $repository->observationsEnAttente();
 
         $nomOiseaux = array();
-        $nomObservateur = array();
+        $nomObservateurs = array();
         foreach ($observationsEnAttente as $observation) {
             $nomOiseaux[] = array('nomFr' => $observation->getOiseaux()->getNomFr());
             $nomObservateurs[] = array('nomObs' => $observation->getUtilisateur()->getName() . ' ' . $observation->getUtilisateur()->getSurname());

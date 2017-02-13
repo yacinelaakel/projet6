@@ -198,7 +198,7 @@ easy_admin:
                     - {property: 'city', label: 'Ville'}
                     - {property: 'job', label: 'Profession'}
                     - {property: 'enabled', label:'Activé'}
-                    - {property: 'conditionUtilisation', label:"Conditions d'Utilisation"}
+                    - {property: 'conditionUtilisation', label:"Conditions d'utilisation"}
                     # if administrators are allowed to edit users' passwords and roles, add this:
                     - { property: 'plainPassword', type: 'text', label:'Mot de passe', type_options: { required: false } }
-                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER','ROLE_MODERATEUR':'ROLE_MODERATEUR','ROLE_SUPER_ADMIN': 'ROLE_SUPER_ADMIN' } } }
+                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_UTILISATEUR': 'ROLE_USER','ROLE_MODERATEUR':'ROLE_MODERATEUR','ROLE_SUPER_ADMIN': 'ROLE_SUPER_ADMIN' } } }

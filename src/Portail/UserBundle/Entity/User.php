@@ -69,7 +69,7 @@ class User extends BaseUser
     protected $city;
 
     /**
-     * @ORM\Column(type="date",)
+     * @ORM\Column(type="date")
      */
     protected $dateboth;
 

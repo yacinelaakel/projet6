@@ -16,7 +16,7 @@
             <h3>            
                 Connecté sous le pseudo <span style="color: #81BD5B;">{{ app.user.username }}</span> <br><br>
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ absolute_url(asset('app_dev.php/admin')) }}">Interface d'administration</a>
+                    <a href="{{ path('easyadmin') }}">Interface d'administration</a>
                 {% endif %}
                 <a href="{{ path('fos_user_security_logout') }}" id="btnDeconnexion">Déconnexion</a>
             </h3>
